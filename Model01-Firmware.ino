@@ -41,18 +41,18 @@ uint8_t temporary_keymap = 0;
 )
 
 #define GENERIC_FN2  KEYMAP_STACKED ( \
- 	___,      Key_F1,        Key_F2,      Key_F3,     Key_F4,          Key_F5,          XXX,  	  \
-	Key_Tab,  Key_mouseBtnM, Key_mouseUp, ___,        Key_mouseWarpNW, Key_mouseWarpNE, Key_nextTrack, 	 \
-	Key_Home, Key_mouseL,    Key_mouseDn, Key_mouseR, Key_mouseWarpSW, Key_mouseWarpSE, \
-	Key_End,  Key_Z,         Key_X,       Key_C,      Key_V,           Key_mouseWarpEnd, ___,    \
-							Key_LCtrl, Key_mouseBtnL, Key_LGUI, Key_LShift,		\
+ 	___,      Key_F1,       Key_F2,      Key_F3,     Key_F4,          Key_F5,          XXX,  	  \
+	Key_Tab,  ___, 		Key_mouseUp, ___,        Key_mouseBtnL, Key_mouseWarpEnd, Key_mouseWarpNE, 	 \
+	Key_Home, Key_mouseL,   Key_mouseDn, Key_mouseR, Key_mouseBtnM, Key_mouseWarpNW, \
+	Key_End,  ___,         	___,         ___,     	 Key_mouseBtnR, Key_mouseWarpSW, Key_mouseWarpSE,    \
+							Key_LCtrl, Key_Delete, Key_LGUI, Key_LShift,		\
 					      				      ___,\
 \
-	XXX,        Key_F6,         Key_F7,            Key_F8, 		  Key_F9,	      ___, 		  ___,\
-	Key_Delete, Key_playPause,  Key_LCurlyBracket, Key_RCurlyBracket, Key_LSquareBracket, Key_RSquareBracket, Key_sleep,\
-		    Key_LArrow,     Key_DnArrow,       Key_UpArrow, 	  Key_RArrow, 	      Key_F11, 	          Key_F12,\
-	___,        Key_volumeDown, Key_volumeUp,      Key_BacklightDn,   Key_BacklightUp,    Key_Backslash,      Key_Pipe,\
-	Key_RShift, Key_RAlt, Key_mouseBtnR, Key_RCtrl,\
+	Key_prevTrack,        Key_F6,         Key_F7,            Key_F8, 		  Key_F9,	      Key_F10, 		  Key_F11,\
+	Key_playPause,	      ___,  	      Key_LCurlyBracket, Key_RCurlyBracket, Key_LSquareBracket, Key_RSquareBracket,	Key_F12,\
+		    	      Key_LArrow,     Key_DnArrow,       Key_UpArrow, 	  Key_RArrow, 	     ___,           ___,\
+	Key_nextTrack,        Key_volumeMute, Key_volumeDown,    Key_volumeUp,        ___,    Key_Backslash,      Key_Pipe,\
+	Key_RShift, Key_RAlt, Key_Enter, Key_RCtrl,\
 	___\
 )
 
