@@ -20,6 +20,8 @@
 uint8_t primary_keymap = 0;
 uint8_t temporary_keymap = 0;
 
+#define MACRO_ANY 2
+#define Key_Any M(MACRO_ANY)
 #define NUMPAD_KEYMAP 2
 
 #define COLEMAK KEYMAP ( \
@@ -77,7 +79,7 @@ uint8_t temporary_keymap = 0;
 )
 
 #define QWERTY KEYMAP ( \
-	___, 	      Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, 	___,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_ToggleNumlock, \
+	___, 	      Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, 	Key_Any,   Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_ToggleNumlock, \
 	Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab, 	  	Key_Enter, Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals, \
 	Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,  		     		   Key_H, Key_J, Key_K,     Key_L, 	Key_Semicolon, Key_Quote, \
 	Key_PageDn,   Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Esc, 		___,       Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus, \
@@ -121,6 +123,9 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
                      W(100),
                      T(0), T(1),
                      END);
+    } else if (macroIndex == MACRO_ANY && key_toggled_on(keyState)) {
+	Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36) );
+	Keyboard.sendReport();
     }
     return MACRO_NONE;
 }
