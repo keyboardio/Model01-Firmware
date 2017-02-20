@@ -74,7 +74,7 @@ uint8_t temporary_keymap = 0;
 	___, ___, ___, ___, ___, ___, ___,   		        ___, ___, Key_Keypad4, Key_Keypad5,   Key_Keypad6,        Key_KeypadPlus,  ___, \
 	___, ___, ___, ___, ___, ___,                 	             ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,      Key_Quote, \
 	___, ___, ___, ___, ___, ___, ___,                      ___, ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadSlash, Key_Enter, \
-	Key_LCtrl, Key_Backspace, Key_LGUI, Key_LShift,		Key_RShift, Key_RAlt, Key_Space, Key_RCtrl, \
+		       ___, ___, ___, ___,			___, ___, ___, ___, \
 			         Key_Keymap1_Momentary, 	Key_Keymap1_Momentary \
 )
 
