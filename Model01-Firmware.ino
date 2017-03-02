@@ -134,7 +134,7 @@ void setup() {
     Kaleidoscope.use(&TestMode,
                      &LEDControl, &LEDOff,
                      &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
-                     &LEDBreatheEffect, &LEDRainbowEffect, &LEDChaseEffect, &NumLock,
+                     &LEDBreatheEffect, &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect, &NumLock,
 
                      &Macros,
                      &MouseKeys,
