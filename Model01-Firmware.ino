@@ -15,6 +15,7 @@
 #include "Kaleidoscope-LEDEffect-Breathe.h"
 #include "Kaleidoscope-LEDEffect-Chase.h"
 #include "Kaleidoscope-LEDEffect-Rainbow.h"
+#include "Kaleidoscope-LED-AlphaSquare.h"
 #include "Kaleidoscope-LED-Stalker.h"
 #include "Kaleidoscope-Model01-TestMode.h"
 
@@ -134,7 +135,7 @@ void setup() {
 
     Kaleidoscope.use(&TestMode,
                      &LEDControl, &LEDOff,
-                     &StalkerEffect,
+                     &StalkerEffect, &AlphaSquareEffect,
                      &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
                      &LEDBreatheEffect, &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect, &NumLock,
 
