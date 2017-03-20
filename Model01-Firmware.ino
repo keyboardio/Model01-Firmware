@@ -103,13 +103,13 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 
  };
 
-static LEDSolidColor solidRed (60, 0, 0);
-static LEDSolidColor solidOrange (60, 20, 0);
-static LEDSolidColor solidYellow (40, 35, 0);
-static LEDSolidColor solidGreen (0, 100, 0);
-static LEDSolidColor solidBlue (0, 15, 100);
-static LEDSolidColor solidIndigo (0, 0, 100);
-static LEDSolidColor solidViolet (70, 0, 60);
+static LEDSolidColor solidRed (160, 0, 0);
+static LEDSolidColor solidOrange (140, 70, 0);
+static LEDSolidColor solidYellow (130, 100, 0);
+static LEDSolidColor solidGreen (0, 160, 0);
+static LEDSolidColor solidBlue (0, 70, 130);
+static LEDSolidColor solidIndigo (0, 0, 170);
+static LEDSolidColor solidViolet (130, 0, 120);
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     if (macroIndex == TOGGLENUMLOCK && key_toggled_on(keyState)) {
