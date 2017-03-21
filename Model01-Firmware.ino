@@ -96,13 +96,13 @@
 					      Key_KeymapNext_Momentary, 	Key_KeymapNext_Momentary \
 )
 
-const Key keymaps[][ROWS][COLS] PROGMEM = { 
-	QWERTY, 
-	GENERIC_FN2,
-	NUMPAD
+const Key keymaps[][ROWS][COLS] PROGMEM = {
+    QWERTY,
+    GENERIC_FN2,
+    NUMPAD
 
 
- };
+};
 
 static LEDSolidColor solidRed (160, 0, 0);
 static LEDSolidColor solidOrange (140, 70, 0);
@@ -124,8 +124,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
                      T(0), T(1),
                      END);
     } else if (macroIndex == MACRO_ANY && key_toggled_on(keyState)) {
-	Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36) );
-	Keyboard.sendReport();
+        Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36) );
+        Keyboard.sendReport();
     }
     return MACRO_NONE;
 }
@@ -137,9 +137,9 @@ void setup() {
                      &LEDControl, &LEDOff,
                      &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
                      &LEDBreatheEffect, &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
-		     &AlphaSquareEffect,
+                     &AlphaSquareEffect,
                      &StalkerEffect,
-			 &NumLock,
+                     &NumLock,
 
                      &Macros,
                      &MouseKeys,
