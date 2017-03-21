@@ -16,6 +16,7 @@
 #include "Kaleidoscope-LEDEffect-Chase.h"
 #include "Kaleidoscope-LEDEffect-Rainbow.h"
 #include "Kaleidoscope-LED-Stalker.h"
+#include "Kaleidoscope-LED-AlphaSquare.h"
 #include "Kaleidoscope-Model01-TestMode.h"
 
 
@@ -134,14 +135,17 @@ void setup() {
 
     Kaleidoscope.use(&TestMode,
                      &LEDControl, &LEDOff,
-                     &StalkerEffect,
                      &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
-                     &LEDBreatheEffect, &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect, &NumLock,
+                     &LEDBreatheEffect, &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
+		     &AlphaSquareEffect,
+                     &StalkerEffect,
+			 &NumLock,
 
                      &Macros,
                      &MouseKeys,
                      NULL);
 
+    AlphaSquare.color = { 255,0,0 };
     StalkerEffect.configure (STALKER (BlazingTrail, NULL));
     LEDOff.activate();
 }
