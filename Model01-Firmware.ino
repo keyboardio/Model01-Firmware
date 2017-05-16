@@ -43,17 +43,17 @@
 )
 
 #define GENERIC_FN2  KEYMAP_STACKED ( \
- 	___,      Key_F1,       Key_F2,      Key_F3,     Key_F4,          Key_F5,          XXX,  	  \
-	Key_Tab,  ___, 		Key_mouseUp, ___,        Key_mouseBtnL, Key_mouseWarpEnd, Key_mouseWarpNE, 	 \
-	Key_Home, Key_mouseL,   Key_mouseDn, Key_mouseR, Key_mouseBtnM, Key_mouseWarpNW, \
-	Key_End,  ___,         	___,         ___,     	 Key_mouseBtnR, Key_mouseWarpSW, Key_mouseWarpSE,    \
+ 	___,      Key_F1,       	Key_F2,      Key_F3,     Key_F4,          Key_F5,          XXX,  	  \
+	Key_Tab,  ___, 			Key_mouseUp, ___,        Key_mouseBtnL, Key_mouseWarpEnd, Key_mouseWarpNE, 	 \
+	Key_Home, Key_mouseL,   	Key_mouseDn, Key_mouseR, Key_mouseBtnM, Key_mouseWarpNW, \
+	Key_End,  Key_PrtScr,		Key_Insert,  ___,     	 Key_mouseBtnR, Key_mouseWarpSW, Key_mouseWarpSE,    \
 							Key_LCtrl, Key_Delete, Key_LGUI, Key_LShift,		\
 					      				      ___,\
 \
-	Key_prevTrack,        Key_F6,         Key_F7,            Key_F8, 		  Key_F9,	      Key_F10, 		  Key_F11,\
-	Key_playPause,	      ___,  	      Key_LCurlyBracket, Key_RCurlyBracket, Key_LSquareBracket, Key_RSquareBracket,	Key_F12,\
-		    	      Key_LArrow,     Key_DnArrow,       Key_UpArrow, 	  Key_RArrow, 	     ___,           ___,\
-	Key_nextTrack,        Key_volumeMute, Key_volumeDown,    Key_volumeUp,        ___,    Key_Backslash,      Key_Pipe,\
+	Key_prevTrack,   Key_F6,         Key_F7,            Key_F8, 	    	Key_F9,	        	Key_F10, 	  	Key_F11,\
+	Key_playPause,	 Key_nextTrack,  Key_LCurlyBracket, Key_RCurlyBracket, 	Key_LSquareBracket, 	Key_RSquareBracket,	Key_F12,\
+		    	 Key_LArrow,     Key_DnArrow,       Key_UpArrow,     	Key_RArrow, 	 	___,           		___,\
+	Key_Menu,        Key_volumeMute, Key_volumeDown,    Key_volumeUp,      	___,    		Key_Backslash,      	Key_Pipe,\
 	Key_RShift, Key_RAlt, Key_Enter, Key_RCtrl,\
 	___\
 )
