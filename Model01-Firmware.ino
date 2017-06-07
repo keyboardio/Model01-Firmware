@@ -26,9 +26,9 @@
 
 #define GENERIC_FN2  KEYMAP_STACKED ( \
 ___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
-Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnL, Key_mouseWarpEnd, Key_mouseWarpNE, \
-Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnM, Key_mouseWarpNW,                   \
-Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnR, Key_mouseWarpSW,  Key_mouseWarpSE, \
+Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE, \
+Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,                   \
+Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE, \
                                             Key_LeftControl, Key_Delete, Key_LeftGui, Key_LeftShift,  \
                                                                 ___,   \
 \
