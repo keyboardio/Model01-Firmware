@@ -76,58 +76,58 @@ ___ \
 )
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
-    QWERTY,
-    GENERIC_FN2,
-    NUMPAD
+  QWERTY,
+  GENERIC_FN2,
+  NUMPAD
 };
 
-static LEDSolidColor solidRed (160, 0, 0);
-static LEDSolidColor solidOrange (140, 70, 0);
-static LEDSolidColor solidYellow (130, 100, 0);
-static LEDSolidColor solidGreen (0, 160, 0);
-static LEDSolidColor solidBlue (0, 70, 130);
-static LEDSolidColor solidIndigo (0, 0, 170);
-static LEDSolidColor solidViolet (130, 0, 120);
+static LEDSolidColor solidRed(160, 0, 0);
+static LEDSolidColor solidOrange(140, 70, 0);
+static LEDSolidColor solidYellow(130, 100, 0);
+static LEDSolidColor solidGreen(0, 160, 0);
+static LEDSolidColor solidBlue(0, 70, 130);
+static LEDSolidColor solidIndigo(0, 0, 170);
+static LEDSolidColor solidViolet(130, 0, 120);
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
-    if (macroIndex == TOGGLENUMLOCK && key_toggled_on(keyState)) {
-        return NumLock.toggle (Macros.row, Macros.col, NUMPAD_KEYMAP);
-    } else if (macroIndex == 1 && key_toggled_on(keyState)) {
-        Serial.print("Keyboardio keyboard driver v0.00");
-        return MACRO(I(25),
-                     D(LeftShift), T(M), U(LeftShift), T(O), T(D), T(E), T(L),
-                     T(Spacebar),
-                     W(100),
-                     T(0), T(1),
-                     END);
-    } else if (macroIndex == MACRO_ANY && key_toggled_on(keyState)) {
-        Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36) );
-        Keyboard.sendReport();
-    }
-    return MACRO_NONE;
+  if (macroIndex == TOGGLENUMLOCK && key_toggled_on(keyState)) {
+    return NumLock.toggle(Macros.row, Macros.col, NUMPAD_KEYMAP);
+  } else if (macroIndex == 1 && key_toggled_on(keyState)) {
+    Serial.print("Keyboardio keyboard driver v0.00");
+    return MACRO(I(25),
+                 D(LeftShift), T(M), U(LeftShift), T(O), T(D), T(E), T(L),
+                 T(Spacebar),
+                 W(100),
+                 T(0), T(1),
+                 END);
+  } else if (macroIndex == MACRO_ANY && key_toggled_on(keyState)) {
+    Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36));
+    Keyboard.sendReport();
+  }
+  return MACRO_NONE;
 }
 
 void setup() {
-    Kaleidoscope.setup(KEYMAP_SIZE);
+  Kaleidoscope.setup(KEYMAP_SIZE);
 
-    Kaleidoscope.use(&TestMode,
-                     &LEDControl, &LEDOff,
-                     &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
-                     &LEDBreatheEffect, &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
-                     &AlphaSquareEffect,
-                     &StalkerEffect,
-                     &NumLock,
+  Kaleidoscope.use(&TestMode,
+                   &LEDControl, &LEDOff,
+                   &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
+                   &LEDBreatheEffect, &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
+                   &AlphaSquareEffect,
+                   &StalkerEffect,
+                   &NumLock,
 
-                     &Macros,
-                     &MouseKeys,
-                     NULL);
+                   &Macros,
+                   &MouseKeys,
+                   NULL);
 
-    AlphaSquare.color = { 255,0,0 };
-    StalkerEffect.configure (STALKER (BlazingTrail, NULL));
-    LEDOff.activate();
+  AlphaSquare.color = { 255, 0, 0 };
+  StalkerEffect.configure(STALKER(BlazingTrail, NULL));
+  LEDOff.activate();
 }
 
 
 void loop() {
-    Kaleidoscope.loop();
+  Kaleidoscope.loop();
 }
