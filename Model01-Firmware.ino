@@ -123,7 +123,7 @@ void setup() {
                    NULL);
 
   AlphaSquare.color = { 255, 0, 0 };
-  StalkerEffect.configure(STALKER(BlazingTrail, NULL));
+  StalkerEffect.variant = STALKER(BlazingTrail);
   LEDOff.activate();
 }
 
