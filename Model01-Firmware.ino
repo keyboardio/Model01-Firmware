@@ -65,7 +65,7 @@ ___ \
     Key_Keymap1_Momentary \
 )
 
-#define QWERTY KEYMAP ( \
+#define QWERTY KEYMAP_STACKED ( \
     ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
     Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
     Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
