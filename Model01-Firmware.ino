@@ -4,6 +4,11 @@
 
 #define DEBUG_SERIAL false
 
+#ifndef BUILD_INFORMATION
+#define BUILD_INFORMATION "locally built"
+#endif
+
+
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-Macros.h"
 #include "Kaleidoscope-LEDControl.h"
@@ -19,7 +24,8 @@
 #include "Kaleidoscope-LED-AlphaSquare.h"
 #include "Kaleidoscope-Model01-TestMode.h"
 
-
+#define MACRO_VERSION_INFO 1
+#define Macro_VersionInfo M(MACRO_VERSION_INFO)
 #define MACRO_ANY 2
 #define Macro_Any M(MACRO_ANY)
 #define NUMPAD_KEYMAP 2
@@ -43,7 +49,7 @@ ___ \
 
 
 #define NUMPAD KEYMAP_STACKED  (\
-     ___, ___, ___, ___, ___, ___, ___,  \
+    ___, ___, ___, ___, ___, ___, Macro_VersionInfo,  \
     ___, ___, ___, ___, ___, ___, ___,  \
     ___, ___, ___, ___, ___, ___,       \
     ___, ___, ___, ___, ___, ___, ___,  \
@@ -93,13 +99,9 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   if (macroIndex == TOGGLENUMLOCK && key_toggled_on(keyState)) {
     return NumLock.toggle(Macros.row, Macros.col, NUMPAD_KEYMAP);
   } else if (macroIndex == 1 && key_toggled_on(keyState)) {
-    Serial.print("Keyboardio keyboard driver v0.00");
-    return MACRO(I(25),
-                 D(LeftShift), T(M), U(LeftShift), T(O), T(D), T(E), T(L),
-                 T(Spacebar),
-                 W(100),
-                 T(0), T(1),
-                 END);
+    Macros.type("Keyboardio Model 01 - Kaleidoscope ");
+    Macros.type(BUILD_INFORMATION);
+    Macros.type("\n");
   } else if (macroIndex == MACRO_ANY && key_toggled_on(keyState)) {
     Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36));
     Keyboard.sendReport();
