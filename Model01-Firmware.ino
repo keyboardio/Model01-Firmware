@@ -99,9 +99,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   if (macroIndex == TOGGLENUMLOCK && key_toggled_on(keyState)) {
     return NumLock.toggle(Macros.row, Macros.col, NUMPAD_KEYMAP);
   } else if (macroIndex == 1 && key_toggled_on(keyState)) {
-    Macros.type("Keyboardio Model 01 - Kaleidoscope ");
-    Macros.type(BUILD_INFORMATION);
-    Macros.type("\n");
+    Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
+    Macros.type(PSTR(BUILD_INFORMATION));
   } else if (macroIndex == MACRO_ANY && key_toggled_on(keyState)) {
     Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36));
     Keyboard.sendReport();
@@ -111,7 +110,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
 void setup() {
   Kaleidoscope.setup(KEYMAP_SIZE);
-
+  BootKeyboard.begin();
   Kaleidoscope.use(&TestMode,
                    &LEDControl, &LEDOff,
                    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
