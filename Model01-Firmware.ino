@@ -124,6 +124,8 @@ void setup() {
                    NULL);
 
   AlphaSquare.color = { 255, 0, 0 };
+  LEDRainbowEffect.brightness(150);
+  LEDRainbowWaveEffect.brightness(150);
   StalkerEffect.variant = STALKER(BlazingTrail);
   LEDOff.activate();
 }
