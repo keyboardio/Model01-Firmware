@@ -49,7 +49,7 @@ ___ \
 
 
 #define NUMPAD KEYMAP_STACKED  (\
-    ___, ___, ___, ___, ___, ___, Macro_VersionInfo,  \
+    ___, ___, ___, ___, ___, ___, ___,  \
     ___, ___, ___, ___, ___, ___, ___,  \
     ___, ___, ___, ___, ___, ___,       \
     ___, ___, ___, ___, ___, ___, ___,  \
@@ -57,7 +57,7 @@ ___ \
                  Key_Keymap1_Momentary, \
 \
 \
-    ___, ___, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_KeypadSubtract, ___, \
+    Macro_VersionInfo,  ___, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_KeypadSubtract, ___, \
     ___, ___, Key_Keypad4, Key_Keypad5,   Key_Keypad6,        Key_KeypadAdd,      ___, \
          ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,         Key_Quote, \
     ___, ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter, \
