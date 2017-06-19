@@ -113,8 +113,9 @@ void setup() {
   BootKeyboard.begin();
   Kaleidoscope.use(&TestMode,
                    &LEDControl, &LEDOff,
+		   &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
                    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
-                   &LEDBreatheEffect, &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
+                   &LEDBreatheEffect, 
                    &AlphaSquareEffect,
                    &StalkerEffect,
                    &NumLock,
