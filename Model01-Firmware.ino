@@ -97,7 +97,7 @@ static LEDSolidColor solidViolet(130, 0, 120);
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   if (macroIndex == TOGGLENUMLOCK && key_toggled_on(keyState)) {
-    return NumLock.toggle(Macros.row, Macros.col, NUMPAD_KEYMAP);
+    return NumLock.toggle();
   } else if (macroIndex == 1 && key_toggled_on(keyState)) {
     Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
     Macros.type(PSTR(BUILD_INFORMATION));
@@ -124,6 +124,7 @@ void setup() {
                    &MouseKeys,
                    NULL);
 
+  NumLock.numPadLayer = NUMPAD_KEYMAP;
   AlphaSquare.color = { 255, 0, 0 };
   LEDRainbowEffect.brightness(150);
   LEDRainbowWaveEffect.brightness(150);
