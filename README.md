@@ -20,11 +20,7 @@ Setup the Arduino IDE on your system. Make sure you install at least version 1.6
 
 ### Install the Kaleidoscope Hardware Definitions
 
-Call the `init.sh` script with your kaleidoscope dir. Ex:
-
-```sh
-./init.sh ~/kaleidoscope
-```
+Run `./init.sh`, if you have selected a dir other than $HOME/kaleidoscope pass it as the first argument.
 
 ### Make the project
 
@@ -41,8 +37,6 @@ open -a Arduino Model01-Firmware.ino
 Before the upload process begins you must press and hold the prod button on the keyboard, this is a security measure and
 does not need to be done while the project is compiling.
 Make your changes and when you're ready go ahead and upload (`CMD-U` on Mac).
-
-
 
 <3 jesse
 

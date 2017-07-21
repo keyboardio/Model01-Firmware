@@ -17,10 +17,20 @@ function setSketchDir {
     fi
 }
 
-
 function main {
     local kalDir="$1"
     setSketchDir
+
+    if [[ "$kalDir" -eq "help" ]]; then
+        echo "Usage: $0 <kaleidoscope root>"
+        exit 0
+    fi
+
+    if [ -z "$kalDir" ]; then
+        kalDir=$HOME/kaleidoscope
+        mkdir -p $kalDir
+        echo "Made dir $kalDir"
+    fi
 
     cd $kalDir
 
