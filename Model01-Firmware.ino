@@ -96,12 +96,12 @@ static LEDSolidColor solidIndigo(0, 0, 170);
 static LEDSolidColor solidViolet(130, 0, 120);
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
-  if (macroIndex == TOGGLENUMLOCK && key_toggled_on(keyState)) {
+  if (macroIndex == TOGGLENUMLOCK && keyToggledOn(keyState)) {
     return NumLock.toggle();
-  } else if (macroIndex == 1 && key_toggled_on(keyState)) {
+  } else if (macroIndex == 1 && keyToggledOn(keyState)) {
     Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
     Macros.type(PSTR(BUILD_INFORMATION));
-  } else if (macroIndex == MACRO_ANY && key_toggled_on(keyState)) {
+  } else if (macroIndex == MACRO_ANY && keyToggledOn(keyState)) {
     Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36));
     Keyboard.sendReport();
   }
