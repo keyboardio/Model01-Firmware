@@ -101,9 +101,13 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   } else if (macroIndex == 1 && keyToggledOn(keyState)) {
     Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
     Macros.type(PSTR(BUILD_INFORMATION));
-  } else if (macroIndex == MACRO_ANY && keyToggledOn(keyState)) {
-    Keyboard.press(Key_A.keyCode + (uint8_t)(millis() % 36));
-    Keyboard.sendReport();
+  } else if (macroIndex == MACRO_ANY) {
+    static Key lastKey;
+    if (keyToggledOn(keyState))
+      lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
+
+    if (keyIsPressed(keyState))
+      kaleidoscope::hid::pressKey(lastKey);
   }
   return MACRO_NONE;
 }
