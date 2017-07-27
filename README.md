@@ -57,5 +57,4 @@ make flash
 
 <3 jesse
 
-[![Build
-Status](https://travis-ci.org/keyboardio/Model01-Firmwaresvg?branch=master)](https://travis-ci.org/keyboardio/Model01-Firmware)
+[![Build Status](https://travis-ci.org/keyboardio/Model01-Firmware.svg?branch=master)](https://travis-ci.org/keyboardio/Model01-Firmware)
