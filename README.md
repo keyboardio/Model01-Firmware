@@ -43,8 +43,8 @@ cd Model01-Firmware
 
 make flash
 
-# When the builder tells you to hit return to continue, hold down "prog" on your keyboard and hit return.
-
+# When the builder tells you to hit return to continue,
+# hold down "prog" on your keyboard and hit return.
 ```
 
 <3 jesse
