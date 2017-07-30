@@ -23,6 +23,10 @@ SKETCHBOOK_DIR=$HOME/Documents/Arduino
 # on Linux the default is
 SKETCHBOOK_DIR=$HOME/Arduino
 
+# set needed environment variables
+ARDUINO_PATH=$SKETCHBOOK_DIR/arduino-1.8.3   # or whatever version you have
+ARDUINO_LOCAL_LIB_PATH=$SKETCHBOOK_DIR
+
 # make a directory for kaleidoscope, the Model 01 firmware
 mkdir $HOME/kaleidoscope
 
