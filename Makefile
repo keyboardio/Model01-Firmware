@@ -5,9 +5,10 @@ MAKEFILE_PREFIX=keyboardio/avr/libraries/Kaleidoscope-Plugin/build
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)
-BOARD_HARDWARE_PATH ?= $(HOME)/Documents/Arduino/hardware
+SKETCHBOOK_DIR ?= $(HOME)/Documents/Arduino/
 else
-BOARD_HARDWARE_PATH ?= $(HOME)/Arduino/hardware
+SKETCHBOOK_DIR ?= $(HOME)/arduino
 endif
 
+BOARD_HARDWARE_PATH ?= $(SKETCHBOOK_DIR)/hardware
 include $(BOARD_HARDWARE_PATH)/$(MAKEFILE_PREFIX)/rules.mk
