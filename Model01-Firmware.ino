@@ -16,6 +16,7 @@
 #include "Kaleidoscope.h"
 
 #include "LED-Off.h"
+#include "Kaleidoscope-LEDEffect-BootGreeting.h"
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
 #include "Kaleidoscope-LEDEffect-Breathe.h"
 #include "Kaleidoscope-LEDEffect-Chase.h"
@@ -115,7 +116,9 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 void setup() {
   Kaleidoscope.setup(KEYMAP_SIZE);
   BootKeyboard.begin();
-  Kaleidoscope.use(&TestMode,
+  Kaleidoscope.use(
+		   &BootGreetingEffect,
+		   &TestMode,
                    &LEDControl, &LEDOff,
                    &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
                    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
@@ -123,7 +126,6 @@ void setup() {
                    &AlphaSquareEffect,
                    &StalkerEffect,
                    &NumLock,
-
                    &Macros,
                    &MouseKeys,
                    NULL);
