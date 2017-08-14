@@ -9,13 +9,16 @@ The default firmware for the Keyboardio Model 01
 
 Setup the Arduino IDE on your system. Make sure you install at least version 1.6, since older version may not support all required features.
 
-## macOS
+### macOS
 
 On macOS, install the Arduino IDE using [homebrew](http://brew.sh/) [cask](https://caskroom.github.io/) with `brew cask install arduino` or download the application from [the official website](https://www.arduino.cc/en/Main/Software) and move it to your `/Applications` folder.
 
+
 ### Linux
 
-On Linux, your distribution's package manager probably includes the Arduino IDE, but it may be an out of date version. If your distribution installs a version of Arduino before 1.6.3 or so, you'll need to install the Arduino IDE following the instructions [on the wiki](https://github.com/keyboardio/Kaleidoscope/wiki/Arduino-Setup-Linux), installing the Arduino package somewhere that 'arduino' and 'arduino-builder' end up in your $PATH
+On Linux, your distribution's package manager probably includes the Arduino IDE, but it may be an out of date version. If your distribution installs a version of Arduino before 1.6.3 or so, you'll need to install the Arduino IDE following the instructions [on the wiki](https://github.com/keyboardio/Kaleidoscope/wiki/Arduino-Setup-Linux).
+
+If you install Arduino into some place that's /not/ `/usr/local/arduino`, you'll need to set the `$ARDUINO_PATH` environment variable to the directory containing the `arduino` and `arduino-builder` binaries.
 
 ## Create and navigate to the Arduino Sketchbook directory
 
