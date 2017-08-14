@@ -28,6 +28,7 @@ mkdir -p $SKETCHBOOK_DIR/hardware/keyboardio
 
 # then clone the hardware definitions to make them available to the arduino environment
 git clone --recursive https://github.com/keyboardio/Arduino-Boards.git $SKETCHBOOK_DIR/hardware/keyboardio/avr
+```
 
 ## Clone and Build the Kaleidoscope Firmware for the Model 01
 
