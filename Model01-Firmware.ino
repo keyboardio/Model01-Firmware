@@ -117,18 +117,18 @@ void setup() {
   Kaleidoscope.setup(KEYMAP_SIZE);
   BootKeyboard.begin();
   Kaleidoscope.use(
-		   &BootGreetingEffect,
-		   &TestMode,
-                   &LEDControl, &LEDOff,
-                   &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
-                   &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
-                   &LEDBreatheEffect,
-                   &AlphaSquareEffect,
-                   &StalkerEffect,
-                   &NumLock,
-                   &Macros,
-                   &MouseKeys,
-                   NULL);
+    &BootGreetingEffect,
+    &TestMode,
+    &LEDControl, &LEDOff,
+    &LEDRainbowEffect, &LEDRainbowWaveEffect, &LEDChaseEffect,
+    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
+    &LEDBreatheEffect,
+    &AlphaSquareEffect,
+    &StalkerEffect,
+    &NumLock,
+    &Macros,
+    &MouseKeys,
+    NULL);
 
   NumLock.numPadLayer = NUMPAD_KEYMAP;
   AlphaSquare.color = { 255, 0, 0 };
