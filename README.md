@@ -51,7 +51,9 @@ git clone --recursive https://github.com/keyboardio/Arduino-Boards.git hardware/
 git clone https://github.com/keyboardio/Model01-Firmware.git
 ```
 
-# Build and flash the firmware from the commandline
+# Build and flash the firmware
+
+### Option 1: From the command line
 
 ```sh
 cd Model01-Firmware
@@ -60,8 +62,13 @@ make flash
 
 When the builder tells you to hit Enter to continue, hold down "Prog" on your keyboard and hit Enter.
 
+### Option 2: From the Arduino IDE
 
+Open the sketch you wish to flash (for example, `Model01-Firmware.ino`).
 
+Click the Upload button or press `Ctrl-U`.
+
+Hold down "Prog" on your keyboard, particularly when the compile finishes and the upload begins.
 
 # Thanks!
 
