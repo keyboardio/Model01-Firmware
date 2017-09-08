@@ -53,6 +53,8 @@ git clone https://github.com/keyboardio/Model01-Firmware.git
 
 # Build and flash the firmware
 
+Before you begin, make sure your Model 01 is connected to your computer.
+
 ### Option 1: From the command line
 
 ```sh
@@ -60,15 +62,16 @@ cd Model01-Firmware
 make flash
 ```
 
-When the builder tells you to hit Enter to continue, hold down "Prog" on your keyboard and hit Enter.
+When the builder tells you to hit Enter to continue, hold down "Prog" in the top left corner of your keyboard and hit Enter.
 
 ### Option 2: From the Arduino IDE
+
 
 Open the sketch you wish to flash (for example, `Model01-Firmware.ino`).
 
 Click the Upload button or press `Ctrl-U`.
 
-Hold down "Prog" on your keyboard, particularly when the compile finishes and the upload begins.
+Hold down the "Prog" key in the top left corner of your keyboard, until the compile finishes and the upload begins.
 
 # Thanks!
 
