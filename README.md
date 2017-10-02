@@ -73,6 +73,16 @@ Click the Upload button or press `Ctrl-U`.
 
 Hold down the "Prog" key in the top left corner of your keyboard, until the compile finishes and the upload begins.
 
+
+
+# Start to customize the firmware.
+
+You can customize your keyboard's key layout and LED effects by modifying the `Model01-Firmware.ino` file in the same directory as this README. Model01-Firmware.ino is a computer program written in 'Arduino C'. You can find documentation about Arduino C at https://arduino.cc.
+
+# Getting help
+
+As you start to explore customization of your keyboard's firmware, the community at https://community.keyboard.io can often be a valuable resource.
+
 # Thanks!
 
 <3 jesse
