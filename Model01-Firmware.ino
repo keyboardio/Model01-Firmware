@@ -32,7 +32,6 @@ enum { MACRO_VERSION_INFO,
      };
 
 
-#define NUMPAD_KEYMAP_ID 2
 
 #define FUNCTION_KEYMAP  KEYMAP_STACKED ( \
 ___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
@@ -99,6 +98,7 @@ static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
 static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
 static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
+#define NUMPAD_KEYMAP_ID 2
 
 static void versionInfoMacro(uint8_t keyState) {
   if (keyToggledOn(keyState)) {
