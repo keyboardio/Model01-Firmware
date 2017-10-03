@@ -74,10 +74,35 @@ Click the Upload button or press `Ctrl-U`.
 Hold down the "Prog" key in the top left corner of your keyboard, until the compile finishes and the upload begins.
 
 
-
-# Start to customize the firmware.
+# Start to customize the firmware
 
 You can customize your keyboard's key layout and LED effects by modifying the `Model01-Firmware.ino` file in the same directory as this README. Model01-Firmware.ino is a computer program written in 'Arduino C'. You can find documentation about Arduino C at https://arduino.cc.
+
+
+# Updating the firmware and libraries
+
+From time to time, you may want to pull the latest version of this firmware from GitHub. To do that, navigate to the Model01-Firmware directory in your shell and pull the latest code.
+
+```sh
+cd Model01-Firmware
+git pull
+```
+
+After that, you'll want to update the Kaleidoscope libraries.
+
+### MacOS
+```sh
+cd $HOME/Documents/Arduino/hardware/keyboardio/avr
+make update-submodules
+```
+
+### Linux
+
+```sh
+cd $HOME/Arduino/hardware/keyboardio/avr
+make update-submodules
+```
+
 
 # Getting help
 
