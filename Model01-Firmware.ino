@@ -90,14 +90,6 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   NUMPAD_KEYMAP
 };
 
-static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
-static kaleidoscope::LEDSolidColor solidOrange(140, 70, 0);
-static kaleidoscope::LEDSolidColor solidYellow(130, 100, 0);
-static kaleidoscope::LEDSolidColor solidGreen(0, 160, 0);
-static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
-static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
-static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
-
 #define NUMPAD_KEYMAP_ID 2
 
 static void versionInfoMacro(uint8_t keyState) {
@@ -130,6 +122,20 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   }
   return MACRO_NONE;
 }
+
+
+
+
+static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
+static kaleidoscope::LEDSolidColor solidOrange(140, 70, 0);
+static kaleidoscope::LEDSolidColor solidYellow(130, 100, 0);
+static kaleidoscope::LEDSolidColor solidGreen(0, 160, 0);
+static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
+static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
+static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
+
+
+
 
 void setup() {
   Kaleidoscope.setup();
