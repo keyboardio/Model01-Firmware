@@ -2,8 +2,6 @@
 // Copyright 2016 Keyboardio, inc. <jesse@keyboard.io>
 // See "LICENSE" for license details
 
-#define DEBUG_SERIAL false
-
 #ifndef BUILD_INFORMATION
 #define BUILD_INFORMATION "locally built"
 #endif
