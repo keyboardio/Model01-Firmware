@@ -95,7 +95,7 @@ enum { MACRO_VERSION_INFO,
   *   using ___ to let keypresses fall through to the previously active layer
   *   using XXX to mark a keyswitch as 'blocked' on this layer
   *   using Key_Keymap_ keys to change the active keymap.
-
+  */
 
 #define QWERTY_KEYMAP KEYMAP_STACKED ( \
     ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
