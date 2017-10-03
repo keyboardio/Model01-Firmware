@@ -102,7 +102,6 @@ static void versionInfoMacro(uint8_t keyState) {
     Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
     Macros.type(PSTR(BUILD_INFORMATION));
   }
-
 }
 
 static void anyKeyMacro(uint8_t keyState) {
@@ -117,6 +116,7 @@ static void anyKeyMacro(uint8_t keyState) {
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
+
   case MACRO_VERSION_INFO:
     versionInfoMacro(keyState);
     break;
