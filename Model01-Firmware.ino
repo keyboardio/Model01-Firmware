@@ -31,7 +31,7 @@
 #define Macro_Any M(MACRO_ANY)
 #define NUMPAD_KEYMAP 2
 
-#define GENERIC_FN2  KEYMAP_STACKED ( \
+#define FUNCTION_KEYMAP  KEYMAP_STACKED ( \
 ___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
 Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE, \
 Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,                   \
@@ -49,7 +49,7 @@ ___ \
 
 
 
-#define NUMPAD KEYMAP_STACKED  (\
+#define NUMPAD_KEYMAP KEYMAP_STACKED  (\
     ___, ___, ___, ___, ___, ___, ___,  \
     ___, ___, ___, ___, ___, ___, ___,  \
     ___, ___, ___, ___, ___, ___,       \
@@ -66,7 +66,7 @@ ___ \
     Key_Keymap1_Momentary \
 )
 
-#define QWERTY KEYMAP_STACKED ( \
+#define QWERTY_KEYMAP KEYMAP_STACKED ( \
     ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
     Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
     Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
@@ -83,9 +83,9 @@ ___ \
 )
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
-  QWERTY,
-  GENERIC_FN2,
-  NUMPAD
+  QWERTY_KEYMAP,
+  FUNCTION_KEYMAP,
+  NUMPAD_KEYMAP
 };
 
 static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
