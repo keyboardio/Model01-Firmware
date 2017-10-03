@@ -96,82 +96,70 @@ enum { MACRO_VERSION_INFO,
   *   using ___ to let keypresses fall through to the previously active layer
   *   using XXX to mark a keyswitch as 'blocked' on this layer
   *   using Key_Keymap_ keys to change the active keymap.
+  *
+  *
+  * The "keymaps" data structure is a list of the keymaps compiled into the firmware.
+  * The order of keymaps in the list is important, as the Key_Keymap# and Key_Keymap#_Momentary
+  * keys switch to key layers based on this list.
+  *
+  * Keymaps are "0-indexed" -- That is the first keymap is Keymap 0. The second one is Keymap 1.
+  * The third one is Keymap 2.
+
+  * A key defined as 'Key_Keymap1_Momentary' will switch to FUNCTION while held.
+  * Similarly, a key defined as 'Key_Keymap2' will switch to NUMPAD when tapped.
   */
 
-#define QWERTY_KEYMAP KEYMAP_STACKED ( \
-    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
-    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
-    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
-    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,        \
-    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
-                          Key_Keymap1_Momentary,     \
-\
-    M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_KeypadNumLock, \
-    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,       \
-                   Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
-    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,       \
-    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
-    Key_Keymap1_Momentary \
-)
-
-
-#define FUNCTION_KEYMAP  KEYMAP_STACKED ( \
-___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
-Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE, \
-Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,                   \
-Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE, \
-                        			 	                    ___, Key_Delete, ___, ___, \
-                                                       				                ___,   \
-\
-Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                  Key_F9,          Key_F10,          Key_F11, \
-Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,   Key_LeftBracket, Key_RightBracket, Key_F12, \
-                            Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,             Key_RightArrow,  ___,              ___, \
-Key_PcApplication,          Key_Mute,               Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,            Key_Backslash,    Key_Pipe, \
-___, ___, Key_Enter, ___, \
-___ \
-)
-
-
-#define NUMPAD_KEYMAP KEYMAP_STACKED  (\
-    ___, ___, ___, ___, ___, ___, ___,  \
-    ___, ___, ___, ___, ___, ___, ___,  \
-    ___, ___, ___, ___, ___, ___,       \
-    ___, ___, ___, ___, ___, ___, ___,  \
-               ___, ___, ___, ___,  \
-                              ___, \
-\
-\
-    M(MACRO_VERSION_INFO),  ___, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_KeypadSubtract, ___, \
-    ___, ___, Key_Keypad4, Key_Keypad5,   Key_Keypad6,        Key_KeypadAdd,      ___, \
-         ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,         Key_Quote, \
-    ___, ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter, \
-    ___, ___, ___, ___, \
-    ___ \
-)
-
-
-
-// The "keymaps" data structure is a list of the keymaps compiled into the firmware.
-// The order of keymaps in the list is important, as the Key_Keymap# and Key_Keymap#_Momentary
-// keys switch to key layers based on this list.
-//
-// Keymaps are "0-indexed" -- That is the first keymap is Keymap 0. The second one is Keymap 1.
-// The third one is Keymap 2.
-
-// A key defined as 'Key_Keymap1_Momentary' will switch to FUNCTION_KEYMAP while held.
-// Similarly, a key defined as 'Key_Keymap2' will switch to NUMPAD_KEYMAP when tapped.
+enum { QWERTY, FUNCTION, NUMPAD }; // layers
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
-  QWERTY_KEYMAP,
-  FUNCTION_KEYMAP,
-  NUMPAD_KEYMAP
+
+  [QWERTY] = KEYMAP_STACKED(\
+  ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
+  Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
+  Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
+  Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,        \
+  Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
+  Key_Keymap1_Momentary,     \
+  \
+  M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_KeypadNumLock, \
+  Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,       \
+  Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
+  Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,       \
+  Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
+  Key_Keymap1_Momentary),
+
+  [FUNCTION] =  KEYMAP_STACKED(\
+  ___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
+  Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE, \
+  Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,                   \
+  Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE, \
+  ___, Key_Delete, ___, ___, \
+  ___,   \
+  \
+  Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                  Key_F9,          Key_F10,          Key_F11, \
+  Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,   Key_LeftBracket, Key_RightBracket, Key_F12, \
+  Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,             Key_RightArrow,  ___,              ___, \
+  Key_PcApplication,          Key_Mute,               Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,            Key_Backslash,    Key_Pipe, \
+  ___, ___, Key_Enter, ___, \
+  ___),
+
+
+  [NUMPAD] =  KEYMAP_STACKED(\
+  ___, ___, ___, ___, ___, ___, ___,  \
+  ___, ___, ___, ___, ___, ___, ___,  \
+  ___, ___, ___, ___, ___, ___,       \
+  ___, ___, ___, ___, ___, ___, ___,  \
+  ___, ___, ___, ___,  \
+  ___, \
+  \
+  \
+  M(MACRO_VERSION_INFO),  ___, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_KeypadSubtract, ___, \
+  ___, ___, Key_Keypad4, Key_Keypad5,   Key_Keypad6,        Key_KeypadAdd,      ___, \
+  ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,         Key_Quote, \
+  ___, ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter, \
+  ___, ___, ___, ___, \
+  ___)
 };
-
-
-// Right now, the numpad implementation needs to be told which keymap is the numpad keymap.
-// That requirement should go away in the future.
-
-#define NUMPAD_KEYMAP_ID 2
 
 
 /** versionInfoMacro handles the 'firmware version info' macro
@@ -310,7 +298,7 @@ void setup() {
 
   // While we hope to improve this in the future, the NumLock plugin
   // needs to be explicitly told which keymap layer is your numpad layer
-  NumLock.numPadLayer = NUMPAD_KEYMAP_ID;
+  NumLock.numPadLayer = NUMPAD;
 
   // We configure the AlphaSquare effect to use RED letters
   AlphaSquare.color = { 255, 0, 0 };
