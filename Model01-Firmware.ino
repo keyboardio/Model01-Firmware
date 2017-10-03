@@ -7,8 +7,8 @@
 #endif
 
 
-/** 
- * These #include directives pull in the Kaleidoscope firmware core, 
+/**
+ * These #include directives pull in the Kaleidoscope firmware core,
  * as well as the Kaleidoscope plugins we use in the Model 01's firmware
  */
 
@@ -37,7 +37,7 @@
 // Support for LED modes that set all LEDs to a single color
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
 
-// Support for an LED mode that makes all the LEDs 'breathe' 
+// Support for an LED mode that makes all the LEDs 'breathe'
 #include "Kaleidoscope-LEDEffect-Breathe.h"
 
 // Support for an LED mode that makes a red pixel chase a blue pixel across the keyboard
@@ -49,7 +49,7 @@
 // Support for an LED mode that lights up the keys as you press them
 #include "Kaleidoscope-LED-Stalker.h"
 
-// Support for an LED mode that prints the keys you press in letters 4px high 
+// Support for an LED mode that prints the keys you press in letters 4px high
 #include "Kaleidoscope-LED-AlphaSquare.h"
 
 // Support for Keyboardio's internal keyboard testing mode
@@ -57,7 +57,7 @@
 
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
-  * The names aren't particularly important. What is important is that each 
+  * The names aren't particularly important. What is important is that each
   * is unique.
   *
   * These are the names of your macros. They'll be used in two places.
@@ -65,9 +65,9 @@
   * `M(MACRO_NAME)` to mark a specific keymap position as triggering `MACRO_NAME`
   *
   * The second usage is in the 'switch' statement in the `macroAction` function.
-  * That switch statment is where the firmware dispatches a macro to the function  
+  * That switch statment is where the firmware dispatches a macro to the function
   * handling that macro
-  */ 
+  */
 
 enum { MACRO_VERSION_INFO,
        MACRO_ANY
@@ -77,14 +77,14 @@ enum { MACRO_VERSION_INFO,
 
 /** The Model 01's key layouts are defined as 'keymaps'. By default, there are three
   * keymaps: The standard QWERTY keymap, the "Function layer" keymap and the "Numpad"
-  * keymap. 
+  * keymap.
   *
   * Each keymap is defined as a list using the 'KEYMAP_STACKED' macro, built
   * of first the left hand's layout, followed by the right hand's layout.
-  * 
+  *
   * Keymaps typically consist mostly of `Key_` definitions. There are many, many keys
   * defined as part of the USB HID Keyboard specification. You can find the names
-  * (if not yet the explanations) for all the standard `Key_` defintions offered by 
+  * (if not yet the explanations) for all the standard `Key_` defintions offered by
   * Kaleidoscope in these files:
   *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keyboard.h
   *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_consumerctl.h
@@ -95,8 +95,8 @@ enum { MACRO_VERSION_INFO,
   *   using ___ to let keypresses fall through to the previously active layer
   *   using XXX to mark a keyswitch as 'blocked' on this layer
   *   using Key_Keymap_ keys to change the active keymap.
- 
- 
+
+
 #define QWERTY_KEYMAP KEYMAP_STACKED ( \
     ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
     Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
@@ -150,11 +150,11 @@ ___ \
 
 
 
-// The "keymaps" data structure is a list of the keymaps compiled into the firmware. 
+// The "keymaps" data structure is a list of the keymaps compiled into the firmware.
 // The order of keymaps in the list is important, as the Key_Keymap# and Key_Keymap#_Momentary
 // keys switch to key layers based on this list.
-// 
-// Keymaps are "0-indexed" -- That is the first keymap is Keymap 0. The second one is Keymap 1. 
+//
+// Keymaps are "0-indexed" -- That is the first keymap is Keymap 0. The second one is Keymap 1.
 // The third one is Keymap 2.
 
 // A key defined as 'Key_Keymap1_Momentary' will switch to FUNCTION_KEYMAP while held.
@@ -185,11 +185,11 @@ static void versionInfoMacro(uint8_t keyState) {
   }
 }
 
-/** anyKeyMacro is used to provide the functionality of the 'Any' key. 
+/** anyKeyMacro is used to provide the functionality of the 'Any' key.
  *
  * When the 'any key' macro is toggled on, a random alphanumeric key is
  * selected. While the key is held, the function generates a synthetic
- * keypress event repeating that randomly selected key. 
+ * keypress event repeating that randomly selected key.
  *
  */
 
@@ -203,15 +203,15 @@ static void anyKeyMacro(uint8_t keyState) {
 }
 
 
-/** macroAction dispatches keymap events that are tied to a macro 
-    to that macro. It takes two uint8_t parameters. 
+/** macroAction dispatches keymap events that are tied to a macro
+    to that macro. It takes two uint8_t parameters.
 
     The first is the macro being called (the entry in the 'enum' earlier in this file).
     The second is the state of the keyswitch. You can use the keyswitch state to figure out
     if the key has just been toggled on, is currently pressed or if it's just been released.
-   
+
     The 'switch' statement should have a 'case' for each entry of the macro enum.
-    Each 'case' statement should call out to a function to handle the macro in question. 
+    Each 'case' statement should call out to a function to handle the macro in question.
 
  */
 
@@ -231,8 +231,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
 
 
-// These 'solid' color effect definitions define a rainbow of 
-// LED color modes calibrated to draw 500mA or less on the 
+// These 'solid' color effect definitions define a rainbow of
+// LED color modes calibrated to draw 500mA or less on the
 // Keyboardio Model 01.
 
 
@@ -246,7 +246,7 @@ static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
 
 
-/** The 'setup' function is one of the two standard Arduino sketch functions. 
+/** The 'setup' function is one of the two standard Arduino sketch functions.
   * It's called when your keyboard boots up. This is where you set up Kaleidoscope
   * and any plugins.
   */
@@ -255,8 +255,8 @@ void setup() {
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
-  // Next, tell Kaleidoscope which plugins you want to use. 
-  // The order can be important. For example, LED effects are 
+  // Next, tell Kaleidoscope which plugins you want to use.
+  // The order can be important. For example, LED effects are
   // added in the order they're listed here.
   Kaleidoscope.use(
     // The boot greeting effect pulses the LED button for 10 seconds after the keyboard boots up
@@ -266,14 +266,14 @@ void setup() {
     &TestMode,
 
     // LEDControl provides support for other LED modes
-    &LEDControl, 
+    &LEDControl,
 
-    // We start with the LED effect that turns off all the LEDs. 
+    // We start with the LED effect that turns off all the LEDs.
     &LEDOff,
-   
+
     // The rainbow effect changes the color of all of the keyboard's keys at the same time
     // running through all the colors of the rainbow.
-    &LEDRainbowEffect, 
+    &LEDRainbowEffect,
 
     // The rainbow wave effect lights up your keyboard with all the colors of a rainbow
     // and slowly moves the rainbow across your keyboard
@@ -282,14 +282,14 @@ void setup() {
     // The chase effect follows the adventure of a blue pixel which chases a red pixel across
     // your keyboard. Spoiler: the blue pixel never catches the red pixel
     &LEDChaseEffect,
-    
+
     // These static effects turn your keyboard's LEDs a variety of colors
     &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
 
     // The breathe effect slowly pulses all of the LEDs on your keyboard
     &LEDBreatheEffect,
 
-    // The AlphaSquare effect prints each character you type, using your 
+    // The AlphaSquare effect prints each character you type, using your
     // keyboard's LEDs as a display
     &AlphaSquareEffect,
 
@@ -320,7 +320,7 @@ void setup() {
   LEDRainbowWaveEffect.brightness(150);
 
   // The LED Stalker mode has a few effects. The one we like is
-  // called 'BlazingTrail'. For details on other options, 
+  // called 'BlazingTrail'. For details on other options,
   // see https://github.com/keyboardio/Kaleidoscope-LED-Stalker
   StalkerEffect.variant = STALKER(BlazingTrail);
 
@@ -330,10 +330,10 @@ void setup() {
   LEDOff.activate();
 }
 
-/** loop is the second of the standard Arduino sketch functions. 
+/** loop is the second of the standard Arduino sketch functions.
   * As you might expect, it runs in a loop, never exiting.
   *
-  * For Kaleidoscope-based keyboard firmware, you usually just want to 
+  * For Kaleidoscope-based keyboard firmware, you usually just want to
   * call Kaleidoscope.loop(); and not do anything custom here.
   */
 
