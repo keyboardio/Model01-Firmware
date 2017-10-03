@@ -7,12 +7,15 @@
 #endif
 
 
-#include "Kaleidoscope-MouseKeys.h"
-#include "Kaleidoscope-Macros.h"
-#include "Kaleidoscope-LEDControl.h"
-#include "Kaleidoscope-Numlock.h"
 #include "Kaleidoscope.h"
 
+#include "Kaleidoscope-MouseKeys.h"
+#include "Kaleidoscope-Macros.h"
+
+
+#include "Kaleidoscope-LEDControl.h"
+
+#include "Kaleidoscope-Numlock.h"
 #include "LED-Off.h"
 #include "Kaleidoscope-LEDEffect-BootGreeting.h"
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
