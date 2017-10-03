@@ -29,7 +29,7 @@
 #define Macro_VersionInfo M(MACRO_VERSION_INFO)
 #define MACRO_ANY 2
 #define Macro_Any M(MACRO_ANY)
-#define NUMPAD_KEYMAP 2
+#define NUMPAD_KEYMAP_ID 2
 
 #define FUNCTION_KEYMAP  KEYMAP_STACKED ( \
 ___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
@@ -128,7 +128,7 @@ void setup() {
     &MouseKeys,
     NULL);
 
-  NumLock.numPadLayer = NUMPAD_KEYMAP;
+  NumLock.numPadLayer = NUMPAD_KEYMAP_ID;
   AlphaSquare.color = { 255, 0, 0 };
   LEDRainbowEffect.brightness(150);
   LEDRainbowWaveEffect.brightness(150);
