@@ -31,7 +31,8 @@
 // Support for an "LED off mode"
 #include "LED-Off.h"
 
-// Support for the "Boot greeting" effect, which pulses the 'LED' button for 10s on boot
+// Support for the "Boot greeting" effect, which pulses the 'LED' button for 10s
+// when the keyboard is connected to a computer (or that computer is powered on)
 #include "Kaleidoscope-LEDEffect-BootGreeting.h"
 
 // Support for LED modes that set all LEDs to a single color
@@ -65,8 +66,8 @@
   * `M(MACRO_NAME)` to mark a specific keymap position as triggering `MACRO_NAME`
   *
   * The second usage is in the 'switch' statement in the `macroAction` function.
-  * That switch statment is where the firmware dispatches a macro to the function
-  * handling that macro
+  * That switch statement actually runs the code associated with a macro when
+  * a macro key is pressed.
   */
 
 enum { MACRO_VERSION_INFO,
@@ -247,8 +248,8 @@ static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
-  * It's called when your keyboard boots up. This is where you set up Kaleidoscope
-  * and any plugins.
+  * It's called when your keyboard first powers up. This is where you set up
+  * Kaleidoscope and any plugins.
   */
 
 void setup() {
@@ -259,7 +260,7 @@ void setup() {
   // The order can be important. For example, LED effects are
   // added in the order they're listed here.
   Kaleidoscope.use(
-    // The boot greeting effect pulses the LED button for 10 seconds after the keyboard boots up
+    // The boot greeting effect pulses the LED button for 10 seconds after the keyboard is first connected
     &BootGreetingEffect,
 
     // The hardware test mode, which can be invoked by tapping Prog, LED and the left Fn button at the same time.
