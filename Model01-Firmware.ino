@@ -95,18 +95,24 @@ enum { MACRO_VERSION_INFO,
   * Additional things that should be documented here include
   *   using ___ to let keypresses fall through to the previously active layer
   *   using XXX to mark a keyswitch as 'blocked' on this layer
-  *   using Key_Keymap_ keys to change the active keymap.
+  *   using ShiftToLayer() and LockLayer() keys to change the active keymap.
   *
   *
   * The "keymaps" data structure is a list of the keymaps compiled into the firmware.
-  * The order of keymaps in the list is important, as the Key_Keymap# and Key_Keymap#_Momentary
-  * keys switch to key layers based on this list.
+  * The order of keymaps in the list is important, as the ShiftToLayer(#) and LockLayer(#)
+  * macros switch to key layers based on this list.
   *
-  * Keymaps are "0-indexed" -- That is the first keymap is Keymap 0. The second one is Keymap 1.
-  * The third one is Keymap 2.
+  *
 
-  * A key defined as 'Key_Keymap1_Momentary' will switch to FUNCTION while held.
-  * Similarly, a key defined as 'Key_Keymap2' will switch to NUMPAD when tapped.
+  * A key defined as 'ShiftToLayer(FUNCTION)' will switch to FUNCTION while held.
+  * Similarly, a key defined as 'LockLayer(NUMPAD)' will switch to NUMPAD when tapped.
+  */
+
+/**
+  * Layers are "0-indexed" -- That is the first one is layer 0. The second one is layer 1.
+  * The third one is layer 2.
+  * This 'enum' lets us use names like QWERTY, FUNCTION, and NUMPAD in place of
+  * the numbers 0, 1 and 2.
   */
 
 enum { QWERTY, FUNCTION, NUMPAD }; // layers
@@ -119,14 +125,14 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,        \
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
-   Key_Keymap1_Momentary,                                              \
+   ShiftToLayer(FUNCTION),                                              \
    \
    M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_KeypadNumLock, \
    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,        \
    Key_H,         Key_J, Key_K, Key_L,     Key_Semicolon, Key_Quote,                        \
    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,         \
    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                             \
-   Key_Keymap1_Momentary),
+   ShiftToLayer(FUNCTION)),
 
   [FUNCTION] =  KEYMAP_STACKED
   (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,             \
