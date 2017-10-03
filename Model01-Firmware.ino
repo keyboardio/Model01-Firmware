@@ -112,7 +112,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 }
 
 void setup() {
-  Kaleidoscope.setup(KEYMAP_SIZE);
+  Kaleidoscope.setup();
   BootKeyboard.begin();
   Kaleidoscope.use(
     &BootGreetingEffect,
