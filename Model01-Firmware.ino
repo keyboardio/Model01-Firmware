@@ -23,8 +23,11 @@
 #include "Kaleidoscope-LED-AlphaSquare.h"
 #include "Kaleidoscope-Model01-TestMode.h"
 
-#define MACRO_VERSION_INFO 1
-#define MACRO_ANY 2
+
+enum { MACRO_VERSION_INFO,
+       MACRO_ANY
+     };
+
 
 #define NUMPAD_KEYMAP_ID 2
 
@@ -93,19 +96,34 @@ static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
 static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
 static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
-const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
-  if (macroIndex == MACRO_VERSION_INFO) {
-    if (keyToggledOn(keyState)) {
-      Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
-      Macros.type(PSTR(BUILD_INFORMATION));
-    }
-  } else if (macroIndex == MACRO_ANY) {
-    static Key lastKey;
-    if (keyToggledOn(keyState))
-      lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
 
-    if (keyIsPressed(keyState))
-      kaleidoscope::hid::pressKey(lastKey);
+static void versionInfoMacro(uint8_t keyState) {
+  if (keyToggledOn(keyState)) {
+    Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
+    Macros.type(PSTR(BUILD_INFORMATION));
+  }
+
+}
+
+static void anyKeyMacro(uint8_t keyState) {
+  static Key lastKey;
+  if (keyToggledOn(keyState))
+    lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
+
+  if (keyIsPressed(keyState))
+    kaleidoscope::hid::pressKey(lastKey);
+}
+
+
+const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
+  switch (macroIndex) {
+  case MACRO_VERSION_INFO:
+    versionInfoMacro(keyState);
+    break;
+
+  case MACRO_ANY:
+    anyKeyMacro(keyState);
+    break;
   }
   return MACRO_NONE;
 }
