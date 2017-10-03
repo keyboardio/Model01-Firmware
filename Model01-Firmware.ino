@@ -75,6 +75,45 @@ enum { MACRO_VERSION_INFO,
 
 
 
+/** The Model 01's key layouts are defined as 'keymaps'. By default, there are three
+  * keymaps: The standard QWERTY keymap, the "Function layer" keymap and the "Numpad"
+  * keymap. 
+  *
+  * Each keymap is defined as a list using the 'KEYMAP_STACKED' macro, built
+  * of first the left hand's layout, followed by the right hand's layout.
+  * 
+  * Keymaps typically consist mostly of `Key_` definitions. There are many, many keys
+  * defined as part of the USB HID Keyboard specification. You can find the names
+  * (if not yet the explanations) for all the standard `Key_` defintions offered by 
+  * Kaleidoscope in these files:
+  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keyboard.h
+  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_consumerctl.h
+  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_sysctl.h
+  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keymaps.h
+  *
+  * Additional things that should be documented here include
+  *   using ___ to let keypresses fall through to the previously active layer
+  *   using XXX to mark a keyswitch as 'blocked' on this layer
+  *   using Key_Keymap_ keys to change the active keymap.
+ 
+ 
+#define QWERTY_KEYMAP KEYMAP_STACKED ( \
+    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
+    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
+    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
+    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,        \
+    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
+                          Key_Keymap1_Momentary,     \
+\
+    M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_KeypadNumLock, \
+    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,       \
+                   Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
+    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,       \
+    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
+    Key_Keymap1_Momentary \
+)
+
+
 #define FUNCTION_KEYMAP  KEYMAP_STACKED ( \
 ___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
 Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE, \
@@ -90,7 +129,6 @@ Key_PcApplication,          Key_Mute,               Consumer_VolumeDecrement, Co
 Key_RightShift, Key_RightAlt, Key_Enter, Key_RightControl, \
 ___ \
 )
-
 
 
 #define NUMPAD_KEYMAP KEYMAP_STACKED  (\
@@ -110,27 +148,27 @@ ___ \
     Key_Keymap1_Momentary \
 )
 
-#define QWERTY_KEYMAP KEYMAP_STACKED ( \
-    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
-    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
-    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
-    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,        \
-    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
-                          Key_Keymap1_Momentary,     \
-\
-    M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_KeypadNumLock, \
-    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,       \
-                   Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
-    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,       \
-    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
-    Key_Keymap1_Momentary \
-)
+
+
+// The "keymaps" data structure is a list of the keymaps compiled into the firmware. 
+// The order of keymaps in the list is important, as the Key_Keymap# and Key_Keymap#_Momentary
+// keys switch to key layers based on this list.
+// 
+// Keymaps are "0-indexed" -- That is the first keymap is Keymap 0. The second one is Keymap 1. 
+// The third one is Keymap 2.
+
+// A key defined as 'Key_Keymap1_Momentary' will switch to FUNCTION_KEYMAP while held.
+// Similarly, a key defined as 'Key_Keymap2' will switch to NUMPAD_KEYMAP when tapped.
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
   QWERTY_KEYMAP,
   FUNCTION_KEYMAP,
   NUMPAD_KEYMAP
 };
+
+
+// Right now, the numpad implementation needs to be told which keymap is the numpad keymap.
+// That requirement should go away in the future.
 
 #define NUMPAD_KEYMAP_ID 2
 
