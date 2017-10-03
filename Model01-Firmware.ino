@@ -139,7 +139,6 @@ static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
 void setup() {
   Kaleidoscope.setup();
-  BootKeyboard.begin();
   Kaleidoscope.use(
     &BootGreetingEffect,
     &TestMode,
