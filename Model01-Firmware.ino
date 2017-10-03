@@ -96,8 +96,8 @@ static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   if (macroIndex == MACRO_VERSION_INFO) {
     if (keyToggledOn(keyState)) {
-       Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
-       Macros.type(PSTR(BUILD_INFORMATION));
+      Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
+      Macros.type(PSTR(BUILD_INFORMATION));
     }
   } else if (macroIndex == MACRO_ANY) {
     static Key lastKey;
