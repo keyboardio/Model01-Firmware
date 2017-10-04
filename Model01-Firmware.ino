@@ -96,6 +96,8 @@ enum { MACRO_VERSION_INFO,
   *   using ___ to let keypresses fall through to the previously active layer
   *   using XXX to mark a keyswitch as 'blocked' on this layer
   *   using ShiftToLayer() and LockLayer() keys to change the active keymap.
+  *   the special nature of the PROG key
+  *   keeping NUM and FN consistent and accessible on all layers
   *
   *
   * The "keymaps" data structure is a list of the keymaps compiled into the firmware.
