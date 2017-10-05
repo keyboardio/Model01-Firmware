@@ -3,6 +3,17 @@
 
 UNAME_S := $(shell uname -s)
 
+
+INSTALLED_ENV=$(shell ls -dt ~/.arduino15/packages/keyboardio/hardware/avr/*|head -n 1)
+
+ifneq ("$(wildcard $(INSTALLED_ENV)/boards.txt)","")
+BOARD_HARDWARE_PATH = $(INSTALLED_ENV)
+KALEIDOSCOPE_PLUGIN_MAKEFILE_DIR ?= build-tools/makefiles/
+KALEIDOSCOPE_BUILDER_DIR ?= $(INSTALLED_ENV)/libraries/Kaleidoscope/bin/
+endif
+
+
+
 ifeq ($(UNAME_S),Darwin)
 SKETCHBOOK_DIR ?= $(HOME)/Documents/Arduino/
 else
