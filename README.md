@@ -79,6 +79,8 @@ Hold down the "Prog" key in the top left corner of your keyboard, until the comp
 
 You can customize your keyboard's key layout and LED effects by modifying the `Model01-Firmware.ino` file in the same directory as this README. Model01-Firmware.ino is a computer program written in 'Arduino C'. You can find documentation about Arduino C at https://arduino.cc.
 
+If you'd like to tweak any of the libraries, you can just edit them inside `hardware/keyboardio/avr/libraries` where you cloned them earlier, and `make flash` will pick up your changes. However, if you've run the Arduino IDE's Board Manager and used it to download a pre-built version of the library, `make flash` will use that version instead of the version you've checked out locally, so you may want to use the Board Manager to remove the downloaded version.
+
 
 # Updating the firmware and libraries
 
