@@ -255,10 +255,7 @@ static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
   */
 
 void setup() {
-  // First, call Kaleidoscope's internal setup function
-  Kaleidoscope.setup();
-
-  // Next, tell Kaleidoscope which plugins you want to use.
+  // First, tell Kaleidoscope which plugins you want to use.
   // The order can be important. For example, LED effects are
   // added in the order they're listed here.
   Kaleidoscope.use(
@@ -309,6 +306,9 @@ void setup() {
     // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
     &MouseKeys
   );
+
+  // Then, call Kaleidoscope's internal setup function
+  Kaleidoscope.setup();
 
   // While we hope to improve this in the future, the NumLock plugin
   // needs to be explicitly told which keymap layer is your numpad layer
