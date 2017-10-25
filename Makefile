@@ -12,7 +12,7 @@ PACKAGE_DIR ?= $(HOME)/.arduino15
 endif
 
 
-INSTALLED_ENV=$(shell ls -dt $(PACKAGE_DIR)/packages/keyboardio/hardware/avr/*|head -n 1)
+INSTALLED_ENV=$(shell ls -dt $(PACKAGE_DIR)/packages/keyboardio/hardware/avr/* 2>/dev/null |head -n 1)
 
 ifneq ("$(wildcard $(INSTALLED_ENV)/boards.txt)","")
 BOARD_HARDWARE_PATH = $(INSTALLED_ENV)
