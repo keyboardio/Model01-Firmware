@@ -43,12 +43,12 @@ enum { QWERTY, FUNCTION, NUMPAD }; // layers
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
   [QWERTY] =
-  #include "layer-std-qwerty.h"
+#include "layer-std-qwerty.h"
   ,
   [FUNCTION] =
-  #include "layer-std-function.h"
+#include "layer-std-function.h"
   ,
   [NUMPAD] =
-  #include "layer-std-numpad.h"
+#include "layer-std-numpad.h"
 };
 
