@@ -41,14 +41,19 @@
 
 enum { QWERTY, FUNCTION, NUMPAD }; // layers
 
+/* Enable and disable layers by editing the various include directives below.
+ * Beware that the include directives MUST be on a line by themselves.
+ */
+
+// Use standard modifier keys
+#include "aliases-std-modifiers.h"
+
 const Key keymaps[][ROWS][COLS] PROGMEM = {
   [QWERTY] =
 #include "layer-std-qwerty.h"
-  ,
-  [FUNCTION] =
+  , [FUNCTION] =
 #include "layer-std-function.h"
-  ,
-  [NUMPAD] =
+  , [NUMPAD] =
 #include "layer-std-numpad.h"
 };
 
