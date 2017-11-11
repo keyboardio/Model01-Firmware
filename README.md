@@ -1,8 +1,8 @@
 # Keyboardio Model 01 Firmware
 
-The default firmware for the Keyboardio Model 01
+This repository contains the default firmware for Keyboardio's Model 01.
 
-This is a quick start guide for folks who are familiar with Arduino and generally know what they are doing. If you want a deeper introduction, [check out the wiki.](https://github.com/keyboardio/Kaleidoscope/wiki/Keyboardio-Model-01-Introduction)
+What follows is a quick start guide for folks who are familiar with Arduino and generally know what they are doing. If you want a deeper introduction, [check out the wiki.](https://github.com/keyboardio/Kaleidoscope/wiki/Keyboardio-Model-01-Introduction)
 
 ## Set up the Arduino IDE
 
@@ -36,12 +36,11 @@ make flash
 
 When the builder tells you to hit Enter to continue, hold down "Prog" in the top left corner of your keyboard and hit Enter.
 
-
 ## Customizing the firmware
 
 You can customize your keyboard's key layout and LED effects by modifying the `Model01-Firmware.ino` file in the `src` directory. Model01-Firmware.ino is a computer program written in 'Arduino C'. You can find documentation about Arduino C at https://arduino.cc.
 
-To include external plugins that are not part of the official core, simply add links to theit repositories to the `EXTERNAL_SOURCES` variable in the file `external_sources.txt`. Here is an example of what that might look like:
+To include external plugins that are not part of the official core, simply add links to their repositories to the `EXTERNAL_SOURCES` variable in the file `external_sources.txt`. Here is an example of what that might look like:
 
 ```sh
 EXTERNAL_SOURCES='
@@ -51,11 +50,11 @@ https://github.com/ToyKeeper/Kaleidoscope-LED-Wavepool.git
 ...
 ```
 
-These sources will be automatically downloaded and updated when running `make setup` and `make update`, respectively.
+These sources will be automatically downloaded and updated when running `make setup` and `make update`.
 
 ## Updating the firmware and libraries
 
-From time to time, you may want to update the firmware and libraries to the latest version. To do that, simply run:
+From time to time, you may want to update the firmware and libraries to the latest version. To do so, simply run:
 
 ```sh
 make update
