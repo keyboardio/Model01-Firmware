@@ -176,6 +176,12 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 /* Re-enable astyle's indent enforcement */
 // *INDENT-ON*
 
+// Calculate the number of layers defined in the "keymaps[]" array
+// above for use elsewhere in Kaleidoscope. Don't remove or modify
+// this line; it's used to prevent reading past the end of the array!
+const uint8_t LayerCount PROGMEM = sizeof(keymaps) / sizeof(*keymaps);
+
+
 /** versionInfoMacro handles the 'firmware version info' macro
  *  When a key bound to the macro is pressed, this macro
  *  prints out the firmware build information as virtual keystrokes
