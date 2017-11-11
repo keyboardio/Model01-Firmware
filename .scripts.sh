@@ -2,8 +2,9 @@
 
 source external_sources.txt
 
-
 update () {
+
+    # Updates libraries
 
     __gitupdate () {
         (cd $1
@@ -56,7 +57,6 @@ setup () {
 # Update repositories
     update
 }
-
 
 # Parse options
 case $1 in
