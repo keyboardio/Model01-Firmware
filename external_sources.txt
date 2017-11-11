@@ -1,0 +1,3 @@
+# Declare external repositories required fo the sketch
+
+EXTERNAL_SOURCES=''
