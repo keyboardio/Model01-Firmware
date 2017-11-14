@@ -115,7 +115,7 @@ enum { MACRO_VERSION_INFO,
   * The third one is layer 2.
   * This 'enum' lets us use names like QWERTY, FUNCTION, and NUMPAD in place of
   * the numbers 0, 1 and 2.
-  * 
+  *
   */
 
 enum { QWERTY, NUMPAD, FUNCTION }; // layers
