@@ -345,3 +345,6 @@ void setup() {
 void loop() {
   Kaleidoscope.loop();
 }
+
+// This line should always be at the end of the sketch file
+#include <sketch-trailer.h>
