@@ -63,6 +63,8 @@
 // Dual use keys
 #include <Kaleidoscope-DualUse.h>
 
+#include <Kaleidoscope-LED-ActiveModColor.h>
+
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -139,14 +141,14 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_PageUp,   Key_A, Key_R, Key_S, Key_T, Key_D,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
    OSM(LeftControl), Key_Backspace, OSM(LeftGui), OSM(LeftShift),
-   ShiftToLayer(CODING),
+   OSL(CODING),
 
    M(MACRO_TMUX),  Key_6, Key_7, Key_8, Key_9, Key_0,         Key_KeypadNumLock,
    Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
                   Key_H, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,
    ShiftToLayer(CODING),  Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
    OSM(RightShift), OSM(LeftAlt), Key_Spacebar, OSM(RightControl),
-   ShiftToLayer(CODING)),
+   OSL(CODING)),
 
   [CODING] =  KEYMAP_STACKED
   (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDEffectNext,
@@ -318,7 +320,10 @@ void setup() {
 
     // Sticky keys
     &OneShot,
-    &EscapeOneShot
+    &EscapeOneShot,
+
+    // Active mod visual help
+    &ActiveModColorEffect
   );
 
   // While we hope to improve this in the future, the NumPad plugin
