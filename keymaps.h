@@ -72,7 +72,7 @@ include "aliases-celt-orphans.h"
  * Define our layer names. These must match the layer structure below.
  */
 
-enum { BEPO, NUMPAD, FUNCTION }; // layers
+enum { BEPO, NUMPAD, FUNCTION, QWERTY }; // layers
 
 /*
  * Enable and disable layers by editing the various include directives below.
@@ -85,6 +85,8 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   , [NUMPAD] =
 #include "layer-celt-numpad.h"
   , [FUNCTION] =
+#include "layer-celt-function.h"
+  , [QWERTY] =
 #include "layer-celt-function.h"
 };
 

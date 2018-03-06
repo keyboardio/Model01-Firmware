@@ -16,7 +16,7 @@ KEYMAP_STACKED
    Key_PrintScreen,		Consumer_ScanPreviousTrack,	Consumer_PlaySlashPause,	Consumer_Stop,				Consumer_ScanNextTrack,	___,					System_Sleep,
    ___,    				Key_mouseBtnL,				Key_mouseUp,				Key_mouseBtnR,				Key_mouseWarpNW,		Key_mouseWarpNE,		Key_ScrollLock,
 						Key_mouseL,					Key_mouseDn,				Key_mouseR,					Key_mouseWarpSW,		Key_mouseWarpSE,		Key_Pause,
-   ___,					Consumer_Mute,				Consumer_VolumeDecrement,	Consumer_VolumeIncrement,	___,					___,					___,
+   Key_frb_Qwerty,		Consumer_Mute,				Consumer_VolumeDecrement,	Consumer_VolumeIncrement,	___,					___,					___,
    ___, Key_mouseBtnR, Key_CapsLock, ___,
    ___)
 

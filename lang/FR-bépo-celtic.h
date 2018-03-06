@@ -72,3 +72,6 @@
 #define Key_frb_Redo		LCTRL(Key_frb_Y)
 #define Key_frb_SelectAll	LCTRL(Key_frb_A)
 #define Key_frb_Fullscreen	Key_F11
+
+// Key to switch to QWERTY Layer
+#define Key_frb_Qwerty		LockLayer(QWERTY)
