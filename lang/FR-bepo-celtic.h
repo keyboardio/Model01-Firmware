@@ -1,7 +1,7 @@
 #pragma once
 
 // Alt gr
-#define Key_frb_ALTGR RALT
+#define Key_frb_ALTGR Key_RightAlt
 
 
 // First line
