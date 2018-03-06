@@ -43,29 +43,6 @@
 
 // Support BÉPO definitions 
 #include "lang/FR-bepo-celtic.h"
- 
-/*
- * Enable and disable optional features by editing the include directives below.
- * In general, only one option of each group should be enabled at any time.
- * Note that these work by defining aliases and so the order of inclusion is important.
- */
-
-
-/*
- * Choose modifier key layout
- */
-
-// Use stock modifier key layount
-#include "aliases-celt-modifiers.h"
-
-
-/*
- * Choose the arrangement of the orphan keys 
- * These are referred to by the qwerty-paramaterized layer
- */
-
-// Use stock orphan key set
-#include "aliases-celt-orphans.h"
 
 
 /*
@@ -87,6 +64,6 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   , [FUNCTION] =
 #include "layer-celt-function.h"
   , [QWERTY] =
-#include "layer-celt-function.h"
+#include "layer-celt-qwerty-parameterized.h"
 };
 
