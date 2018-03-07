@@ -233,6 +233,8 @@ void setup() {
     // The numpad plugin is responsible for lighting up the 'numpad' mode
     // with a custom LED effect
     &NumPad,
+    &FuncPad,
+    &QwertyPad,
 
     // The macros plugin adds support for macros
     &Macros,
@@ -247,7 +249,9 @@ void setup() {
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
-  NumPad.numPadLayer = NUMPAD;
+  NumPad.numPadLayer = NUMPAD; NumPad.numpad_color = CRGB(200, 0, 0); //set the ledcolor for the function 
+  FuncPad.FuncPadLayer = FUNCTION; FuncPad.Funcpad_color = CRGB(0, 0, 200);
+  QwertyPad.QwertyPadLayer = QWERTY; QwertyPad.Qwertypad_color = CRGB(0, 200, 0);
 
   // We configure the AlphaSquare effect to use RED letters
   // AlphaSquare.color = CRGB( 255, 0, 0 );
