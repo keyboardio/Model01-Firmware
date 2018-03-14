@@ -3,7 +3,7 @@
 // See "LICENSE" for license details
 
 #ifndef BUILD_INFORMATION
-#define BUILD_INFORMATION "1.22 base built 004 by C3ltic"
+#define BUILD_INFORMATION "1.22 base built 006 by C3ltic"
 #endif
 
 
