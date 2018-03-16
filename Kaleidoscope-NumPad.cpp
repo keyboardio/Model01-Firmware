@@ -173,3 +173,60 @@ void QwertyPad_::loopHook(bool postClear) {
 }
 
 QwertyPad_ QwertyPad;
+
+
+byte GamingPad_::row = 255, GamingPad_::col = 255;
+uint8_t GamingPad_::GamingPadLayer;
+bool GamingPad_::cleanupDone = true;
+cRGB GamingPad_::Gamingpad_color;
+
+void GamingPad_::begin(void) {
+  Kaleidoscope.useLoopHook(loopHook);
+}
+
+void GamingPad_::loopHook(bool postClear) {
+  if (!postClear)
+    return;
+
+  if (!Layer.isOn(GamingPadLayer)) {
+    if (!cleanupDone) {
+      LEDControl.set_mode(LEDControl.get_mode_index());
+      cleanupDone = true;
+    }
+    return;
+  }
+
+  cleanupDone = false;
+  bool GamingState = !!(kaleidoscope::hid::getKeyboardLEDs() & LED_NUM_LOCK);
+  if (!GamingState) {
+    kaleidoscope::hid::pressKey(Key_KeypadNumLock);
+  }
+
+  LEDControl.set_mode(LEDControl.get_mode_index());
+
+  for (uint8_t r = 0; r < ROWS; r++) {
+    for (uint8_t c = 0; c < COLS; c++) {
+      Key k = Layer.lookupOnActiveLayer(r, c);
+      Key layer_key = Layer.getKey(GamingPadLayer, r, c);
+
+      if (k == LockLayer(GamingPadLayer)) {
+        row  = r;
+        col = c;
+      }
+
+      if ((k != layer_key) || (k.flags != KEY_FLAGS)) {
+        LEDControl.refreshAt(r, c);
+      } else {
+        LEDControl.setCrgbAt(r, c, GamingPad_::Gamingpad_color);
+      }
+    }
+  }
+
+  if (row > ROWS || col > COLS)
+    return;
+
+
+  LEDControl.setCrgbAt(row, col, color);
+}
+
+GamingPad_ GamingPad;

@@ -52,6 +52,23 @@ class QwertyPad_ : public KaleidoscopePlugin {
   static bool cleanupDone;
 };
 
+class GamingPad_ : public KaleidoscopePlugin {
+ public:
+  GamingPad_(void) {}
+
+  void begin(void) final;
+
+  static uint8_t GamingPadLayer;
+  static cRGB Gamingpad_color;
+
+ private:
+  static void loopHook(const bool postClear);
+
+  static byte row, col;
+  static bool cleanupDone;
+};
+
 extern NumPad_ NumPad;
 extern FuncPad_ FuncPad;
 extern QwertyPad_ QwertyPad;
+extern GamingPad_ GamingPad;

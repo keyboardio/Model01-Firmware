@@ -9,7 +9,7 @@ KEYMAP_STACKED
   (___,     ___,           ___,           ___,            ___,           ___,          Key_Insert,
    Key_Tab, Key_Home,      Key_UpArrow,   Key_End,        Key_PageUp,    ___,          Key_Delete,
    ___,     Key_LeftArrow, Key_DownArrow, Key_RightArrow, Key_PageDown,  ___,
-   ___,     Key_frb_Undo,  Key_frb_Cut,   Key_frb_Copy,   Key_frb_Paste, Key_frb_Redo, ___,
+   ___,     Key_frb_Undo,  Key_frb_Cut,   Key_frb_Copy,   Key_frb_Paste, Key_frb_Redo, LockLayer(GAMING),
    ___, Key_Delete, Key_CapsLock, Key_PcApplication,
    ___,
 

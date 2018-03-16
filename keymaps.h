@@ -49,7 +49,7 @@
  * Define our layer names. These must match the layer structure below.
  */
 
-enum { BEPO, QWERTY, NUMPAD, FUNCTION }; // layers
+enum { BEPO, QWERTY, GAMING, NUMPAD, FUNCTION }; // layers
 
 /*
  * Enable and disable layers by editing the various include directives below.
@@ -61,6 +61,8 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 #include "layer-celt-bepo-parameterized.h"
   , [QWERTY] =
 #include "layer-celt-qwerty-parameterized.h"
+  , [GAMING] =
+#include "layer-celt-gaming-parameterized.h"
   
   , [NUMPAD] =
 #include "layer-celt-numpad.h"
