@@ -12,6 +12,8 @@
  * as well as the Kaleidoscope plugins we use in the Model 01's firmware
  */
 
+#define KALEIDOSCOPE_HOSTOS_GUESSER 1
+
 
 // The Kaleidoscope core
 #include "Kaleidoscope.h"
@@ -60,6 +62,13 @@
 #include "Kaleidoscope-HostPowerManagement.h"
 
 
+// ToDo: check
+#include <Kaleidoscope-HostOS.h>
+#include <Kaleidoscope/HostOS-select.h>
+#include <Kaleidoscope-Unicode.h>
+
+
+
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -74,7 +83,8 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_ANY
+       MACRO_ANY,
+       MACRO_UNICODE_PEACH
      };
 
 
@@ -170,10 +180,10 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___, ___, ___, ___,
    ___,
 
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-        ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___,                    ___,
+   ___, ___, ___, ___, ___, M(MACRO_UNICODE_PEACH), ___,
+        ___, ___, ___, ___, ___,                    ___,
+   ___, ___, ___, ___, ___, ___,                    ___,
    ___, ___, ___, ___,
    ___),
 
@@ -244,6 +254,16 @@ static void anyKeyMacro(uint8_t keyState) {
 }
 
 
+/** unicode ...
+
+*/
+
+static void unicode(uint32_t character, uint8_t keyState) {
+  if (keyToggledOn(keyState)) {
+    Unicode.type(character);
+  }
+}
+
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
 
@@ -266,6 +286,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ANY:
     anyKeyMacro(keyState);
     break;
+  
+  case MACRO_UNICODE_PEACH:
+      unicode(0x1F351, keyState);
+      break;
   }
   return MACRO_NONE;
 }
@@ -369,6 +393,10 @@ void setup() {
     // The macros plugin adds support for macros
     &Macros,
 
+    // Unicode macros
+    &Unicode,
+    
+    
     // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
     &MouseKeys,
 
