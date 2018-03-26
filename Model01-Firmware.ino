@@ -84,8 +84,19 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_ANY,
-       MACRO_UNICODE_PEACH
+       MACRO_ANY, 
+       MACRO_UNICODE_CRAZY, // 🤪 (0x1F92A)
+       MACRO_UNICODE_EYES, // 😳 (0x1F633)
+       MACRO_UNICODE_FLOWER, // 🌻 (0x1F33B)
+       MACRO_UNICODE_GRIMACE, // 😬 (0x1F62C)
+       MACRO_UNICODE_KISS, // 😘 (0x1F618)
+       MACRO_UNICODE_LOL, // 😂 (0x1F602)
+       MACRO_UNICODE_PEACH, // 🍑 (0x1F351)
+       MACRO_UNICODE_SMILE, // 😊 (0x1F60A)
+       MACRO_UNICODE_THUMB, // 👍 (0x1F44D)
+       MACRO_UNICODE_UNICORN, // 🦄 (0x1F984)
+       MACRO_UNICODE_WAVING, // 👋 (0x1F44B)
+
      };
 
 
@@ -174,17 +185,17 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 
 
   [MACROS] =  KEYMAP_STACKED
-  (___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
+  (___, ___, ___,                     ___,                    ___,                     ___,                      ___,
+   ___, ___, M(MACRO_UNICODE_WAVING), M(MACRO_UNICODE_EYES),  ___,                     M(MACRO_UNICODE_THUMB),   ___,
+   ___, ___, M(MACRO_UNICODE_SMILE),  ___,                    M(MACRO_UNICODE_FLOWER), M(MACRO_UNICODE_GRIMACE),
+   ___, ___, ___,                     M(MACRO_UNICODE_CRAZY), ___,                     ___,                      ___,
    ___, ___, ___, ___,
    ___,
 
-   ___, ___, ___, ___, ___, ___,                    ___,
-   ___, ___, ___, ___, ___, M(MACRO_UNICODE_PEACH), ___,
-        ___, ___, ___, ___, ___,                    ___,
-   ___, ___, ___, ___, ___, ___,                    ___,
+   ___, ___, ___,                      ___,                   ___,                  ___,                    ___,
+   ___, ___, M(MACRO_UNICODE_UNICORN), ___,                   ___,                  M(MACRO_UNICODE_PEACH), ___,
+        ___, ___,                      M(MACRO_UNICODE_KISS), M(MACRO_UNICODE_LOL), ___,                    ___,
+   ___, ___, ___,                      ___,                   ___,                  ___,                    ___,
    ___, ___, ___, ___,
    ___),
 
@@ -289,10 +300,51 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     anyKeyMacro(keyState);
     break;
   
+  case MACRO_UNICODE_CRAZY:
+    unicode(0x1F92A, keyState);
+    break;
+  
+  case MACRO_UNICODE_EYES:
+    unicode(0x1F633, keyState);
+    break;
+  
+  case MACRO_UNICODE_GRIMACE:
+    unicode(0x1F62C, keyState);
+    break;
+  
+  case MACRO_UNICODE_KISS:
+    unicode(0x1F618, keyState);
+    break;
+  
+  case MACRO_UNICODE_LOL:
+    unicode(0x1F602, keyState);
+    break;
+  
   case MACRO_UNICODE_PEACH:
-      unicode(0x1F351, keyState);
-      break;
-  }
+    unicode(0x1F351, keyState);
+    break;
+  
+  case MACRO_UNICODE_SMILE:
+    unicode(0x1F60A, keyState);
+    break;
+  
+  case MACRO_UNICODE_FLOWER:
+    unicode(0x1F33B, keyState);
+    break;
+  
+  case MACRO_UNICODE_THUMB:
+    unicode(0x1F44D, keyState);
+    break;
+  
+  case MACRO_UNICODE_UNICORN:
+    unicode(0x1F984, keyState);
+    break;
+  
+  case MACRO_UNICODE_WAVING:
+    unicode(0x1F44B, keyState);
+    break;
+    
+  } 
   return MACRO_NONE;
 }
 
