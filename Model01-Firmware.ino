@@ -121,7 +121,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { QWERTY, NUMPAD, FUNCTION_L, FUNCTION_R, MACROS}; // layers
+enum { QWERTY, NUMPAD, MACROS, FUNCTION_L, FUNCTION_R }; // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
