@@ -61,10 +61,11 @@
 // Support for host power management (suspend & wakeup)
 #include "Kaleidoscope-HostPowerManagement.h"
 
-
-// ToDo: check
+// Support host guessing
 #include <Kaleidoscope-HostOS.h>
 #include <Kaleidoscope/HostOS-select.h>
+
+// Support for unicode macros
 #include <Kaleidoscope-Unicode.h>
 
 
@@ -254,9 +255,10 @@ static void anyKeyMacro(uint8_t keyState) {
 }
 
 
-/** unicode ...
-
-*/
+/** Type unicode characters.
+ * 
+ * Used for unicode macros.
+ */
 
 static void unicode(uint32_t character, uint8_t keyState) {
   if (keyToggledOn(keyState)) {
