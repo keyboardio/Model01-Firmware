@@ -7,12 +7,13 @@
 #endif
 
 
+#define KALEIDOSCOPE_HOSTOS_GUESSER 1
+
+
 /**
  * These #include directives pull in the Kaleidoscope firmware core,
  * as well as the Kaleidoscope plugins we use in the Model 01's firmware
  */
-
-#define KALEIDOSCOPE_HOSTOS_GUESSER 1
 
 
 // The Kaleidoscope core
@@ -84,7 +85,7 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_ANY, 
+       MACRO_ANY,
        MACRO_UNICODE_CRAZY, // 🤪 (0x1F92A)
        MACRO_UNICODE_EYES, // 😳 (0x1F633)
        MACRO_UNICODE_FLOWER, // 🌻 (0x1F33B)
@@ -96,7 +97,6 @@ enum { MACRO_VERSION_INFO,
        MACRO_UNICODE_THUMB, // 👍 (0x1F44D)
        MACRO_UNICODE_UNICORN, // 🦄 (0x1F984)
        MACRO_UNICODE_WAVING, // 👋 (0x1F44B)
-
      };
 
 
@@ -267,7 +267,7 @@ static void anyKeyMacro(uint8_t keyState) {
 
 
 /** Type unicode characters.
- * 
+ *
  * Used for unicode macros.
  */
 
@@ -299,52 +299,52 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ANY:
     anyKeyMacro(keyState);
     break;
-  
+
   case MACRO_UNICODE_CRAZY:
     unicode(0x1F92A, keyState);
     break;
-  
+
   case MACRO_UNICODE_EYES:
     unicode(0x1F633, keyState);
     break;
-  
+
   case MACRO_UNICODE_GRIMACE:
     unicode(0x1F62C, keyState);
     break;
-  
+
   case MACRO_UNICODE_KISS:
     unicode(0x1F618, keyState);
     break;
-  
+
   case MACRO_UNICODE_LOL:
     unicode(0x1F602, keyState);
     break;
-  
+
   case MACRO_UNICODE_PEACH:
     unicode(0x1F351, keyState);
     break;
-  
+
   case MACRO_UNICODE_SMILE:
     unicode(0x1F60A, keyState);
     break;
-  
+
   case MACRO_UNICODE_FLOWER:
     unicode(0x1F33B, keyState);
     break;
-  
+
   case MACRO_UNICODE_THUMB:
     unicode(0x1F44D, keyState);
     break;
-  
+
   case MACRO_UNICODE_UNICORN:
     unicode(0x1F984, keyState);
     break;
-  
+
   case MACRO_UNICODE_WAVING:
     unicode(0x1F44B, keyState);
     break;
-    
-  } 
+
+  }
   return MACRO_NONE;
 }
 
@@ -449,8 +449,7 @@ void setup() {
 
     // Unicode macros
     &Unicode,
-    
-    
+
     // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
     &MouseKeys,
 
