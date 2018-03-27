@@ -69,6 +69,9 @@
 // Support for unicode macros
 #include <Kaleidoscope-Unicode.h>
 
+// Support for "digital rain" LED mode
+#include <Kaleidoscope-LEDEffect-DigitalRain.h>
+
 
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
@@ -432,6 +435,9 @@ void setup() {
 
     // The breathe effect slowly pulses all of the LEDs on your keyboard
     &LEDBreatheEffect,
+
+    // Matrix style Digital Rain
+    &LEDDigitalRainEffect,
 
     // The AlphaSquare effect prints each character you type, using your
     // keyboard's LEDs as a display
