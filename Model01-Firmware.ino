@@ -102,6 +102,8 @@ enum { MACRO_VERSION_INFO,
        MACRO_UNICODE_THUMB, // 👍 (0x1F44D)
        MACRO_UNICODE_UNICORN, // 🦄 (0x1F984)
        MACRO_UNICODE_WAVING, // 👋 (0x1F44B)
+       MACRO_LED_NEXT_PREV,
+       MACRO_LED_TOGGLE_ON_OFF,
      };
 
 
@@ -206,7 +208,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 
 
   [FUNCTION_L] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,
+  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           M(MACRO_LED_TOGGLE_ON_OFF),
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
    Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
@@ -222,7 +224,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 
 
   [FUNCTION_R] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,
+  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           M(MACRO_LED_NEXT_PREV),
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
    Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
@@ -281,6 +283,59 @@ static void unicode(uint32_t character, uint8_t keyState) {
     Unicode.type(character);
   }
 }
+
+
+//Global int for the last LED mode (defaults to LEDOff, or whatever LED mode you have as 1st)
+static int lastLedModeIndex = -1;
+/** toggleLedsOnOff turns off LEDs, saving the current state, and turns them back on
+ *  expanded by aedifica from a sample algernon posted at
+ *  https://community.keyboard.io/t/how-does-one-make-a-key-that-turns-the-leds-off/554/2
+ *  with tips from merlin
+ */
+static void toggleLedsOnOff(uint8_t key_state) {
+  if (keyToggledOn(key_state)) { /*when button is pressed*/
+    if (LEDControl.get_mode() != &LEDOff) { /* if LEDs are on */
+      lastLedModeIndex = LEDControl.get_mode_index(); /* first, store the current mode */
+      LEDOff.activate(); /* then activate the "off" mode */
+    } else if (lastLedModeIndex >= 0) {
+      LEDControl.set_mode(lastLedModeIndex); /* set our LED to the last mode */
+    } else {
+      //Either do the first item on the list that isn't the Off mode...
+      nextPrevLedMode(key_state, true);
+      //Or set it to something you want by default...
+      //StalkerEffect.activate();
+    }
+  }
+}
+
+
+/* Toggle forward regularly, and toggle in reverse if shift is held */
+static void nextPrevLedMode(uint8_t key_state, bool skipOff) {
+  //Ensure a key was pressed
+  if (keyToggledOn(key_state)) {
+    if (
+      kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift)
+      || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift)
+    ) {
+      //shift held, so go backward
+      do {
+        LEDControl.prev_mode();
+      } while (
+        skipOff && LEDControl.get_mode() == &LEDOff
+      );
+    } else {
+      //No shift, so go forward
+      do {
+        LEDControl.next_mode();
+      } while (
+        skipOff && LEDControl.get_mode() == &LEDOff
+      );
+    }
+    //Set the last LED mode
+    lastLedModeIndex = LEDControl.get_mode_index();
+  }
+}
+
 
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
@@ -347,6 +402,14 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_UNICODE_WAVING:
     unicode(0x1F44B, keyState);
+    break;
+
+  case MACRO_LED_TOGGLE_ON_OFF:
+    toggleLedsOnOff(keyState);
+    break;
+
+  case MACRO_LED_NEXT_PREV:
+    nextPrevLedMode(keyState, true);
     break;
 
   }
