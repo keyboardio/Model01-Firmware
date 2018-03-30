@@ -49,6 +49,13 @@ enum { MACRO_VERSION_INFO,
      };
 
 
+enum { QWERTY,
+       NUMPAD,
+       MACROS,
+       FUNCTION_L,
+       FUNCTION_R
+     };
+
 
 /**
   *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keyboard.h
@@ -56,13 +63,6 @@ enum { MACRO_VERSION_INFO,
   *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_sysctl.h
   *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keymaps.h
   */
-
-enum { QWERTY,
-       NUMPAD,
-       MACROS,
-       FUNCTION_L,
-       FUNCTION_R
-     };
 
 // *INDENT-OFF*
 
@@ -187,27 +187,37 @@ static void toggleLedsOnOff(uint8_t key_state) {
     } else if (lastLedModeIndex >= 0) {
       LEDControl.set_mode(lastLedModeIndex);
     } else {
-      nextPrevLedMode(key_state, true);
+      nextPrevLedMode(key_state);
     }
   }
 }
 
-
-static void nextPrevLedMode(uint8_t key_state, bool skipOff) {
+static void nextPrevLedMode(uint8_t key_state) {
   if (keyToggledOn(key_state)) {
-    bool shiftKeyActive = kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift)
-                          || kaleidoscope::hid::wasModifierKeyActive(Key_RightShift);
-    if (shiftKeyActive) {
-      do {
-        LEDControl.prev_mode();
-      } while (skipOff && LEDControl.get_mode() == &LEDOff);
+    if (shiftKeyActive()) {
+      prevLedModeSkippingOff();
     } else {
-      do {
-        LEDControl.next_mode();
-      } while (skipOff && LEDControl.get_mode() == &LEDOff);
+      nextLedModeSkippingOff();
     }
     lastLedModeIndex = LEDControl.get_mode_index();
   }
+}
+
+static void nextLedModeSkippingOff() {
+  do {
+    LEDControl.next_mode();
+  } while (LEDControl.get_mode() == &LEDOff);
+}
+
+static void prevLedModeSkippingOff() {
+  do {
+    LEDControl.prev_mode();
+  } while (LEDControl.get_mode() == &LEDOff);
+}
+
+static bool shiftKeyActive(void) {
+  return kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) ||
+         kaleidoscope::hid::wasModifierKeyActive(Key_RightShift);
 }
 
 
@@ -271,7 +281,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_LED_NEXT_PREV:
-    nextPrevLedMode(keyState, true);
+    nextPrevLedMode(keyState);
     break;
 
   }
