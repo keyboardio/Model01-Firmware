@@ -175,22 +175,22 @@ static void umlaut(Key key, uint8_t keyState) {
   }
 
   bool right_shift_active = kaleidoscope::hid::wasModifierKeyActive(Key_RightShift);
-  if (right_shift_active)
+  if (right_shift_active) {
     release(Key_RightShift);
-}
+  }
 
-press(Key_RightAlt);
-tap(Key_U);
-release(Key_RightAlt);
+  press(Key_RightAlt);
+  tap(Key_U);
+  release(Key_RightAlt);
 
-if (left_shift_active) {
-  press(Key_LeftShift);
-}
-if (right_shift_active) {
-  press(Key_RightShift);
-}
+  if (left_shift_active) {
+    press(Key_LeftShift);
+  }
+  if (right_shift_active) {
+    press(Key_RightShift);
+  }
 
-tap(key)
+  tap(key);
 }
 
 static void press(Key key) {
