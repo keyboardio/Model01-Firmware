@@ -44,6 +44,10 @@ enum { MACRO_VERSION_INFO,
        MACRO_UNICODE_WAVING, // 👋 (0x1F44B)
        MACRO_LED_NEXT_PREV,
        MACRO_LED_TOGGLE_ON_OFF,
+       MACRO_UMLAUT_A,
+       MACRO_UMLAUT_O,
+       MACRO_UMLAUT_U,
+       MACRO_SZ,
      };
 
 
@@ -73,7 +77,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
    ShiftToLayer(FUNCTION_LEFT),
 
-   M(MACRO_ANY),         Key_6, Key_7, Key_8,     Key_9,         Key_0,         ___,
+   M(MACRO_ANY),         Key_6, Key_7, Key_8,     Key_9,         Key_0,         M(MACRO_SZ),
    Key_Enter,            Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
                          Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    OSL(MACROS), Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
@@ -89,10 +93,10 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___, Key_Delete, ___, ___,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
+   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,           Key_F11,
+   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket,  M(MACRO_UMLAUT_U),
+                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  M(MACRO_UMLAUT_O), M(MACRO_UMLAUT_A),
+   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,     Key_Pipe,
    ___, ___, Key_Enter, ___,
    ___),
 
@@ -122,8 +126,8 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___,
 
    ___, ___, ___,                      ___,                   ___,                  ___,                    ___,
-   ___, ___, M(MACRO_UNICODE_UNICORN), ___,                   ___,                  M(MACRO_UNICODE_PEACH), ___,
-        ___, ___,                      M(MACRO_UNICODE_KISS), M(MACRO_UNICODE_LOL), ___,                    ___,
+   ___, ___, M(MACRO_UNICODE_UNICORN), ___,                   ___,                  M(MACRO_UNICODE_PEACH), M(MACRO_UMLAUT_U),
+        ___, ___,                      M(MACRO_UNICODE_KISS), M(MACRO_UNICODE_LOL), M(MACRO_UMLAUT_O),      M(MACRO_UMLAUT_A),
    ___, ___, ___,                      ___,                   ___,                  ___,                    ___,
    ___, ___, ___, ___,
    ___)
@@ -155,6 +159,53 @@ static void unicode(uint32_t character, uint8_t keyState) {
   if (keyToggledOn(keyState)) {
     Unicode.type(character);
   }
+}
+
+
+static void umlaut(Key key, uint8_t keyState) {
+  if (!keyToggledOn(keyState)) {
+    return;
+  }
+
+  tap(Key_RightAlt); // why?
+
+  bool left_shift_active = kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift);
+  if (left_shift_active) {
+    release(Key_LeftShift);
+  }
+
+  bool right_shift_active = kaleidoscope::hid::wasModifierKeyActive(Key_RightShift);
+  if (right_shift_active)
+    release(Key_RightShift);
+}
+
+press(Key_RightAlt);
+tap(Key_U);
+release(Key_RightAlt);
+
+if (left_shift_active) {
+  press(Key_LeftShift);
+}
+if (right_shift_active) {
+  press(Key_RightShift);
+}
+
+tap(key)
+}
+
+static void press(Key key) {
+  kaleidoscope::hid::pressKey(key);
+  kaleidoscope::hid::sendKeyboardReport();
+}
+
+static void release(Key key) {
+  kaleidoscope::hid::releaseKey(key);
+  kaleidoscope::hid::sendKeyboardReport();
+}
+
+static void tap(Key key) {
+  press(key);
+  release(key);
 }
 
 
@@ -265,6 +316,23 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     nextPrevLedMode(keyState);
     break;
 
+  case MACRO_UMLAUT_A:
+    umlaut(Key_A, keyState);
+    break;
+
+  case MACRO_UMLAUT_O:
+    umlaut(Key_O, keyState);
+    break;
+
+  case MACRO_UMLAUT_U:
+    umlaut(Key_U, keyState);
+    break;
+
+  case MACRO_SZ:
+    press(Key_RightAlt);
+    tap(Key_S);
+    release(Key_RightAlt);
+    break;
   }
   return MACRO_NONE;
 }
