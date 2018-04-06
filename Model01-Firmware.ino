@@ -126,8 +126,8 @@ KEYMAPS(
    ___,
 
    ___, ___, ___,                      ___,                   ___,                  ___,                    ___,
-   ___, ___, M(MACRO_UNICODE_UNICORN), ___,                   ___,                  M(MACRO_UNICODE_PEACH), M(MACRO_UMLAUT_U),
-        ___, ___,                      M(MACRO_UNICODE_KISS), M(MACRO_UNICODE_LOL), M(MACRO_UMLAUT_O),      M(MACRO_UMLAUT_A),
+   ___, ___, M(MACRO_UNICODE_UNICORN), ___,                   ___,                  M(MACRO_UNICODE_PEACH), ___,
+        ___, ___,                      M(MACRO_UNICODE_KISS), M(MACRO_UNICODE_LOL), ___,                    ___,
    ___, ___, ___,                      ___,                   ___,                  ___,                    ___,
    ___, ___, ___, ___,
    ___)
@@ -329,10 +329,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_SZ:
-    press(Key_RightAlt);
-    tap(Key_S);
-    release(Key_RightAlt);
-    break;
+    return MACRODOWN(D(RightAlt), T(S), U(RightAlt));
   }
   return MACRO_NONE;
 }
