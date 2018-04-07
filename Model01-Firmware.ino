@@ -6,6 +6,7 @@
 
 
 #define KALEIDOSCOPE_HOSTOS_GUESSER 1
+#define KALEIDOSCOPE_INCLUDE_TEST_MODE 0
 
 
 #include "Kaleidoscope.h"
@@ -20,7 +21,9 @@
 #include "Kaleidoscope-LEDEffect-Rainbow.h"
 #include "Kaleidoscope-LED-Stalker.h"
 #include "Kaleidoscope-LED-AlphaSquare.h"
+#if KALEIDOSCOPE_INCLUDE_TEST_MODE
 #include "Kaleidoscope-Model01-TestMode.h"
+#endif
 #include "Kaleidoscope-HostPowerManagement.h"
 #include <Kaleidoscope-HostOS.h>
 #include <Kaleidoscope/HostOS-select.h>
@@ -31,23 +34,35 @@
 
 enum { MACRO_VERSION_INFO,
        MACRO_ANY,
+       MACRO_DE_SZ,
+       MACRO_DE_UMLAUT_A, // Ä
+       MACRO_DE_UMLAUT_O, // Ö
+       MACRO_DE_UMLAUT_U, // Ü
+       MACRO_LED_NEXT_PREV,
+       MACRO_LED_TOGGLE_ON_OFF,
+       MACRO_UNICODE_ALERT, // ⚠️ (0x26A0, 0xFE0F)
+       MACRO_UNICODE_BOOM, // 💥 (0x1F4A5)
+       MACRO_UNICODE_CHECK, // ✅ (0x2705)
        MACRO_UNICODE_CRAZY, // 🤪 (0x1F92A)
        MACRO_UNICODE_EYES, // 😳 (0x1F633)
        MACRO_UNICODE_FLOWER, // 🌻 (0x1F33B)
        MACRO_UNICODE_GRIMACE, // 😬 (0x1F62C)
+       MACRO_UNICODE_JOY, // 😂 (0x1F602)
        MACRO_UNICODE_KISS, // 😘 (0x1F618)
-       MACRO_UNICODE_LOL, // 😂 (0x1F602)
+       MACRO_UNICODE_MAD, // 😤 (0x1F624)
+       MACRO_UNICODE_PARTY, // 🎉 (0x1F389)
        MACRO_UNICODE_PEACH, // 🍑 (0x1F351)
+       MACRO_UNICODE_PRESENT, // 🎁 (0x1F381)
+       MACRO_UNICODE_ROCKET, // 🚀 (0x1F680)
        MACRO_UNICODE_SMILE, // 😊 (0x1F60A)
-       MACRO_UNICODE_THUMB, // 👍 (0x1F44D)
+       MACRO_UNICODE_SUNGLASSES, // 😎 (0x1F60E)
+       MACRO_UNICODE_THINKING, // 🤔 (0x1F914)
+       MACRO_UNICODE_THUMBSDOWN, // 👎 (0x1F44E)
+       MACRO_UNICODE_THUMBSUP, // 👍 (0x1F44D)
+       MACRO_UNICODE_TONGUE, // 😜 (0x1F61C)
        MACRO_UNICODE_UNICORN, // 🦄 (0x1F984)
-       MACRO_UNICODE_WAVING, // 👋 (0x1F44B)
-       MACRO_LED_NEXT_PREV,
-       MACRO_LED_TOGGLE_ON_OFF,
-       MACRO_UMLAUT_A,
-       MACRO_UMLAUT_O,
-       MACRO_UMLAUT_U,
-       MACRO_SZ,
+       MACRO_UNICODE_VOMIT, // 🤮 (0x1F92E)
+       MACRO_UNICODE_WAVE, // 👋 (0x1F44B)
      };
 
 
@@ -77,7 +92,7 @@ KEYMAPS(
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
    ShiftToLayer(FUNCTION_LEFT),
 
-   M(MACRO_ANY),         Key_6, Key_7, Key_8,     Key_9,         Key_0,         M(MACRO_SZ),
+   M(MACRO_ANY),         Key_6, Key_7, Key_8,     Key_9,         Key_0,         M(MACRO_DE_SZ),
    Key_Enter,            Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
                          Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    OSL(MACROS), Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
@@ -93,10 +108,10 @@ KEYMAPS(
    ___, Key_Delete, ___, ___,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,           Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket,  M(MACRO_UMLAUT_U),
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  M(MACRO_UMLAUT_O), M(MACRO_UMLAUT_A),
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,     Key_Pipe,
+   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,              M(MACRO_DE_SZ),
+   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket,     M(MACRO_DE_UMLAUT_U),
+                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  M(MACRO_DE_UMLAUT_O), M(MACRO_DE_UMLAUT_A),
+   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,        Key_Pipe,
    ___, ___, Key_Enter, ___,
    ___),
 
@@ -118,17 +133,17 @@ KEYMAPS(
 
 
   [MACROS] =  KEYMAP_STACKED
-  (___, ___, ___,                     ___,                    ___,                     ___,                      ___,
-   ___, ___, M(MACRO_UNICODE_WAVING), M(MACRO_UNICODE_EYES),  ___,                     M(MACRO_UNICODE_THUMB),   ___,
-   ___, ___, M(MACRO_UNICODE_SMILE),  ___,                    M(MACRO_UNICODE_FLOWER), M(MACRO_UNICODE_GRIMACE),
-   ___, ___, ___,                     M(MACRO_UNICODE_CRAZY), ___,                     ___,                      ___,
+  (___, ___, ___,                    ___,                    ___,                     ___,                      ___,
+   ___, ___, M(MACRO_UNICODE_WAVE),  M(MACRO_UNICODE_EYES),  ___,                     M(MACRO_UNICODE_THUMBSUP),   ___,
+   ___, ___, M(MACRO_UNICODE_SMILE), ___,                    M(MACRO_UNICODE_FLOWER), M(MACRO_UNICODE_GRIMACE),
+   ___, ___, ___,                    M(MACRO_UNICODE_CRAZY), ___,                     ___,                      ___,
    ___, ___, ___, ___,
    ___,
 
-   ___, ___, ___,                      ___,                   ___,                  ___,                    ___,
-   ___, ___, M(MACRO_UNICODE_UNICORN), ___,                   ___,                  M(MACRO_UNICODE_PEACH), ___,
-        ___, ___,                      M(MACRO_UNICODE_KISS), M(MACRO_UNICODE_LOL), ___,                    ___,
-   ___, ___, ___,                      ___,                   ___,                  ___,                    ___,
+   ___, ___, ___,                      ___,                   ___, ___,                    ___,
+   ___, ___, M(MACRO_UNICODE_UNICORN), ___,                   ___, M(MACRO_UNICODE_PEACH), ___,
+        ___, M(MACRO_UNICODE_JOY),     M(MACRO_UNICODE_KISS), ___, ___,                    ___,
+   ___, ___, ___,                      ___,                   ___, ___,                    ___,
    ___, ___, ___, ___,
    ___)
 
@@ -156,9 +171,19 @@ static void anyKeyMacro(uint8_t keyState) {
 
 
 static void unicode(uint32_t character, uint8_t keyState) {
-  if (keyToggledOn(keyState)) {
-    Unicode.type(character);
+  unicode(character, 0, keyState);
+}
+
+static void unicode(uint32_t character, uint32_t variation, uint8_t keyState) {
+  if (!keyToggledOn(keyState)) {
+    return;
   }
+  Unicode.start();
+  Unicode.typeCode(character);
+  if (variation > 0) {
+    Unicode.typeCode(variation);
+  }
+  Unicode.end();
 }
 
 
@@ -264,50 +289,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     anyKeyMacro(keyState);
     break;
 
-  case MACRO_UNICODE_CRAZY:
-    unicode(0x1F92A, keyState);
-    break;
-
-  case MACRO_UNICODE_EYES:
-    unicode(0x1F633, keyState);
-    break;
-
-  case MACRO_UNICODE_GRIMACE:
-    unicode(0x1F62C, keyState);
-    break;
-
-  case MACRO_UNICODE_KISS:
-    unicode(0x1F618, keyState);
-    break;
-
-  case MACRO_UNICODE_LOL:
-    unicode(0x1F602, keyState);
-    break;
-
-  case MACRO_UNICODE_PEACH:
-    unicode(0x1F351, keyState);
-    break;
-
-  case MACRO_UNICODE_SMILE:
-    unicode(0x1F60A, keyState);
-    break;
-
-  case MACRO_UNICODE_FLOWER:
-    unicode(0x1F33B, keyState);
-    break;
-
-  case MACRO_UNICODE_THUMB:
-    unicode(0x1F44D, keyState);
-    break;
-
-  case MACRO_UNICODE_UNICORN:
-    unicode(0x1F984, keyState);
-    break;
-
-  case MACRO_UNICODE_WAVING:
-    unicode(0x1F44B, keyState);
-    break;
-
   case MACRO_LED_TOGGLE_ON_OFF:
     toggleLedsOnOff(keyState);
     break;
@@ -316,20 +297,113 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     nextPrevLedMode(keyState);
     break;
 
-  case MACRO_UMLAUT_A:
+  case MACRO_DE_UMLAUT_A:
     umlaut(Key_A, keyState);
     break;
 
-  case MACRO_UMLAUT_O:
+  case MACRO_DE_UMLAUT_O:
     umlaut(Key_O, keyState);
     break;
 
-  case MACRO_UMLAUT_U:
+  case MACRO_DE_UMLAUT_U:
     umlaut(Key_U, keyState);
     break;
 
-  case MACRO_SZ:
+  case MACRO_DE_SZ:
     return MACRODOWN(D(RightAlt), T(S), U(RightAlt));
+
+  case MACRO_UNICODE_ALERT:
+    unicode(0x26A0, 0xFE0F, keyState);
+    break;
+
+  case MACRO_UNICODE_BOOM:
+    unicode(0x1F4A5, keyState);
+    break;
+
+  case MACRO_UNICODE_CHECK:
+    unicode(0x2705, keyState);
+    break;
+
+  case MACRO_UNICODE_CRAZY:
+    unicode(0x1F92A, keyState);
+    break;
+
+  case MACRO_UNICODE_EYES:
+    unicode(0x1F633, keyState);
+    break;
+
+  case MACRO_UNICODE_FLOWER:
+    unicode(0x1F33B, keyState);
+    break;
+
+  case MACRO_UNICODE_GRIMACE:
+    unicode(0x1F62C, keyState);
+    break;
+
+  case MACRO_UNICODE_JOY:
+    unicode(0x1F602, keyState);
+    break;
+
+  case MACRO_UNICODE_KISS:
+    unicode(0x1F618, keyState);
+    break;
+
+  case MACRO_UNICODE_MAD:
+    unicode(0x1F624, keyState);
+    break;
+
+  case MACRO_UNICODE_PARTY:
+    unicode(0x1F389, keyState);
+    break;
+
+  case MACRO_UNICODE_PEACH:
+    unicode(0x1F351, keyState);
+    break;
+
+  case MACRO_UNICODE_PRESENT:
+    unicode(0x1F381, keyState);
+    break;
+
+  case MACRO_UNICODE_ROCKET:
+    unicode(0x1F680, keyState);
+    break;
+
+  case MACRO_UNICODE_SMILE:
+    unicode(0x1F60A, keyState);
+    break;
+
+  case MACRO_UNICODE_SUNGLASSES:
+    unicode(0x1F60E, keyState);
+    break;
+
+  case MACRO_UNICODE_THINKING:
+    unicode(0x1F914, keyState);
+    break;
+
+  case MACRO_UNICODE_THUMBSDOWN:
+    unicode(0x1F44E, keyState);
+    break;
+
+  case MACRO_UNICODE_THUMBSUP:
+    unicode(0x1F44D, keyState);
+    break;
+
+  case MACRO_UNICODE_TONGUE:
+    unicode(0x1F61C, keyState);
+    break;
+
+  case MACRO_UNICODE_UNICORN:
+    unicode(0x1F984, keyState);
+    break;
+
+  case MACRO_UNICODE_VOMIT:
+    unicode(0x1F92E, keyState);
+    break;
+
+  case MACRO_UNICODE_WAVE:
+    unicode(0x1F44B, keyState);
+    break;
+
   }
   return MACRO_NONE;
 }
@@ -371,7 +445,9 @@ void setup() {
 
   Kaleidoscope.use(
     &BootGreetingEffect,
+#if KALEIDOSCOPE_INCLUDE_TEST_MODE
     &TestMode,
+#endif
     &LEDControl,
 
     &LEDOff,
