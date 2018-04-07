@@ -289,13 +289,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     anyKeyMacro(keyState);
     break;
 
-  case MACRO_LED_TOGGLE_ON_OFF:
-    toggleLedsOnOff(keyState);
-    break;
-
-  case MACRO_LED_NEXT_PREV:
-    nextPrevLedMode(keyState);
-    break;
+  case MACRO_DE_SZ:
+    return MACRODOWN(D(RightAlt), T(S), U(RightAlt));
 
   case MACRO_DE_UMLAUT_A:
     umlaut(Key_A, keyState);
@@ -309,8 +304,13 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     umlaut(Key_U, keyState);
     break;
 
-  case MACRO_DE_SZ:
-    return MACRODOWN(D(RightAlt), T(S), U(RightAlt));
+  case MACRO_LED_TOGGLE_ON_OFF:
+    toggleLedsOnOff(keyState);
+    break;
+
+  case MACRO_LED_NEXT_PREV:
+    nextPrevLedMode(keyState);
+    break;
 
   case MACRO_UNICODE_ALERT:
     unicode(0x26A0, 0xFE0F, keyState);
