@@ -110,17 +110,17 @@ KEYMAPS(
 
 
   [MACROS] =  KEYMAP_STACKED
-  (___, ___,            ___,            ___,                 ___,             ___,               ___,
-   ___, ___,            Key_EmojiWave,  Key_EmojiEyes,       Key_EmojiRocket, Key_EmojiThumbsUp, ___,
-   ___, Key_EmojiAlert, Key_EmojiSmile, Key_EmojiThumbsDown, Key_EmojiFlower, Key_EmojiGrimace,
-   ___, ___,            Key_EmojiPeach, Key_EmojiCrazy,      Key_EmojiVomit,  Key_EmojiBoom,     ___,
+  (___, Key_EmojiUnicorn, ___,            ___,                 ___,             ___,               ___,
+   ___, ___,              Key_EmojiWave,  Key_EmojiEyes,       Key_EmojiRocket, ___, ___,
+   ___, Key_EmojiAlert,   Key_EmojiSmile, Key_EmojiThumbsDown, Key_EmojiFlower, Key_EmojiGrimace,
+   ___, ___,              Key_EmojiPeach, Key_EmojiCrazy,      Key_EmojiVomit,  Key_EmojiBoom,     ___,
    ___, ___, ___, ___,
    ___,
 
-   ___, ___,             ___,              ___,               ___,                 ___,            ___,
-   ___, ___,             Key_EmojiUnicorn, Key_EmojiThinking, ___,                 Key_EmojiParty, Key_EmojiCheck,
-        ___,             Key_EmojiJoy,     Key_EmojiKiss,     Key_EmojiSunglasses, ___,            ___,
-   ___, Key_EmojiTongue, Key_EmojiMad,     ___,               ___,                 ___,            ___,
+   ___, ___,             ___,               ___,               ___,                 ___,            ___,
+   ___, ___,             Key_EmojiThumbsUp, Key_EmojiThinking, ___,                 Key_EmojiParty, Key_EmojiCheck,
+        ___,             Key_EmojiJoy,      Key_EmojiKiss,     Key_EmojiSunglasses, ___,            ___,
+   ___, Key_EmojiTongue, Key_EmojiMad,      ___,               ___,                 ___,            ___,
    ___, ___, ___, ___,
    ___)
 
