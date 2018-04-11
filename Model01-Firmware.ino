@@ -110,17 +110,17 @@ KEYMAPS(
 
 
   [MACROS] =  KEYMAP_STACKED
-  (___, Key_EmojiUnicorn, ___,            ___,                 ___,             ___,               ___,
-   ___, ___,              Key_EmojiWave,  Key_EmojiEyes,       Key_EmojiRocket, ___, ___,
-   ___, Key_EmojiAlert,   Key_EmojiSmile, Key_EmojiThumbsDown, Key_EmojiFlower, Key_EmojiGrimace,
-   ___, ___,              Key_EmojiPeach, Key_EmojiCrazy,      Key_EmojiVomit,  Key_EmojiBoom,     ___,
+  (___, Key_EmojiUnicornFace,  ___,            ___,                 ___,                ___,               ___,
+   ___, ___,                   Key_EmojiWave,  Key_EmojiFlushed,    Key_EmojiRocket,    ___, ___,
+   ___, Key_EmojiWarning,      Key_EmojiBlush, Key_EmojiThumbsdown, Key_EmojiSunflower, Key_EmojiGrimaced,
+   ___, ___,                   Key_EmojiPeach, Key_EmojiCrazy,      Key_EmojiVulcan,    Key_EmojiBoom,     ___,
    ___, ___, ___, ___,
    ___,
 
-   ___, ___,             ___,               ___,               ___,                 ___,            ___,
-   ___, ___,             Key_EmojiThumbsUp, Key_EmojiThinking, ___,                 Key_EmojiParty, Key_EmojiCheck,
-        ___,             Key_EmojiJoy,      Key_EmojiKiss,     Key_EmojiSunglasses, ___,            ___,
-   ___, Key_EmojiTongue, Key_EmojiMad,      ___,               ___,                 ___,            ___,
+   ___, ___,           ___,               ___,                  ___,                     ___,            ___,
+   ___, ___,           Key_EmojiThumbsup, Key_EmojiMischievous, ___,                     Key_EmojiParty, ___,
+        ___,           Key_EmojiJoyful,   Key_EmojiFlirty,      Key_EmojiConfident,      ___,            ___,
+   ___, Key_EmojiNerd, Key_EmojiAnnoyed,  ___,                  Key_EmojiWhiteCheckMark, ___,            ___,
    ___, ___, ___, ___,
    ___)
 
