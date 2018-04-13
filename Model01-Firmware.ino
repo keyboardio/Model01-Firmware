@@ -30,14 +30,11 @@
 #include <Kaleidoscope-LEDEffect-DigitalRain.h>
 #include <Kaleidoscope-OneShot.h>
 #include <Kaleidoscope-Emoji.h>
+#include <Kaleidoscope-LangPack-German.h>
 
 
 enum { MACRO_VERSION_INFO,
        MACRO_ANY,
-       MACRO_DE_SZ,
-       MACRO_DE_UMLAUT_A, // Ä
-       MACRO_DE_UMLAUT_O, // Ö
-       MACRO_DE_UMLAUT_U, // Ü
        MACRO_LED_NEXT_PREV,
        MACRO_LED_TOGGLE_ON_OFF,
      };
@@ -69,7 +66,7 @@ KEYMAPS(
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
    ShiftToLayer(FUNCTION_LEFT),
 
-   M(MACRO_ANY),         Key_6, Key_7, Key_8,     Key_9,         Key_0,         M(MACRO_DE_SZ),
+   M(MACRO_ANY),         Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Eszett,
    Key_Enter,            Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
                          Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    OSL(MACROS), Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
@@ -85,10 +82,10 @@ KEYMAPS(
    ___, Key_Delete, ___, ___,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,              M(MACRO_DE_SZ),
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket,     M(MACRO_DE_UMLAUT_U),
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  M(MACRO_DE_UMLAUT_O), M(MACRO_DE_UMLAUT_A),
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,        Key_Pipe,
+   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_Eszett,
+   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_UUmlaut,
+                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  Key_OUmlaut,      Key_AUmlaut,
+   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
    ___),
 
@@ -147,53 +144,6 @@ static void anyKeyMacro(uint8_t keyState) {
 }
 
 
-static void umlaut(Key key, uint8_t keyState) {
-  if (!keyToggledOn(keyState)) {
-    return;
-  }
-
-  tap(Key_RightAlt); // why?
-
-  bool left_shift_active = kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift);
-  if (left_shift_active) {
-    release(Key_LeftShift);
-  }
-
-  bool right_shift_active = kaleidoscope::hid::wasModifierKeyActive(Key_RightShift);
-  if (right_shift_active) {
-    release(Key_RightShift);
-  }
-
-  press(Key_RightAlt);
-  tap(Key_U);
-  release(Key_RightAlt);
-
-  if (left_shift_active) {
-    press(Key_LeftShift);
-  }
-  if (right_shift_active) {
-    press(Key_RightShift);
-  }
-
-  tap(key);
-}
-
-static void press(Key key) {
-  kaleidoscope::hid::pressKey(key);
-  kaleidoscope::hid::sendKeyboardReport();
-}
-
-static void release(Key key) {
-  kaleidoscope::hid::releaseKey(key);
-  kaleidoscope::hid::sendKeyboardReport();
-}
-
-static void tap(Key key) {
-  press(key);
-  release(key);
-}
-
-
 static int lastLedModeIndex = -1;
 
 static void toggleLedsOnOff(uint8_t key_state) {
@@ -247,21 +197,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_ANY:
     anyKeyMacro(keyState);
-    break;
-
-  case MACRO_DE_SZ:
-    return MACRODOWN(D(RightAlt), T(S), U(RightAlt));
-
-  case MACRO_DE_UMLAUT_A:
-    umlaut(Key_A, keyState);
-    break;
-
-  case MACRO_DE_UMLAUT_O:
-    umlaut(Key_O, keyState);
-    break;
-
-  case MACRO_DE_UMLAUT_U:
-    umlaut(Key_U, keyState);
     break;
 
   case MACRO_LED_TOGGLE_ON_OFF:
@@ -331,7 +266,8 @@ void setup() {
     &Macros,
     &OneShot,
     &MouseKeys,
-    &HostPowerManagement
+    &HostPowerManagement,
+    &German
   );
 
   AlphaSquare.color = CRGB(255, 0, 0);
