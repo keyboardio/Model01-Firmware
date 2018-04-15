@@ -31,12 +31,11 @@
 #include <Kaleidoscope-OneShot.h>
 #include <Kaleidoscope-Emoji.h>
 #include <Kaleidoscope-LangPack-German.h>
+#include <Kaleidoscope-LEDToggle.h>
 
 
 enum { MACRO_VERSION_INFO,
        MACRO_ANY,
-       MACRO_LED_NEXT_PREV,
-       MACRO_LED_TOGGLE_ON_OFF,
      };
 
 
@@ -59,7 +58,7 @@ enum { QWERTY,
 KEYMAPS(
 
   [QWERTY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
+  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDToggle,
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
@@ -75,7 +74,7 @@ KEYMAPS(
 
 
   [FUNCTION_LEFT] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           M(MACRO_LED_TOGGLE_ON_OFF),
+  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDToggleNext,
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
    Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
@@ -91,7 +90,7 @@ KEYMAPS(
 
 
   [FUNCTION_RIGHT] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           M(MACRO_LED_NEXT_PREV),
+  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDToggleNext,
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
    Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
@@ -144,50 +143,6 @@ static void anyKeyMacro(uint8_t keyState) {
 }
 
 
-static int lastLedModeIndex = -1;
-
-static void toggleLedsOnOff(uint8_t key_state) {
-  if (keyToggledOn(key_state)) {
-    if (LEDControl.get_mode() != &LEDOff) {
-      lastLedModeIndex = LEDControl.get_mode_index();
-      LEDOff.activate();
-    } else if (lastLedModeIndex >= 0) {
-      LEDControl.set_mode(lastLedModeIndex);
-    } else {
-      nextPrevLedMode(key_state);
-    }
-  }
-}
-
-static void nextPrevLedMode(uint8_t key_state) {
-  if (keyToggledOn(key_state)) {
-    if (shiftKeyActive()) {
-      prevLedModeSkippingOff();
-    } else {
-      nextLedModeSkippingOff();
-    }
-    lastLedModeIndex = LEDControl.get_mode_index();
-  }
-}
-
-static void nextLedModeSkippingOff() {
-  do {
-    LEDControl.next_mode();
-  } while (LEDControl.get_mode() == &LEDOff);
-}
-
-static void prevLedModeSkippingOff() {
-  do {
-    LEDControl.prev_mode();
-  } while (LEDControl.get_mode() == &LEDOff);
-}
-
-static bool shiftKeyActive(void) {
-  return kaleidoscope::hid::wasModifierKeyActive(Key_LeftShift) ||
-         kaleidoscope::hid::wasModifierKeyActive(Key_RightShift);
-}
-
-
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
 
@@ -197,14 +152,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_ANY:
     anyKeyMacro(keyState);
-    break;
-
-  case MACRO_LED_TOGGLE_ON_OFF:
-    toggleLedsOnOff(keyState);
-    break;
-
-  case MACRO_LED_NEXT_PREV:
-    nextPrevLedMode(keyState);
     break;
 
   }
@@ -252,6 +199,7 @@ void setup() {
     &TestMode,
 #endif
     &LEDControl,
+    &LEDToggle,
 
     &LEDOff,
     &LEDRainbowEffect,
