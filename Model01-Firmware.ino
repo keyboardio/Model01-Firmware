@@ -190,6 +190,32 @@ void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event ev
 }
 
 
+void emojiEventHook(kaleidoscope::Emoji::Event event) {
+  switch (event) {
+  case kaleidoscope::Emoji::TypingWillStart:
+    selectInputSourceUS();
+    break;
+  case kaleidoscope::Emoji::TypingDidFinish:
+    selectInputSourceUnicode();
+    break;
+  }
+}
+
+void selectInputSourceUS() {
+  if (HostOS.os() != kaleidoscope::hostos::OSX) {
+    return;
+  }
+  Macros.play(MACRO(D(LeftShift), D(LeftAlt), D(LeftGui), T(U), U(LeftShift), U(LeftAlt), U(LeftGui)));
+}
+
+void selectInputSourceUnicode() {
+  if (HostOS.os() != kaleidoscope::hostos::OSX) {
+    return;
+  }
+  Macros.play(MACRO(D(LeftShift), D(LeftAlt), D(LeftGui), T(H), U(LeftShift), U(LeftAlt), U(LeftGui)));
+}
+
+
 void setup() {
   Kaleidoscope.setup();
 
@@ -214,6 +240,7 @@ void setup() {
     &Macros,
     &OneShot,
     &MouseKeys,
+    &HostOS,
     &HostPowerManagement,
     &German
   );
