@@ -190,15 +190,12 @@ void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event ev
 }
 
 
-void emojiEventHook(kaleidoscope::Emoji::Event event) {
-  switch (event) {
-  case kaleidoscope::Emoji::TypingWillStart:
-    selectInputSourceUS();
-    break;
-  case kaleidoscope::Emoji::TypingDidFinish:
-    selectInputSourceUnicode();
-    break;
-  }
+void emojiTypingWillStart() {
+  selectInputSourceUnicode();
+}
+
+void emojiTypingDidFinish() {
+  selectInputSourceUS();
 }
 
 void selectInputSourceUS() {
