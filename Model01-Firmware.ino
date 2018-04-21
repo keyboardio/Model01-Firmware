@@ -42,7 +42,7 @@ enum { MACRO_VERSION_INFO,
 enum { QWERTY,
        FUNCTION_LEFT,
        FUNCTION_RIGHT,
-       MACROS,
+       EMOJI,
      };
 
 
@@ -55,9 +55,7 @@ enum { QWERTY,
 
 // *INDENT-OFF*
 
-KEYMAPS(
-
-  [QWERTY] = KEYMAP_STACKED
+#define KEYMAP_QUERTY KEYMAP_STACKED
   (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDToggle,
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
@@ -105,25 +103,24 @@ KEYMAPS(
    ___), 
 
 
-  [MACROS] =  KEYMAP_STACKED
-  (___, Key_EmojiUnicornFace,  ___,            ___,                 ___,                ___,               ___,
-   ___, ___,                   Key_EmojiWave,  Key_EmojiFlushed,    Key_EmojiRocket,    ___, ___,
-   ___, Key_EmojiWarning,      Key_EmojiBlush, Key_EmojiThumbsdown, Key_EmojiSunflower, Key_EmojiGrimaced,
-   ___, ___,                   Key_EmojiPeach, Key_EmojiCrazy,      Key_EmojiVulcan,    Key_EmojiBoom,     ___,
+  [EMOJI] =  KEYMAP_STACKED
+  (Key_EmojiCricket, Key_EmojiUnicornFace,   Key_EmojiEyes,  Key_EmojiSparkles,    ___,                ___,               ___,
+   ___,              Key_EmojiBalloon,       Key_EmojiWave,  Key_EmojiFlushed,     Key_EmojiRocket,    Key_EmojiMetal,    ___,
+   ___,              Key_EmojiWarning,       Key_EmojiSmile, Key_EmojiThumbsdown,  Key_EmojiSunflower, Key_EmojiGrimaced,
+   ___,              Key_EmojiExplodingHead, Key_EmojiPeach, Key_EmojiCrazy,       Key_EmojiVulcan,    Key_EmojiBoom,     ___,
    ___, ___, ___, ___,
    ___,
 
-   ___, ___,           ___,               ___,                  ___,                     ___,            ___,
-   ___, ___,           Key_EmojiThumbsup, Key_EmojiMischievous, ___,                     Key_EmojiParty, ___,
-        ___,           Key_EmojiJoyful,   Key_EmojiFlirty,      Key_EmojiConfident,      ___,            ___,
-   ___, Key_EmojiNerd, Key_EmojiAnnoyed,  ___,                  Key_EmojiWhiteCheckMark, ___,            ___,
+   Key_EmojiUpsideDown, ___,                  ___,               ___,                  ___,                       Key_EmojiWhiteCheckMark, Key_EmojiCrossMark,
+   ___,                 Key_EmojiDisbelief,   Key_EmojiThumbsup, Key_EmojiThinking,    Key_EmojiManDancing,       Key_EmojiParty,          ___,
+                        Key_EmojiMischievous, Key_EmojiJoyful,   Key_EmojiFlirty,      Key_EmojiConfident,        Key_EmojiHole,           ___,
+   Key_EmojiBlush,      Key_EmojiNerd,        Key_EmojiAnnoyed,  Key_EmojiWink,        Key_EmojiHourglassFlowing, Key_EmojiConstruction,   ___,
    ___, ___, ___, ___,
    ___)
 
 	) // KEYMAPS(
 
 // *INDENT-ON*
-
 
 static void versionInfoMacro(uint8_t keyState) {
   if (keyToggledOn(keyState)) {
