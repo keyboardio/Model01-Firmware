@@ -11,6 +11,7 @@
 #include <Kaleidoscope-Macros.h>
 #include <Kaleidoscope-MouseKeys.h>
 #include <Kaleidoscope-OneShot.h>
+#include <Kaleidoscope-Escape-OneShot.h>
 
 #include <Kaleidoscope-LEDControl.h>
 #include <Kaleidoscope-LEDToggle.h>
@@ -138,6 +139,7 @@ void setup() {
 
     &Macros,
     &OneShot,
+    &EscapeOneShot,
     &MouseKeys,
     &HostOS,
     &HostPowerManagement,
