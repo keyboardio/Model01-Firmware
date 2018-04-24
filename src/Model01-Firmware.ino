@@ -3,31 +3,30 @@
 #include "config.h"
 
 #include <Kaleidoscope.h>
-
-#include <Kaleidoscope-MouseKeys.h>
+#include <Kaleidoscope-Emoji.h>
+#include <Kaleidoscope-HostOS.h>
+#include <Kaleidoscope/HostOS-select.h>
+#include <Kaleidoscope-HostPowerManagement.h>
+#include <Kaleidoscope-LangPack-German.h>
 #include <Kaleidoscope-Macros.h>
+#include <Kaleidoscope-MouseKeys.h>
+#include <Kaleidoscope-OneShot.h>
+
 #include <Kaleidoscope-LEDControl.h>
-#include <LED-Off.h>
+#include <Kaleidoscope-LEDToggle.h>
+#include <Kaleidoscope-LED-AlphaSquare.h>
+#include <Kaleidoscope-LED-Stalker.h>
 #include <Kaleidoscope-LEDEffect-BootGreeting.h>
-#include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <Kaleidoscope-LEDEffect-Breathe.h>
 #include <Kaleidoscope-LEDEffect-Chase.h>
+#include <Kaleidoscope-LEDEffect-DigitalRain.h>
 #include <Kaleidoscope-LEDEffect-Rainbow.h>
-#include <Kaleidoscope-LED-Stalker.h>
-#include <Kaleidoscope-LED-AlphaSquare.h>
+#include <Kaleidoscope-LEDEffect-SolidColor.h>
+#include <LED-Off.h>
+
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
 #include <Kaleidoscope-Model01-TestMode.h>
 #endif
-#include <Kaleidoscope-HostPowerManagement.h>
-#include <Kaleidoscope-HostOS.h>
-#include <Kaleidoscope/HostOS-select.h>
-#include <Kaleidoscope-LEDEffect-DigitalRain.h>
-#include <Kaleidoscope-OneShot.h>
-#include <Kaleidoscope-Emoji.h>
-#include <Kaleidoscope-LangPack-German.h>
-#include <Kaleidoscope-LEDToggle.h>
-
-
 
 #include "keymaps.h"
 
