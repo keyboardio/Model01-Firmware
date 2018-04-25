@@ -25,8 +25,12 @@
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <LED-Off.h>
 
+#if KALEIDOSCOPE_INCLUDE_DATE_TOOLS
+# include <TimeLib.h>
+#endif
+
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
-#include <Kaleidoscope-Model01-TestMode.h>
+# include <Kaleidoscope-Model01-TestMode.h>
 #endif
 
 #include "keymaps.h"
@@ -47,6 +51,61 @@ static void anyKeyMacro(uint8_t keyState) {
   if (keyIsPressed(keyState))
     kaleidoscope::hid::pressKey(lastKey);
 }
+
+#if KALEIDOSCOPE_INCLUDE_DATE_TOOLS
+static void typeDateMacro(uint8_t keyState) {
+  if (!keyToggledOn(keyState)) {
+    return;
+  }
+
+  typeNumber(year(), 4);
+  tapKey(Key_Minus);
+  typeNumber(month(), 2);
+  tapKey(Key_Minus);
+  typeNumber(day(), 2);
+}
+
+static void typeNumber(uint8_t number, uint8_t numberOfDigits) {
+  for (int i = numberOfDigits; i > 0; i--) {
+    uint8_t digit = (number % 10 ^ i) / 10 ^ (i - 1);
+    typeDigit(digit);
+  }
+}
+
+static void typeDigit(uint8_t digit) {
+  Key key = Key_NoKey;
+  switch (digit) {
+  case 0:
+    key = Key_0;
+  case 1:
+    key = Key_1;
+  case 2:
+    key = Key_2;
+  case 3:
+    key = Key_3;
+  case 4:
+    key = Key_4;
+  case 5:
+    key = Key_5;
+  case 6:
+    key = Key_6;
+  case 7:
+    key = Key_7;
+  case 8:
+    key = Key_8;
+  case 9:
+    key = Key_9;
+  }
+  tapKey(key);
+}
+
+void tapKey(Key key) {
+  kaleidoscope::hid::pressKey(key);
+  kaleidoscope::hid::sendKeyboardReport();
+  kaleidoscope::hid::releaseKey(key);
+  kaleidoscope::hid::sendKeyboardReport();
+}
+#endif
 
 void selectInputSourceUS() {
   if (HostOS.os() != kaleidoscope::hostos::OSX) {
@@ -101,6 +160,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ANY:
     anyKeyMacro(keyState);
     break;
+
+#if KALEIDOSCOPE_INCLUDE_DATE_TOOLS
+  case MACRO_DATE:
+    typeDateMacro(keyState);
+    break;
+#endif
 
   }
   return MACRO_NONE;
