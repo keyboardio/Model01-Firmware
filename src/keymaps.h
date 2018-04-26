@@ -1,11 +1,5 @@
 // -*- mode: c++ -*-
 
-#pragma once
-
-#include "Layers.h"
-#include "Macros.h"
-
-
 /**
   *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keyboard.h
   *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_consumerctl.h
@@ -13,6 +7,16 @@
   *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keymaps.h
   */
 
+#pragma once
+
+#include "Macros.h"
+
+
+enum { QWERTY,
+       FUNCTION_LEFT,
+       FUNCTION_RIGHT,
+       EMOJI,
+     };
 
 // *INDENT-OFF*
 

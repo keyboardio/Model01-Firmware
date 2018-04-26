@@ -25,6 +25,7 @@
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <LED-Off.h>
 
+#include "Macros.h"
 #if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
 # include "Timekeeper.h"
 #endif
@@ -33,34 +34,8 @@
 # include <Kaleidoscope-Model01-TestMode.h>
 #endif
 
-#include "macros.h"
 #include "keymaps.h"
 
-
-static void versionInfoMacro(uint8_t keyState) {
-  if (keyToggledOn(keyState)) {
-    Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
-    Macros.type(PSTR(BUILD_INFORMATION));
-  }
-}
-
-static void anyKeyMacro(uint8_t keyState) {
-  static Key lastKey;
-  if (keyToggledOn(keyState))
-    lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
-
-  if (keyIsPressed(keyState))
-    kaleidoscope::hid::pressKey(lastKey);
-}
-
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-static void typeDateMacro(uint8_t keyState) {
-  if (!keyToggledOn(keyState)) {
-    return;
-  }
-  jj::Timekeeper::typeCurrentDate();
-}
-#endif
 
 void selectInputSourceUS() {
   if (HostOS.os() != kaleidoscope::hostos::OSX) {
@@ -105,27 +80,6 @@ void emojiTypingDidFinish() {
   selectInputSourceUS();
 }
 
-const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
-  switch (macroIndex) {
-
-  case MACRO_VERSION_INFO:
-    versionInfoMacro(keyState);
-    break;
-
-  case MACRO_ANY:
-    anyKeyMacro(keyState);
-    break;
-
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-  case MACRO_TIMEKEEPER:
-    typeDateMacro(keyState);
-    break;
-#endif
-
-  }
-  return MACRO_NONE;
-}
-
 
 static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
 static kaleidoscope::LEDSolidColor solidOrange(140, 70, 0);
@@ -168,6 +122,7 @@ void setup() {
     &German
   );
 
+  jj::Macros::configure();
 #if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
   jj::Timekeeper::configure();
 #endif
