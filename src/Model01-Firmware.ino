@@ -12,6 +12,9 @@
 #include <Kaleidoscope-MouseKeys.h>
 #include <Kaleidoscope-OneShot.h>
 #include <Kaleidoscope-Escape-OneShot.h>
+#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
+# include <Kaleidoscope-Timekeeper.h>
+#endif
 
 #include <Kaleidoscope-LEDControl.h>
 #include <Kaleidoscope-LEDToggle.h>
@@ -26,9 +29,6 @@
 #include <LED-Off.h>
 
 #include "Macros.h"
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-# include "Timekeeper.h"
-#endif
 
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
 # include <Kaleidoscope-Model01-TestMode.h>
@@ -100,6 +100,9 @@ void setup() {
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
     &TestMode,
 #endif
+#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
+    &Timekeeper,
+#endif
     &LEDControl,
     &LEDToggle,
 
@@ -123,9 +126,6 @@ void setup() {
   );
 
   jj::Macros::configure();
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-  jj::Timekeeper::configure();
-#endif
 
   AlphaSquare.color = CRGB(255, 0, 0);
 
@@ -141,11 +141,5 @@ void setup() {
 
 
 void loop() {
-  // Todo: move to plugin
-  if (Serial.available()) {
-    jj::Timekeeper::processSyncMessage();
-  }
-
   Kaleidoscope.loop();
-
 }

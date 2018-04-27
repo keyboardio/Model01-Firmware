@@ -1,7 +1,6 @@
 // -*- mode: c++ -*-
 
 #include "Macros.h"
-#include "Timekeeper.h"
 #include <Kaleidoscope.h>
 #include <Kaleidoscope-Macros.h>
 
@@ -43,15 +42,6 @@ void anyKeyMacro(uint8_t keyState) {
   }
 }
 
-void typeDateMacro(uint8_t keyState) {
-  if (!keyToggledOn(keyState)) {
-    return;
-  }
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-  jj::Timekeeper::typeCurrentDate();
-#endif
-}
-
 namespace {
 
 
@@ -60,6 +50,7 @@ namespace {
 } // namespacce jj
 
 
+// ToDo: possible? or needed in .ino?
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
 
@@ -70,12 +61,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ANY:
     jj::Macros::anyKeyMacro(keyState);
     break;
-
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-  case MACRO_TIMEKEEPER:
-    jj::Macros::typeDateMacro(keyState);
-    break;
-#endif
 
   }
   return MACRO_NONE;
