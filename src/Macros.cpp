@@ -1,7 +1,6 @@
 // -*- mode: c++ -*-
 
 #include "Macros.h"
-#include <Kaleidoscope.h>
 #include <Kaleidoscope-Macros.h>
 
 #include "config.h"

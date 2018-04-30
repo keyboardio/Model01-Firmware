@@ -116,7 +116,6 @@ void setup() {
     &StalkerEffect,
     &LEDDigitalRainEffect,
 
-    &Macros,
     &OneShot,
     &EscapeOneShot,
     &MouseKeys,
