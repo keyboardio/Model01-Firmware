@@ -9,8 +9,15 @@
 
 #pragma once
 
+#include "config.h"
 #include "Macros.h"
 
+
+#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
+# define Key_TypeDate Key_TimekeeperDate
+#else 
+# define Key_TypeDate Key_NoKey
+#endif
 
 enum { QWERTY,
        FUNCTION_LEFT,
@@ -49,7 +56,7 @@ KEYMAPS(
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_Eszett,
    Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_UUmlaut,
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  Key_OUmlaut,      Key_AUmlaut,
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Key_Timekeeper,  Key_Backslash,    Key_Pipe,
+   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Key_TypeDate,    Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
    ___),
 
