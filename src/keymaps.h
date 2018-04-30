@@ -15,13 +15,13 @@
 
 #if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
 # define Key_TypeDate Key_TimekeeperDate
-#else 
+#else
 # define Key_TypeDate Key_NoKey
 #endif
 
 enum { QWERTY,
-       FUNCTION_LEFT,
-       FUNCTION_RIGHT,
+       FUNCTION_JJ,
+       FUNCTION_ORIGINAL,
        EMOJI,
      };
 
@@ -35,17 +35,16 @@ KEYMAPS(
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION_LEFT),
+   ShiftToLayer(FUNCTION_JJ),
 
    M(MACRO_ANY), Key_6, Key_7, Key_8,     Key_9,      Key_0,         ___,
    Key_Enter,    Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,
                  Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,
    OSL(EMOJI),   Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,
    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION_RIGHT)),
+   ShiftToLayer(FUNCTION_ORIGINAL)),
 
-
-  [FUNCTION_LEFT] =  KEYMAP_STACKED
+  [FUNCTION_JJ] =  KEYMAP_STACKED
   (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDToggleNext,
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
@@ -61,8 +60,8 @@ KEYMAPS(
    ___),
 
 
-  [FUNCTION_RIGHT] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDToggleNext,
+  [FUNCTION_ORIGINAL] =  KEYMAP_STACKED
+  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
    Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
@@ -74,7 +73,7 @@ KEYMAPS(
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
    Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
-   ___), 
+   ___),
 
 
   [EMOJI] =  KEYMAP_STACKED
