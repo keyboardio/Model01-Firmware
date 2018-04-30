@@ -17,6 +17,7 @@
 
 #include "LEDControl.h"
 #include "Macros.h"
+#include "Leader.h"
 
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
 # include <Kaleidoscope-Model01-TestMode.h>
@@ -68,6 +69,7 @@ void setup() {
   HostPowerManagement.enableWakeup();
 
   jj::Macros::configure();
+  jj::Leader::configure();
   jj::LEDControl::configure();
 }
 
