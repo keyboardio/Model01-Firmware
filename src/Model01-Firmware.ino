@@ -126,6 +126,8 @@ void setup() {
 
   jj::Macros::configure();
 
+  BootGreetingEffect.search_key = Key_LEDToggle;
+
   AlphaSquare.color = CRGB(255, 0, 0);
 
   LEDRainbowEffect.brightness(150); // 0-255
