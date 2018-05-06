@@ -8,7 +8,6 @@
 #include <Kaleidoscope/HostOS-select.h>
 #include <Kaleidoscope-HostPowerManagement.h>
 #include <Kaleidoscope-LangPack-German.h>
-#include <Kaleidoscope-Macros.h>
 #include <Kaleidoscope-MouseKeys.h>
 #include <Kaleidoscope-OneShot.h>
 #include <Kaleidoscope-Escape-OneShot.h>
@@ -16,18 +15,7 @@
 # include <Kaleidoscope-Timekeeper.h>
 #endif
 
-#include <Kaleidoscope-LEDControl.h>
-#include <Kaleidoscope-LEDToggle.h>
-#include <Kaleidoscope-LED-AlphaSquare.h>
-#include <Kaleidoscope-LED-Stalker.h>
-#include <Kaleidoscope-LEDEffect-BootGreeting.h>
-#include <Kaleidoscope-LEDEffect-Breathe.h>
-#include <Kaleidoscope-LEDEffect-Chase.h>
-#include <Kaleidoscope-LEDEffect-DigitalRain.h>
-#include <Kaleidoscope-LEDEffect-Rainbow.h>
-#include <Kaleidoscope-LEDEffect-SolidColor.h>
-#include <LED-Off.h>
-
+#include "LEDControl.h"
 #include "Macros.h"
 
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
@@ -36,59 +24,26 @@
 
 #include "keymaps.h"
 
-
-void selectInputSourceUS() {
-  if (HostOS.os() != kaleidoscope::hostos::OSX) {
-    return;
-  }
-  Macros.play(MACRO(D(LeftShift), D(LeftAlt), D(LeftGui), T(U), U(LeftShift), U(LeftAlt), U(LeftGui)));
-}
-
-void selectInputSourceUnicode() {
-  if (HostOS.os() != kaleidoscope::hostos::OSX) {
-    return;
-  }
-  Macros.play(MACRO(D(LeftShift), D(LeftAlt), D(LeftGui), T(H), U(LeftShift), U(LeftAlt), U(LeftGui)));
-}
-
-void toggleLedsOnSuspendResume(kaleidoscope::HostPowerManagement::Event event) {
+void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
   switch (event) {
   case kaleidoscope::HostPowerManagement::Suspend:
-    LEDControl.paused = true;
-    LEDControl.set_all_leds_to({0, 0, 0});
-    LEDControl.syncLeds();
+    jj::LEDControl::pauseLEDs();
     break;
   case kaleidoscope::HostPowerManagement::Resume:
-    LEDControl.paused = false;
-    LEDControl.refreshAll();
+    jj::LEDControl::unpauseLEDs();
     break;
   case kaleidoscope::HostPowerManagement::Sleep:
     break;
   }
 }
 
-void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
-  toggleLedsOnSuspendResume(event);
-}
-
-
 void emojiTypingWillStart() {
-  selectInputSourceUnicode();
+  jj::Macros::selectInputSourceUnicode();
 }
 
 void emojiTypingDidFinish() {
-  selectInputSourceUS();
+  jj::Macros::selectInputSourceUS();
 }
-
-
-static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
-static kaleidoscope::LEDSolidColor solidOrange(140, 70, 0);
-static kaleidoscope::LEDSolidColor solidYellow(130, 100, 0);
-static kaleidoscope::LEDSolidColor solidGreen(0, 160, 0);
-static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
-static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
-static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
-
 
 void setup() {
   Serial.begin(9600);
@@ -96,26 +51,12 @@ void setup() {
   Kaleidoscope.setup();
 
   Kaleidoscope.use(
-    &BootGreetingEffect,
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
     &TestMode,
 #endif
 #if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
     &Timekeeper,
 #endif
-    &LEDControl,
-    &LEDToggle,
-
-    &LEDOff,
-    &LEDRainbowEffect,
-    &LEDRainbowWaveEffect,
-    &LEDChaseEffect,
-    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet,
-    &LEDBreatheEffect,
-    &AlphaSquareEffect,
-    &StalkerEffect,
-    &LEDDigitalRainEffect,
-
     &OneShot,
     &EscapeOneShot,
     &MouseKeys,
@@ -124,22 +65,11 @@ void setup() {
     &German
   );
 
-  jj::Macros::configure();
-
-  BootGreetingEffect.search_key = Key_LEDToggle;
-
-  AlphaSquare.color = CRGB(255, 0, 0);
-
-  LEDRainbowEffect.brightness(150); // 0-255
-  LEDRainbowWaveEffect.brightness(150); // 0-255
-
-  StalkerEffect.variant = STALKER(BlazingTrail);
-
   HostPowerManagement.enableWakeup();
 
-  LEDOff.activate();
+  jj::Macros::configure();
+  jj::LEDControl::configure();
 }
-
 
 void loop() {
   Kaleidoscope.loop();
