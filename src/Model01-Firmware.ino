@@ -62,7 +62,8 @@ void setup() {
     &MouseKeys,
     &HostOS,
     &HostPowerManagement,
-    &German
+    &German,
+    &Emoji
   );
 
   HostPowerManagement.enableWakeup();
