@@ -65,6 +65,8 @@
 
 #include <Kaleidoscope-LED-ActiveModColor.h>
 
+#define LSCTRL(k) ((Key) { k.keyCode, k.flags | CTRL_HELD | SHIFT_HELD })
+
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -79,7 +81,8 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_TMUX
+       MACRO_TMUX,
+       MACRO_SHIFT
      };
 
 
@@ -141,14 +144,14 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_PageUp,   Key_A, Key_R, Key_S, Key_T, Key_D,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
    OSM(LeftControl), Key_Backspace, OSM(LeftGui), OSM(LeftShift),
-   OSL(CODING),
+   ShiftToLayer(CODING),
 
    M(MACRO_TMUX),  Key_6, Key_7, Key_8, Key_9, Key_0,         Key_KeypadNumLock,
    Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
                   Key_H, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,
    ShiftToLayer(CODING),  Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
    OSM(RightShift), OSM(LeftAlt), Key_Spacebar, OSM(RightControl),
-   OSL(CODING)),
+   ShiftToLayer(CODING)),
 
   [CODING] =  KEYMAP_STACKED
   (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDEffectNext,
@@ -159,7 +162,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___,
 
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
+   Consumer_PlaySlashPause,    LSCTRL(Key_LeftArrow),  LCTRL(Key_LeftArrow),     LCTRL(Key_RightArrow),    LSCTRL(Key_RightArrow),    Key_RightBracket, Key_F12,
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
    Key_PcApplication,          Key_Mute,               Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
@@ -235,6 +238,9 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_TMUX:
     return MACRODOWN(Dr(Key_LeftControl), Tr(Key_Spacebar), Ur(Key_LeftControl));
+    break;
+  case MACRO_SHIFT:
+    return MACRODOWN(Tr(Key_LeftShift), Tr(Key_LeftShift));
     break;
   }
   return MACRO_NONE;
