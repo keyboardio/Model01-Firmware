@@ -18,6 +18,7 @@
 #include "LEDControl.h"
 #include "Macros.h"
 #include "Leader.h"
+#include "Qukeys.h"
 
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
 # include <Kaleidoscope-Model01-TestMode.h>
@@ -50,28 +51,32 @@ void setup() {
   Serial.begin(9600);
 
   Kaleidoscope.setup();
-
+  
   Kaleidoscope.use(
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
     &TestMode,
-#endif
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-    &Timekeeper,
 #endif
     &OneShot,
     &EscapeOneShot,
     &MouseKeys,
     &HostOS,
-    &HostPowerManagement,
+    &HostPowerManagement
+  );
+    
+  jj::Qukeys::configure();
+  jj::Macros::configure();
+  jj::Leader::configure();
+  jj::LEDControl::configure();
+  
+  Kaleidoscope.use(
     &German,
+#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
+    &Timekeeper,
+#endif
     &Emoji
   );
 
   HostPowerManagement.enableWakeup();
-
-  jj::Macros::configure();
-  jj::Leader::configure();
-  jj::LEDControl::configure();
 }
 
 void loop() {

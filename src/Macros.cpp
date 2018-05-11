@@ -1,9 +1,9 @@
 // -*- mode: c++ -*-
 
 #include "Macros.h"
+#include "config.h"
 #include <Kaleidoscope-HostOS.h>
 
-#include "config.h"
 
 namespace jj {
 namespace Macros {

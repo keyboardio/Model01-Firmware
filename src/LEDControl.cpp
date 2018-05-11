@@ -1,6 +1,7 @@
 // -*- mode: c++ -*-
 
 #include "LEDControl.h"
+#include "config.h"
 #include <Kaleidoscope-LEDControl.h>
 #include <Kaleidoscope-LEDToggle.h>
 #include <Kaleidoscope-LED-AlphaSquare.h>
@@ -13,7 +14,6 @@
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <LED-Off.h>
 
-#include "config.h"
 
 namespace jj {
 namespace LEDControl {
