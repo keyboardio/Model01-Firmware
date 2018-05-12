@@ -51,7 +51,7 @@ void setup() {
   Serial.begin(9600);
 
   Kaleidoscope.setup();
-  
+
   Kaleidoscope.use(
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
     &TestMode,
@@ -62,12 +62,12 @@ void setup() {
     &HostOS,
     &HostPowerManagement
   );
-    
+
   jj::Qukeys::configure();
   jj::Macros::configure();
   jj::Leader::configure();
   jj::LEDControl::configure();
-  
+
   Kaleidoscope.use(
     &German,
 #if KALEIDOSCOPE_INCLUDE_TIMEKEEPER

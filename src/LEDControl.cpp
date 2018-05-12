@@ -14,6 +14,10 @@
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <LED-Off.h>
 
+#if KALEIDOSCOPE_INCLUDE_HEATMAP
+# include <Kaleidoscope-Heatmap.h>
+#endif
+
 
 namespace jj {
 namespace LEDControl {
@@ -42,6 +46,10 @@ void configure(void) {
     &::LEDControl,
     &::LEDToggle,
     &::LEDOff,
+
+#if KALEIDOSCOPE_INCLUDE_HEATMAP
+    &::HeatmapEffect,
+#endif
 
 #if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
     &::LEDRainbowEffect,
