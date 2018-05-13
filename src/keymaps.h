@@ -9,20 +9,25 @@
 
 #pragma once
 
-#include "config.h"
-#include "Macros.h"
-
+#if KALEIDOSCOPE_INCLUDE_EMOJI
+# define JJ_Emoji OSL(EMOJI)
+#else
+# define JJ_Emoji ___
+#endif
 
 #if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-# define Key_TypeDate Key_TimekeeperDate
+# define JJ_TypeDate Key_TimekeeperDate
 #else
-# define Key_TypeDate Key_NoKey
+# define JJ_TypeDate ___
 #endif
+
 
 enum { QWERTY,
        FUNCTION_JJ,
        FUNCTION_ORIGINAL,
+#if KALEIDOSCOPE_INCLUDE_EMOJI
        EMOJI,
+#endif
      };
 
 // *INDENT-OFF*
@@ -40,7 +45,7 @@ KEYMAPS(
    M(MACRO_ANY), Key_6, Key_7, Key_8,     Key_9,      Key_0,         ___,
    Key_Enter,    Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,
                  Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,
-   OSL(EMOJI),   Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,
+   JJ_Emoji,     Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,
    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
    ShiftToLayer(FUNCTION_ORIGINAL)),
 
@@ -55,7 +60,7 @@ KEYMAPS(
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_Eszett,
    Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_UUmlaut,
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  Key_OUmlaut,      Key_AUmlaut,
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Key_TypeDate,    Key_Backslash,    Key_Pipe,
+   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, JJ_TypeDate,     Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
    ___),
 
@@ -75,7 +80,7 @@ KEYMAPS(
    ___, ___, Key_Enter, ___,
    ___),
 
-
+#if KALEIDOSCOPE_INCLUDE_EMOJI
   [EMOJI] =  KEYMAP_STACKED
   (Key_EmojiCricket, Key_EmojiUnicornFace,   Key_EmojiEyes,  Key_EmojiSparkles,    ___,                ___,               ___,
    ___,              Key_EmojiBalloon,       Key_EmojiWave,  Key_EmojiFlushed,     Key_EmojiRocket,    Key_EmojiMetal,    ___,
@@ -89,7 +94,8 @@ KEYMAPS(
                         Key_EmojiMischievous, Key_EmojiJoyful,   Key_EmojiFlirty,      Key_EmojiConfident,        Key_EmojiHole,           ___,
    Key_EmojiBlush,      Key_EmojiNerd,        Key_EmojiAnnoyed,  Key_EmojiWink,        Key_EmojiHourglassFlowing, Key_EmojiConstruction,   ___,
    ___, ___, ___, ___,
-   ___)
+   ___),
+#endif
 
 	) // KEYMAPS(
 

@@ -1,8 +1,6 @@
 // -*- mode: c++ -*-
 
 #include "Macros.h"
-#include "config.h"
-#include <Kaleidoscope-HostOS.h>
 
 
 namespace jj {
@@ -38,20 +36,6 @@ void anyKeyMacro(uint8_t keyState) {
   if (keyIsPressed(keyState)) {
     kaleidoscope::hid::pressKey(lastKey);
   }
-}
-
-void selectInputSourceUS(void) {
-  if (::HostOS.os() != kaleidoscope::hostos::OSX) {
-    return;
-  }
-  ::Macros.play(MACRO(D(LeftShift), D(LeftAlt), D(LeftGui), T(U), U(LeftShift), U(LeftAlt), U(LeftGui)));
-}
-
-void selectInputSourceUnicode(void) {
-  if (::HostOS.os() != kaleidoscope::hostos::OSX) {
-    return;
-  }
-  ::Macros.play(MACRO(D(LeftShift), D(LeftAlt), D(LeftGui), T(H), U(LeftShift), U(LeftAlt), U(LeftGui)));
 }
 
 namespace {
