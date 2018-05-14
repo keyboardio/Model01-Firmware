@@ -1,7 +1,6 @@
 // -*- mode: c++ -*-
 
-#include "Emoji.h"
-#include <Kaleidoscope-Emoji.h>
+#include "Specials.h"
 #include <Kaleidoscope-HostOS.h>
 #include <Kaleidoscope-Macros.h>
 
@@ -9,7 +8,7 @@
 
 
 namespace jj {
-namespace Emoji {
+namespace Specials {
 namespace {
 
 }
@@ -18,14 +17,19 @@ namespace {
 
 
 namespace jj {
-namespace Emoji {
+namespace Specials {
 
 void configure(void) {
+  Kaleidoscope.use(
 #if KALEIDOSCOPE_INCLUDE_EMOJI
-  Kaleidoscope.use(&::Emoji);
+    &::Emoji,
 #endif
+#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
+    &::Timekeeper,
+#endif
+    &::German
+  );
 }
-
 
 void selectInputSourceUS(void) {
   if (::HostOS.os() != kaleidoscope::hostos::OSX) {
@@ -50,9 +54,9 @@ namespace {
 
 
 void emojiTypingWillStart() {
-  jj::Emoji::selectInputSourceUnicode();
+  jj::Specials::selectInputSourceUnicode();
 }
 
 void emojiTypingDidFinish() {
-  jj::Emoji::selectInputSourceUS();
+  jj::Specials::selectInputSourceUS();
 }

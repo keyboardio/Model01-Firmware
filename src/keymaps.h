@@ -9,6 +9,7 @@
 
 #pragma once
 
+#include "config.h"
 
 #if KALEIDOSCOPE_INCLUDE_EMOJI
 # define JJ_Emoji OSL(EMOJI)

@@ -1,23 +1,15 @@
 // -*- mode: c++ -*-
 
-#include "config.h"
 
 #include <Kaleidoscope.h>
-#include <Kaleidoscope-LangPack-German.h>
-
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-# include <Kaleidoscope-Timekeeper.h>
-#endif
-
 #include "System.h"
 #include "LEDControl.h"
 #include "Macros.h"
 #include "Leader.h"
 #include "Qukeys.h"
-#include "Emoji.h"
+#include "Specials.h"
 
 #include "keymaps.h"
-
 
 void setup() {
   Serial.begin(9600);
@@ -29,15 +21,7 @@ void setup() {
   jj::Macros::configure();
   jj::Leader::configure();
   jj::LEDControl::configure();
-  jj::Emoji::configure();
-
-  Kaleidoscope.use(
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-    &Timekeeper,
-#endif
-    &German
-  );
-
+  jj::Specials::configure();
 }
 
 void loop() {
