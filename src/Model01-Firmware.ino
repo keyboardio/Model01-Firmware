@@ -3,22 +3,13 @@
 #include "config.h"
 
 #include <Kaleidoscope.h>
-#include <Kaleidoscope-HostOS.h>
-#include <Kaleidoscope/HostOS-select.h>
-#include <Kaleidoscope-HostPowerManagement.h>
 #include <Kaleidoscope-LangPack-German.h>
-#include <Kaleidoscope-MouseKeys.h>
-#include <Kaleidoscope-OneShot.h>
-#include <Kaleidoscope-Escape-OneShot.h>
 
 #if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
 # include <Kaleidoscope-Timekeeper.h>
 #endif
 
-#if KALEIDOSCOPE_INCLUDE_TEST_MODE
-# include <Kaleidoscope-Model01-TestMode.h>
-#endif
-
+#include "System.h"
 #include "LEDControl.h"
 #include "Macros.h"
 #include "Leader.h"
@@ -27,37 +18,14 @@
 
 #include "keymaps.h"
 
-void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
-  switch (event) {
-  case kaleidoscope::HostPowerManagement::Suspend:
-    jj::LEDControl::pauseLEDs();
-    break;
-  case kaleidoscope::HostPowerManagement::Resume:
-    jj::LEDControl::unpauseLEDs();
-    break;
-  case kaleidoscope::HostPowerManagement::Sleep:
-    break;
-  }
-}
-
 
 void setup() {
   Serial.begin(9600);
 
   Kaleidoscope.setup();
 
-  Kaleidoscope.use(
-#if KALEIDOSCOPE_INCLUDE_TEST_MODE
-    &TestMode,
-#endif
-    &OneShot,
-    &EscapeOneShot,
-    &MouseKeys,
-    &HostOS,
-    &HostPowerManagement
-  );
-
   jj::Qukeys::configure();
+  jj::System::configure();
   jj::Macros::configure();
   jj::Leader::configure();
   jj::LEDControl::configure();
@@ -70,7 +38,6 @@ void setup() {
     &German
   );
 
-  HostPowerManagement.enableWakeup();
 }
 
 void loop() {

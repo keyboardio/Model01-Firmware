@@ -4,6 +4,7 @@
 #include "config.h"
 #include <Kaleidoscope-LEDControl.h>
 #include <Kaleidoscope-LEDToggle.h>
+#include <Kaleidoscope-LED-ActiveModColor.h>
 #include <Kaleidoscope-LED-AlphaSquare.h>
 #include <Kaleidoscope-LED-Stalker.h>
 #include <Kaleidoscope-LEDEffect-BootGreeting.h>
@@ -52,6 +53,7 @@ void configure(void) {
 #endif
 
 #if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
+    &::ActiveModColorEffect,
     &::LEDRainbowEffect,
     &::LEDRainbowWaveEffect,
     &::LEDChaseEffect,
@@ -61,9 +63,10 @@ void configure(void) {
     &::LEDDigitalRainEffect,
     &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet
 #else
+    &::ActiveModColorEffect,
     &::LEDBreatheEffect,
     &::LEDDigitalRainEffect,
-    &solidIndigo
+    &solidIndigo,
 #endif
   );
 

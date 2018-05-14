@@ -9,6 +9,7 @@
 
 #pragma once
 
+
 #if KALEIDOSCOPE_INCLUDE_EMOJI
 # define JJ_Emoji OSL(EMOJI)
 #else
