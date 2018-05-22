@@ -162,7 +162,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___,
 
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    LSCTRL(Key_LeftArrow),  LCTRL(Key_LeftArrow),     LCTRL(Key_RightArrow),    LSCTRL(Key_RightArrow),    Key_RightBracket, Key_F12,
+   Consumer_PlaySlashPause,    LSCTRL(Key_LeftArrow),  LCTRL(Key_LeftArrow),     LCTRL(Key_RightArrow),    LSCTRL(Key_RightArrow),    Key_mouseBtnM, Key_F12,
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
    Key_PcApplication,          Key_Mute,               Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
