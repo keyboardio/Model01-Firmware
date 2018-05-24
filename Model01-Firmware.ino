@@ -81,7 +81,6 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_TMUX,
        MACRO_SHIFT
      };
 
@@ -139,14 +138,14 @@ enum { COLEMAK, CODING, NUMPAD }; // layers
 const Key keymaps[][ROWS][COLS] PROGMEM = {
 
    [COLEMAK] = KEYMAP_STACKED
-(___,          Key_1, Key_2, Key_3, Key_4, Key_5, M(MACRO_TMUX),
+(___,          Key_1, Key_2, Key_3, Key_4, Key_5, LCTRL(Key_Spacebar),
    Key_Backtick, Key_Q, Key_W, Key_F, Key_P, Key_G, Key_Tab,
    Key_PageUp,   Key_A, Key_R, Key_S, Key_T, Key_D,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
    OSM(LeftControl), Key_Backspace, OSM(LeftGui), OSM(LeftShift),
    ShiftToLayer(CODING),
 
-   M(MACRO_TMUX),  Key_6, Key_7, Key_8, Key_9, Key_0,         Key_KeypadNumLock,
+   LCTRL(Key_Spacebar),  Key_6, Key_7, Key_8, Key_9, Key_0,         Key_KeypadNumLock,
    Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
                   Key_H, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,
    ShiftToLayer(CODING),  Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
@@ -221,9 +220,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     versionInfoMacro(keyState);
     break;
 
-  case MACRO_TMUX:
-    return MACRODOWN(Dr(Key_LeftControl), Tr(Key_Spacebar), Ur(Key_LeftControl));
-    break;
   case MACRO_SHIFT:
     return MACRODOWN(Tr(Key_LeftShift), Tr(Key_LeftShift));
     break;
