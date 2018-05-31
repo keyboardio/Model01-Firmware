@@ -155,8 +155,8 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   [CODING] =  KEYMAP_STACKED
   (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDEffectNext,
    Key_Tab,  TOPSY(1), TOPSY(2), Key_LeftCurlyBracket,     Key_RightCurlyBracket,  Key_Pipe, Key_mouseWarpNE,
-   Key_Home, TOPSY(3), TOPSY(4), Key_KeypadLeftParen, Key_KeypadRightParen, Key_Backtick,
-   Key_End,  TOPSY(5),  TOPSY(6),  Key_LeftBracket,        Key_RightBracket, TOPSY(Backtick),  Key_mouseWarpSE,
+   Key_Home, TOPSY(3), TOPSY(4), Key_KeypadLeftParen, Key_KeypadRightParen, Key_Backslash,
+   Key_End,  TOPSY(5),  TOPSY(6),  Key_LeftBracket,        Key_RightBracket, TOPSY(Minus),  Key_mouseWarpSE,
    ___, Key_Delete, ___, ___,
    ___,
 
