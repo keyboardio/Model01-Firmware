@@ -330,8 +330,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
   MouseKeys,
 
-  // The HostPowerManagement plugin enables waking up the host from suspend,
-  // and allows us to turn LEDs off when it goes to sleep.
+  // The HostPowerManagement plugin allows us to turn LEDs off when then host
+  // goes to sleep, and resume them when it wakes up.
   HostPowerManagement
 );
 
@@ -359,9 +359,6 @@ void setup() {
   // called 'BlazingTrail'. For details on other options,
   // see https://github.com/keyboardio/Kaleidoscope-LED-Stalker
   StalkerEffect.variant = STALKER(BlazingTrail);
-
-  // We want the keyboard to be able to wake the host up from suspend.
-  HostPowerManagement.enableWakeup();
 
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share
