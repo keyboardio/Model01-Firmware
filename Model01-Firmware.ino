@@ -59,6 +59,11 @@
 // Support for host power management (suspend & wakeup)
 #include "Kaleidoscope-HostPowerManagement.h"
 
+// Support for magic combos (key chrods that trigger an action)
+#include "Kaleidoscope-MagicCombo.h"
+
+// Support for USB quirks, like changing the key state report protocol
+#include "Kaleidoscope-USB-Quirks.h"
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
@@ -279,6 +284,49 @@ void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event ev
   toggleLedsOnSuspendResume(event);
 }
 
+/** This 'enum' is a list of all the magic combos used by the Model 01's
+ * firmware The names aren't particularly important. What is important is that
+ * each is unique.
+ *
+ * These are the names of your magic combos. They'll be used in two places.
+ *
+ * The first is in the magic combo list, that pairs a name (or index, really)
+ * with keys.
+ *
+ * The second is in the 'switch' statement in the 'magicComboActions' function.
+ * That switch statement actually runs the code associated with the combo, when
+ * the combo is recognised.
+ */
+enum { COMBO_PROTOCOL_TOGGLE };
+
+// Key combinations we want special actions for, to be used with the MagicCombo
+// plugin.
+static const kaleidoscope::MagicCombo::combo_t magic_combos[] PROGMEM = {
+  [COMBO_PROTOCOL_TOGGLE] = {
+    R3C6 | R2C6 | R3C7,  // Left Fn + Esc + Shift
+    0
+  },
+  {0, 0}  // End-of-list marker.
+};
+
+/** magicComboActions dispatches combo events the MagicCombo plugin recognises.
+
+    The first argument is the index of the combination, the next two are the
+    left- and right-hand states, as bit maps. For most cases, the index is
+    enough to decide how to handle the combination.
+
+    The 'switch' statement should have a 'case' for each entry of the combo
+    enum. Each 'case' statement should call out to a function to handle the
+    combination in question.
+*/
+void magicComboActions(uint8_t combo_index, uint32_t left_hand, uint32_t right_hand) {
+  switch (combo_index) {
+  case COMBO_PROTOCOL_TOGGLE:
+    USBQuirks.toggleKeyboardProtocol();
+    break;
+  }
+}
+
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
 // added in the order they're listed here.
@@ -332,7 +380,16 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The HostPowerManagement plugin allows us to turn LEDs off when then host
   // goes to sleep, and resume them when it wakes up.
-  HostPowerManagement
+  HostPowerManagement,
+
+  // The MagicCombo plugin lets you use key combinations to trigger custom
+  // actions - a bit like Macros, but use multiple keys instead of one.
+  MagicCombo,
+
+  // The USBQuriks plugin lets you do some quirky business with USB, such as
+  // toggling the key report protocol between Boot (used by BIOSes) and Report
+  // (NKRO).
+  USBQuirks
 );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
@@ -359,6 +416,10 @@ void setup() {
   // called 'BlazingTrail'. For details on other options,
   // see https://github.com/keyboardio/Kaleidoscope-LED-Stalker
   StalkerEffect.variant = STALKER(BlazingTrail);
+
+  // For the MagicCombo plugin to work, we need to tell it what combos we care
+  // about.
+  MagicCombo.magic_combos = magic_combos;
 
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share
