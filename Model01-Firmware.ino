@@ -288,44 +288,22 @@ void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event ev
  * firmware The names aren't particularly important. What is important is that
  * each is unique.
  *
- * These are the names of your magic combos. They'll be used in two places.
- *
- * The first is in the magic combo list, that pairs a name (or index, really)
- * with keys.
- *
- * The second is in the 'switch' statement in the 'magicComboActions' function.
- * That switch statement actually runs the code associated with the combo, when
- * the combo is recognised.
+ * These are the names of your magic combos. They will be used by the
+ * `USE_MAGIC_COMBOS` call below.
  */
 enum { COMBO_PROTOCOL_TOGGLE };
 
-// Key combinations we want special actions for, to be used with the MagicCombo
-// plugin.
-static const kaleidoscope::MagicCombo::combo_t magic_combos[] PROGMEM = {
-  [COMBO_PROTOCOL_TOGGLE] = {
-    R3C6 | R2C6 | R3C7,  // Left Fn + Esc + Shift
-    0
-  },
-  {0, 0}  // End-of-list marker.
-};
-
-/** magicComboActions dispatches combo events the MagicCombo plugin recognises.
-
-    The first argument is the index of the combination, the next two are the
-    left- and right-hand states, as bit maps. For most cases, the index is
-    enough to decide how to handle the combination.
-
-    The 'switch' statement should have a 'case' for each entry of the combo
-    enum. Each 'case' statement should call out to a function to handle the
-    combination in question.
-*/
-void magicComboActions(uint8_t combo_index, uint32_t left_hand, uint32_t right_hand) {
-  switch (combo_index) {
-  case COMBO_PROTOCOL_TOGGLE:
-    USBQuirks.toggleKeyboardProtocol();
-    break;
-  }
+static void toggleKeyboardProtocol(uint8_t combo_index) {
+  USBQuirks.toggleKeyboardProtocol();
 }
+
+/** Magic combo list, a list of key combo and action pairs the firmware should
+ * recognise.
+ */
+USE_MAGIC_COMBOS([COMBO_PROTOCOL_TOGGLE] = {.action = toggleKeyboardProtocol,
+                                            // Left Fn + Esc + Shift
+                                            .keys = { R3C6, R2C6, R3C7 }
+                                           });
 
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
@@ -416,10 +394,6 @@ void setup() {
   // called 'BlazingTrail'. For details on other options,
   // see https://github.com/keyboardio/Kaleidoscope-LED-Stalker
   StalkerEffect.variant = STALKER(BlazingTrail);
-
-  // For the MagicCombo plugin to work, we need to tell it what combos we care
-  // about.
-  MagicCombo.magic_combos = magic_combos;
 
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share
