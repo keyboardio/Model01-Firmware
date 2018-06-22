@@ -39,9 +39,6 @@ void configure(void) {
     &::HostOS,
     &::HostPowerManagement
   );
-
-
-  ::HostPowerManagement.enableWakeup();
 }
 
 
