@@ -1,10 +1,12 @@
 // -*- mode: c++ -*-
 
 #include "Specials.h"
+#include "config.h"
 #include <Kaleidoscope-HostOS.h>
 #include <Kaleidoscope-Macros.h>
-
-#include "config.h"
+#include <Kaleidoscope-LangPack-German.h>
+#include <Kaleidoscope-Emoji.h>
+#include <Kaleidoscope-Timekeeper.h>
 
 
 namespace jj {
@@ -20,15 +22,6 @@ namespace jj {
 namespace Specials {
 
 void configure(void) {
-  Kaleidoscope.use(
-#if KALEIDOSCOPE_INCLUDE_EMOJI
-    &::Emoji,
-#endif
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-    &::Timekeeper,
-#endif
-    &::German
-  );
 }
 
 void selectInputSourceUS(void) {

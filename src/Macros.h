@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include <Kaleidoscope-Macros.h>
-
 enum { MACRO_VERSION_INFO,
        MACRO_ANY,
      };

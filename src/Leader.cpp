@@ -1,10 +1,7 @@
 // -*- mode: c++ -*-
 
 #include "Leader.h"
-#include "config.h"
-#if KALEIDOSCOPE_INCLUDE_LEADER
-# include <Kaleidoscope-Leader.h>
-#endif
+#include <Kaleidoscope-Leader.h>
 
 
 namespace jj {
@@ -20,9 +17,7 @@ namespace jj {
 namespace Leader {
 
 void configure(void) {
-#if KALEIDOSCOPE_INCLUDE_LEADER
-  Kaleidoscope.use(&::Leader);
-#endif
+
 }
 
 

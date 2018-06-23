@@ -32,44 +32,7 @@ namespace {
 namespace jj {
 namespace LEDControl {
 
-static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
-static kaleidoscope::LEDSolidColor solidOrange(140, 70, 0);
-static kaleidoscope::LEDSolidColor solidYellow(130, 100, 0);
-static kaleidoscope::LEDSolidColor solidGreen(0, 160, 0);
-static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
-static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
-static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
-
 void configure(void) {
-
-  Kaleidoscope.use(
-    &::BootGreetingEffect,
-    &::LEDControl,
-    &::LEDToggle,
-    &::LEDOff,
-
-#if KALEIDOSCOPE_INCLUDE_HEATMAP
-    &::HeatmapEffect,
-#endif
-
-#if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
-    &::ActiveModColorEffect,
-    &::LEDRainbowEffect,
-    &::LEDRainbowWaveEffect,
-    &::LEDChaseEffect,
-    &::LEDBreatheEffect,
-    &::AlphaSquareEffect,
-    &::StalkerEffect,
-    &::LEDDigitalRainEffect,
-    &solidRed, &solidOrange, &solidYellow, &solidGreen, &solidBlue, &solidIndigo, &solidViolet
-#else
-    &::ActiveModColorEffect,
-    &::LEDBreatheEffect,
-    &::LEDDigitalRainEffect,
-    &solidIndigo,
-#endif
-  );
-
   ::BootGreetingEffect.search_key = Key_LEDToggle;
 
 #if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS

@@ -2,10 +2,6 @@
 
 #pragma once
 
-#include <Kaleidoscope-MouseKeys.h>
-#include <Kaleidoscope-OneShot.h>
-
-
 namespace jj {
 namespace System {
 

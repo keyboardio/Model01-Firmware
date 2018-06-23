@@ -2,7 +2,6 @@
 
 #pragma once
 
-
 namespace jj {
 namespace Qukeys {
 

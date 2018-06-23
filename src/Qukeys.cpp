@@ -21,8 +21,6 @@ namespace Qukeys {
 
 void configure(void) {
 #if KALEIDOSCOPE_INCLUDE_QUKEYS
-  Kaleidoscope.use(&::Qukeys);
-
   // QUKEYS(
   //   kaleidoscope::Qukey(0, 2, 1, Key_LeftGui),      // A/cmd
   //   kaleidoscope::Qukey(0, 2, 2, Key_LeftAlt),      // S/alt

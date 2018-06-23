@@ -2,6 +2,7 @@
 
 #include "Macros.h"
 #include "config.h"
+#include <Kaleidoscope-Macros.h>
 
 
 namespace jj {
@@ -17,7 +18,7 @@ namespace jj {
 namespace Macros {
 
 void configure(void) {
-  Kaleidoscope.use(&::Macros);
+
 }
 
 void versionInfoMacro(uint8_t keyState) {
