@@ -1,12 +1,16 @@
 // -*- mode: c++ -*-
 
-#include "Specials.h"
 #include "config.h"
+
+#include "Specials.h"
 #include <Kaleidoscope-HostOS.h>
 #include <Kaleidoscope-Macros.h>
-#include <Kaleidoscope-LangPack-German.h>
-#include <Kaleidoscope-Emoji.h>
-#include <Kaleidoscope-Timekeeper.h>
+#if KALEIDOSCOPE_INCLUDE_EMOJI
+# include <Kaleidoscope-Emoji.h>
+#endif
+#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
+# include <Kaleidoscope-Timekeeper.h>
+#endif
 
 
 namespace jj {
@@ -42,7 +46,7 @@ namespace {
 
 
 } // namespace
-} // namespace Emoji
+} // namespace Specials
 } // namespacce jj
 
 

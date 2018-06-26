@@ -1,7 +1,8 @@
 // -*- mode: c++ -*-
 
-#include "LEDControl.h"
 #include "config.h"
+
+#include "LEDControl.h"
 #include <Kaleidoscope-LEDControl.h>
 #include <Kaleidoscope-LEDToggle.h>
 #include <Kaleidoscope-LED-ActiveModColor.h>

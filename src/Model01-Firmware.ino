@@ -27,8 +27,13 @@
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <LED-Off.h>
 #include <Kaleidoscope-Model01-TestMode.h>
-#include <Kaleidoscope-Emoji.h>
-#include <Kaleidoscope-Timekeeper.h>
+
+#if KALEIDOSCOPE_INCLUDE_EMOJI
+# include <Kaleidoscope-Emoji.h>
+#endif
+#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
+# include <Kaleidoscope-Timekeeper.h>
+#endif
 
 #include "System.h"
 #include "LEDControl.h"
@@ -40,11 +45,11 @@
 #include "keymaps.h"
 
 KALEIDOSCOPE_INIT_PLUGINS(
-#if KALEIDOSCOPE_INCLUDE_QUKEYS
-  Qukeys,
-#endif
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
   TestMode,
+#endif
+#if KALEIDOSCOPE_INCLUDE_QUKEYS
+  Qukeys,
 #endif
   OneShot,
   EscapeOneShot,

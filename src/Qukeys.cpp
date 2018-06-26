@@ -1,7 +1,8 @@
 // -*- mode: c++ -*-
 
-#include "Qukeys.h"
 #include "config.h"
+
+#include "Qukeys.h"
 #if KALEIDOSCOPE_INCLUDE_QUKEYS
 # include <Kaleidoscope-Qukeys.h>
 #endif

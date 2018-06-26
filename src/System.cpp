@@ -1,8 +1,9 @@
 // -*- mode: c++ -*-
 
+#include "config.h"
+
 #include "System.h"
 #include "LEDControl.h"
-#include "config.h"
 #include <Kaleidoscope-HostPowerManagement.h>
 
 

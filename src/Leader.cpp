@@ -1,7 +1,11 @@
 // -*- mode: c++ -*-
 
+#include "config.h"
+
 #include "Leader.h"
-#include <Kaleidoscope-Leader.h>
+#if KALEIDOSCOPE_INCLUDE_LEADER
+# include <Kaleidoscope-Leader.h>
+#endif
 
 
 namespace jj {
