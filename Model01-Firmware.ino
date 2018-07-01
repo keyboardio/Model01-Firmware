@@ -291,7 +291,11 @@ void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event ev
  * These are the names of your magic combos. They will be used by the
  * `USE_MAGIC_COMBOS` call below.
  */
-enum { COMBO_PROTOCOL_TOGGLE };
+enum {
+  // Toggle between Boot (6-key rollover; for BIOSes and early boot) and NKRO
+  // mode.
+  COMBO_TOGGLE_NKRO_MODE
+};
 
 static void toggleKeyboardProtocol(uint8_t combo_index) {
   USBQuirks.toggleKeyboardProtocol();
@@ -300,10 +304,10 @@ static void toggleKeyboardProtocol(uint8_t combo_index) {
 /** Magic combo list, a list of key combo and action pairs the firmware should
  * recognise.
  */
-USE_MAGIC_COMBOS([COMBO_PROTOCOL_TOGGLE] = {.action = toggleKeyboardProtocol,
-                                            // Left Fn + Esc + Shift
-                                            .keys = { R3C6, R2C6, R3C7 }
-                                           });
+USE_MAGIC_COMBOS([COMBO_TOGGLE_NKRO_MODE] = {.action = toggleKeyboardProtocol,
+                                             // Left Fn + Esc + Shift
+                                             .keys = { R3C6, R2C6, R3C7 }
+                                            });
 
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
@@ -361,12 +365,14 @@ KALEIDOSCOPE_INIT_PLUGINS(
   HostPowerManagement,
 
   // The MagicCombo plugin lets you use key combinations to trigger custom
-  // actions - a bit like Macros, but use multiple keys instead of one.
+  // actions - a bit like Macros, but triggered by pressing multiple keys at the
+  // same time.
   MagicCombo,
 
-  // The USBQuriks plugin lets you do some quirky business with USB, such as
-  // toggling the key report protocol between Boot (used by BIOSes) and Report
-  // (NKRO).
+  // The USBQuirks plugin lets you do some things with USB that we aren't
+  // comfortable - or able - to do automatically, but can be useful
+  // nevertheless. Such as toggling the key report protocol between Boot (used
+  // by BIOSes) and Report (NKRO).
   USBQuirks
 );
 
