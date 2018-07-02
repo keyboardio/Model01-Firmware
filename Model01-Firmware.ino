@@ -297,6 +297,10 @@ enum {
   COMBO_TOGGLE_NKRO_MODE
 };
 
+/** A tiny wrapper, to be used by MagicCombo.
+ * This simply toggles the keyboard protocol via USBQuirks, and wraps it within
+ * a function with an unused argument, to match what MagicCombo expects.
+ */
 static void toggleKeyboardProtocol(uint8_t combo_index) {
   USBQuirks.toggleKeyboardProtocol();
 }
@@ -304,10 +308,10 @@ static void toggleKeyboardProtocol(uint8_t combo_index) {
 /** Magic combo list, a list of key combo and action pairs the firmware should
  * recognise.
  */
-USE_MAGIC_COMBOS([COMBO_TOGGLE_NKRO_MODE] = {.action = toggleKeyboardProtocol,
-                                             // Left Fn + Esc + Shift
-                                             .keys = { R3C6, R2C6, R3C7 }
-                                            });
+USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
+                  // Left Fn + Esc + Shift
+                  .keys = { R3C6, R2C6, R3C7 }
+                 });
 
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
