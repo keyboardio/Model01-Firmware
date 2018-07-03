@@ -64,11 +64,11 @@ KALEIDOSCOPE_INIT_PLUGINS(
   LEDControl,
   LEDToggle,
   LEDOff,
+  ActiveModColorEffect,
 #if KALEIDOSCOPE_INCLUDE_HEATMAP
   HeatmapEffect,
 #endif
 #if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
-  ActiveModColorEffect,
   LEDRainbowEffect,
   LEDRainbowWaveEffect,
   LEDChaseEffect,
@@ -84,10 +84,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   jj::LEDControl::solidIndigo,
   jj::LEDControl::solidViolet,
 #else
-  ActiveModColorEffect,
+  jj::LEDControl::solidRed,
+  jj::LEDControl::solidIndigo,
   LEDBreatheEffect,
   LEDDigitalRainEffect,
-  jj::LEDControl::solidIndigo,
 #endif
 #if KALEIDOSCOPE_INCLUDE_EMOJI
   Emoji,
