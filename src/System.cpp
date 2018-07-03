@@ -5,6 +5,7 @@
 #include "System.h"
 #include "LEDControl.h"
 #include <Kaleidoscope-HostPowerManagement.h>
+#include <Kaleidoscope-HostOS.h>
 
 
 namespace jj {
@@ -20,7 +21,9 @@ namespace jj {
 namespace System {
 
 void configure(void) {
-
+#if !KALEIDOSCOPE_HOSTOS_GUESSER
+  ::HostOS.os(kaleidoscope::hostos::OSX);
+#endif
 }
 
 
