@@ -84,6 +84,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   jj::LEDControl::solidIndigo,
   jj::LEDControl::solidViolet,
 #else
+  jj::LEDControl::solidLowWhite,
   jj::LEDControl::solidRed,
   jj::LEDControl::solidIndigo,
   LEDBreatheEffect,
