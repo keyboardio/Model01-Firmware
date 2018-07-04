@@ -68,27 +68,22 @@ KALEIDOSCOPE_INIT_PLUGINS(
 #if KALEIDOSCOPE_INCLUDE_HEATMAP
   HeatmapEffect,
 #endif
-#if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
-  LEDRainbowEffect,
-  LEDRainbowWaveEffect,
-  LEDChaseEffect,
-  LEDBreatheEffect,
-  AlphaSquareEffect,
-  StalkerEffect,
-  LEDDigitalRainEffect,
-  jj::LEDControl::solidRed,
-  jj::LEDControl::solidOrange,
-  jj::LEDControl::solidYellow,
-  jj::LEDControl::solidGreen,
-  jj::LEDControl::solidBlue,
-  jj::LEDControl::solidIndigo,
-  jj::LEDControl::solidViolet,
-#else
   jj::LEDControl::solidLowWhite,
   jj::LEDControl::solidRed,
   jj::LEDControl::solidIndigo,
   LEDBreatheEffect,
   LEDDigitalRainEffect,
+#if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
+  LEDRainbowEffect,
+  LEDRainbowWaveEffect,
+  LEDChaseEffect,
+  AlphaSquareEffect,
+  StalkerEffect,
+  jj::LEDControl::solidOrange,
+  jj::LEDControl::solidYellow,
+  jj::LEDControl::solidGreen,
+  jj::LEDControl::solidBlue,
+  jj::LEDControl::solidViolet,
 #endif
 #if KALEIDOSCOPE_INCLUDE_EMOJI
   Emoji,
