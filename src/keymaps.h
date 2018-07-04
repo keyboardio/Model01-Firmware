@@ -86,7 +86,7 @@ KEYMAPS(
   [EMOJI] =  KEYMAP_STACKED
   (Key_EmojiCricket, Key_EmojiUnicornFace,   Key_EmojiEyes,  Key_EmojiSparkles,    ___,                ___,               ___,
    ___,              Key_EmojiBalloon,       Key_EmojiWave,  Key_EmojiFlushed,     Key_EmojiRocket,    Key_EmojiMetal,    ___,
-   ___,              Key_EmojiWarning,       Key_EmojiSmile, Key_EmojiThumbsdown,  Key_EmojiSunflower, Key_EmojiGrimaced,
+   ___,              Key_EmojiWarning,       Key_EmojiBlush, Key_EmojiThumbsdown,  Key_EmojiSunflower, Key_EmojiGrimaced,
    ___,              Key_EmojiExplodingHead, Key_EmojiPeach, Key_EmojiCrazy,       Key_EmojiVulcan,    Key_EmojiBoom,     ___,
    ___, ___, ___, ___,
    ___,
