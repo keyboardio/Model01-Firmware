@@ -59,7 +59,7 @@
 // Support for host power management (suspend & wakeup)
 #include "Kaleidoscope-HostPowerManagement.h"
 
-// Support for magic combos (key chrods that trigger an action)
+// Support for magic combos (key chords that trigger an action)
 #include "Kaleidoscope-MagicCombo.h"
 
 // Support for USB quirks, like changing the key state report protocol
