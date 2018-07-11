@@ -38,20 +38,8 @@
 // Support for LED modes that set all LEDs to a single color
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
 
-// Support for an LED mode that makes all the LEDs 'breathe'
-#include "Kaleidoscope-LEDEffect-Breathe.h"
-
-// Support for an LED mode that makes a red pixel chase a blue pixel across the keyboard
-#include "Kaleidoscope-LEDEffect-Chase.h"
-
-// Support for LED modes that pulse the keyboard's LED in a rainbow pattern
-#include "Kaleidoscope-LEDEffect-Rainbow.h"
-
 // Support for an LED mode that lights up the keys as you press them
 #include "Kaleidoscope-LED-Stalker.h"
-
-// Support for an LED mode that prints the keys you press in letters 4px high
-#include "Kaleidoscope-LED-AlphaSquare.h"
 
 // Support for Keyboardio's internal keyboard testing mode
 #include "Kaleidoscope-Model01-TestMode.h"
@@ -64,6 +52,13 @@
 
 // Support for USB quirks, like changing the key state report protocol
 #include "Kaleidoscope-USB-Quirks.h"
+
+// Support for plugins
+#include "Kaleidoscope-OneShot.h"
+#include "Kaleidoscope-Escape-OneShot.h"
+#include "Kaleidoscope-LED-ActiveModColor.h"
+#include "Kaleidoscope-ShapeShifter.h"
+#include "Kaleidoscope-TopsyTurvy.h"
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
@@ -78,9 +73,17 @@
   * a macro key is pressed.
   */
 
-enum { MACRO_VERSION_INFO,
-       MACRO_ANY
-     };
+enum {
+  MACRO_VERSION_INFO,
+  MACRO_ANY,
+  MACRO_HYPER,
+  MACRO_MEHA,
+  MACRO_MEHB,
+  MACRO_MEHC,
+  MACRO_MEHD,
+  MACRO_CMD_CTRL,
+  MACRO_FAT_ARROW
+};
 
 
 
@@ -126,7 +129,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { QWERTY, NUMPAD, FUNCTION }; // layers
+enum { DVORAK, NUMPAD, FUNCTION }; // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -135,53 +138,58 @@ enum { QWERTY, NUMPAD, FUNCTION }; // layers
 
 KEYMAPS(
 
-  [QWERTY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
+  [DVORAK] = KEYMAP_STACKED
+  (
+    ___,          Key_1,          Key_2,       Key_3,      Key_4, Key_5, Key_LEDEffectNext,
+    Key_Backtick, Key_Quote,      Key_Comma,   Key_Period, Key_P, Key_Y, Key_Tab,
+    Key_Escape,   Key_A,          Key_O,       Key_E,      Key_U, Key_I,
+    Key_Tab,      Key_Semicolon,  Key_Q,       Key_J,      Key_K, Key_X, Key_Backslash,
+    OSM(LeftControl), OSM(LeftAlt), OSM(LeftGui), OSM(LeftShift),
+    ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
-
+    M(MACRO_ANY),       Key_6, Key_7, Key_8, Key_9,  Key_0, LockLayer(NUMPAD),
+    Key_Enter,          Key_F, Key_G, Key_C, Key_R,  Key_L, Key_Slash,
+                        Key_D, Key_H, Key_T, Key_N,  Key_S, Key_Equals,
+    M(MACRO_FAT_ARROW), Key_B, Key_M, Key_W, Key_V,  Key_Z, Key_Minus,
+    OSM(RightShift), OSM(RightGui), Key_Spacebar, Key_Backspace,
+    ShiftToLayer(FUNCTION)
+  ),
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___,
-   ___,
+  (
+    ___, ___, ___, ___, ___, ___, ___,
+    ___, ___, ___, ___, ___, ___, ___,
+    ___, ___, ___, ___, ___, ___,
+    ___, ___, ___, ___, ___, ___, ___,
+    ___, ___, ___, ___,
+    ___,
 
-   M(MACRO_VERSION_INFO),  ___, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_KeypadSubtract, ___,
-   ___,                    ___, Key_Keypad4, Key_Keypad5,   Key_Keypad6,        Key_KeypadAdd,      ___,
-                           ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,         ___,
-   ___,                    ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter,
-   ___, ___, ___, ___,
-   ___),
+    M(MACRO_VERSION_INFO),  ___, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_KeypadSubtract, ___,
+    ___,                    ___, Key_Keypad4, Key_Keypad5,   Key_Keypad6,        Key_KeypadAdd,      ___,
+                            ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,         ___,
+    ___,                    ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter,
+    ___, ___, ___, ___,
+    ___
+  ),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,
-   Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
-   Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
-   Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
-   ___, Key_Delete, ___, ___,
-   ___,
+  (
+    Key_LEDEffectNext, Key_F1,          Key_F2,           Key_F3,          Key_F4,        Key_F5,           XXX,
+    Key_Tab,           Key_mouseWarpNW, Key_mouseUp,      Key_mouseWarpNE, Key_mouseBtnR, ___,              ___,
+    ___,               Key_mouseL,      Key_mouseDn,      Key_mouseR,      Key_mouseBtnL, ___,
+    ___,               Key_mouseWarpSW, Key_mouseWarpEnd, Key_mouseWarpSE, Key_mouseBtnM, ___,              ___,
+    M(MACRO_MEHA), M(MACRO_MEHB), M(MACRO_MEHC), M(MACRO_MEHD),
+    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
-   ___, ___, Key_Enter, ___,
-   ___)
+    ___,  Key_F6,                     Key_F7,        Key_F8,                  Key_F9,                  Key_F10,       Key_F11,
+    ___,  Key_Home,                   Key_PageDown,  Key_PageUp,              Key_End,                 ___,           Key_F12,
+          Key_LeftArrow,              Key_DownArrow, Key_UpArrow,             Key_RightArrow,          ___,             Consumer_VolumeIncrement,
+    ___,  Consumer_ScanPreviousTrack, ___,           Consumer_PlaySlashPause, Consumer_ScanNextTrack,  Consumer_Mute,  Consumer_VolumeDecrement,
+    M(MACRO_HYPER), M(MACRO_CMD_CTRL), Key_Enter, Key_Delete,
+    ___
+  )
 
-	) // KEYMAPS(
+) // KEYMAPS(
 
 /* Re-enable astyle's indent enforcement */
 // *INDENT-ON*
@@ -215,6 +223,291 @@ static void anyKeyMacro(uint8_t keyState) {
     kaleidoscope::hid::pressKey(lastKey);
 }
 
+/** oneShotHyperMacro is used to provide the functionality of turning
+ * on OneShot functionality for Command, Option/Alt, Shift, and Ctrl keys at the same time
+*/
+static void oneShotHyperMacro(uint8_t keyState) {
+  /* disable OneShot sticky keys */
+  if (
+    keyToggledOn(keyState) &&
+    OneShot.isActive() &&
+    OneShot.isSticky(OSM(LeftShift)) &&
+    OneShot.isSticky(OSM(LeftControl)) &&
+    OneShot.isSticky(OSM(LeftAlt)) &&
+    OneShot.isSticky(OSM(LeftGui))
+  ) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot sticky keys */
+  if (OneShot.isActive() && keyToggledOn(keyState)) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot keys */
+  OneShot.inject(OSM(LeftGui), keyState);
+  OneShot.inject(OSM(LeftAlt), keyState);
+  OneShot.inject(OSM(LeftShift), keyState);
+  OneShot.inject(OSM(LeftControl), keyState);
+}
+
+static void oneShotMehAMacro(uint8_t keyState) {
+  /* disable OneShot sticky keys */
+  if (
+    keyToggledOn(keyState) &&
+    OneShot.isActive() &&
+    OneShot.isSticky(OSM(LeftShift)) &&
+    OneShot.isSticky(OSM(LeftControl)) &&
+    OneShot.isSticky(OSM(LeftAlt))
+  ) {
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot sticky keys */
+  if (OneShot.isActive() && keyToggledOn(keyState)) {
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot keys */
+  OneShot.inject(OSM(LeftAlt), keyState);
+  OneShot.inject(OSM(LeftShift), keyState);
+  OneShot.inject(OSM(LeftControl), keyState);
+}
+
+static void oneShotMehBMacro(uint8_t keyState) {
+  /* disable OneShot sticky keys */
+  if (
+    keyToggledOn(keyState) &&
+    OneShot.isActive() &&
+    OneShot.isSticky(OSM(LeftShift)) &&
+    OneShot.isSticky(OSM(LeftAlt)) &&
+    OneShot.isSticky(OSM(LeftGui))
+  ) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot sticky keys */
+  if (OneShot.isActive() && keyToggledOn(keyState)) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot keys */
+  OneShot.inject(OSM(LeftGui), keyState);
+  OneShot.inject(OSM(LeftAlt), keyState);
+  OneShot.inject(OSM(LeftShift), keyState);
+}
+
+static void oneShotMehCMacro(uint8_t keyState) {
+  /* disable OneShot sticky keys */
+  if (
+    keyToggledOn(keyState) &&
+    OneShot.isActive() &&
+    OneShot.isSticky(OSM(LeftShift)) &&
+    OneShot.isSticky(OSM(LeftControl)) &&
+    OneShot.isSticky(OSM(LeftGui))
+  ) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot sticky keys */
+  if (OneShot.isActive() && keyToggledOn(keyState)) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+    OneShot.inject(OSM(LeftShift), IS_PRESSED);
+    OneShot.inject(OSM(LeftShift), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot keys */
+  OneShot.inject(OSM(LeftGui), keyState);
+  OneShot.inject(OSM(LeftShift), keyState);
+  OneShot.inject(OSM(LeftControl), keyState);
+}
+
+static void oneShotMehDMacro(uint8_t keyState) {
+  /* disable OneShot sticky keys */
+  if (
+    keyToggledOn(keyState) &&
+    OneShot.isActive() &&
+    OneShot.isSticky(OSM(LeftControl)) &&
+    OneShot.isSticky(OSM(LeftAlt)) &&
+    OneShot.isSticky(OSM(LeftGui))
+  ) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot sticky keys */
+  if (OneShot.isActive() && keyToggledOn(keyState)) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), IS_PRESSED);
+    OneShot.inject(OSM(LeftAlt), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot keys */
+  OneShot.inject(OSM(LeftGui), keyState);
+  OneShot.inject(OSM(LeftAlt), keyState);
+  OneShot.inject(OSM(LeftControl), keyState);
+}
+
+static void oneShotCmdCtrlMacro(uint8_t keyState) {
+  /* disable OneShot sticky keys */
+  if (
+    keyToggledOn(keyState) &&
+    OneShot.isActive() &&
+    OneShot.isSticky(OSM(LeftControl)) &&
+    OneShot.isSticky(OSM(LeftGui))
+  ) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot sticky keys */
+  if (OneShot.isActive() && keyToggledOn(keyState)) {
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+    OneShot.inject(OSM(LeftGui), IS_PRESSED);
+    OneShot.inject(OSM(LeftGui), WAS_PRESSED);
+
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+    OneShot.inject(OSM(LeftControl), IS_PRESSED);
+    OneShot.inject(OSM(LeftControl), WAS_PRESSED);
+
+    return;
+  }
+
+  /* enable OneShot keys */
+  OneShot.inject(OSM(LeftGui), keyState);
+  OneShot.inject(OSM(LeftControl), keyState);
+}
+
 
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
@@ -231,6 +524,36 @@ static void anyKeyMacro(uint8_t keyState) {
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
 
+  case MACRO_FAT_ARROW:
+    if (keyToggledOn(keyState)) {
+      return Macros.type(PSTR("=>"));
+    }
+    break;
+
+  case MACRO_HYPER:
+    oneShotHyperMacro(keyState);
+    break;
+
+  case MACRO_MEHA:
+    oneShotMehAMacro(keyState);
+    break;
+
+  case MACRO_MEHB:
+    oneShotMehBMacro(keyState);
+    break;
+
+  case MACRO_MEHC:
+    oneShotMehCMacro(keyState);
+    break;
+
+  case MACRO_MEHD:
+    oneShotMehDMacro(keyState);
+    break;
+
+  case MACRO_CMD_CTRL:
+    oneShotCmdCtrlMacro(keyState);
+    break;
+
   case MACRO_VERSION_INFO:
     versionInfoMacro(keyState);
     break;
@@ -242,13 +565,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   return MACRO_NONE;
 }
 
-
-
 // These 'solid' color effect definitions define a rainbow of
 // LED color modes calibrated to draw 500mA or less on the
 // Keyboardio Model 01.
 
-
+static kaleidoscope::LEDSolidColor solidWhite(160, 160, 160);
 static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);
 static kaleidoscope::LEDSolidColor solidOrange(140, 70, 0);
 static kaleidoscope::LEDSolidColor solidYellow(130, 100, 0);
@@ -329,27 +650,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // We start with the LED effect that turns off all the LEDs.
   LEDOff,
 
-  // The rainbow effect changes the color of all of the keyboard's keys at the same time
-  // running through all the colors of the rainbow.
-  LEDRainbowEffect,
-
-  // The rainbow wave effect lights up your keyboard with all the colors of a rainbow
-  // and slowly moves the rainbow across your keyboard
-  LEDRainbowWaveEffect,
-
-  // The chase effect follows the adventure of a blue pixel which chases a red pixel across
-  // your keyboard. Spoiler: the blue pixel never catches the red pixel
-  LEDChaseEffect,
-
   // These static effects turn your keyboard's LEDs a variety of colors
-  solidRed, solidOrange, solidYellow, solidGreen, solidBlue, solidIndigo, solidViolet,
-
-  // The breathe effect slowly pulses all of the LEDs on your keyboard
-  LEDBreatheEffect,
-
-  // The AlphaSquare effect prints each character you type, using your
-  // keyboard's LEDs as a display
-  AlphaSquareEffect,
+  solidWhite, solidGreen, solidBlue, solidIndigo, solidViolet, solidRed, solidOrange, solidYellow,
 
   // The stalker effect lights up the keys you've pressed recently
   StalkerEffect,
@@ -377,7 +679,13 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // comfortable - or able - to do automatically, but can be useful
   // nevertheless. Such as toggling the key report protocol between Boot (used
   // by BIOSes) and Report (NKRO).
-  USBQuirks
+  USBQuirks,
+
+  // Add plugins for custom mappings
+  OneShot,
+  EscapeOneShot,
+  ActiveModColorEffect,
+  TopsyTurvy
 );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
@@ -388,17 +696,12 @@ void setup() {
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
+  // Set color for ActiveModColorEffect
+  ActiveModColorEffect.highlight_color = CRGB(0x00, 0xff, 0xff);
+
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
   NumPad.numPadLayer = NUMPAD;
-
-  // We configure the AlphaSquare effect to use RED letters
-  AlphaSquare.color = CRGB(255, 0, 0);
-
-  // We set the brightness of the rainbow effects to 150 (on a scale of 0-255)
-  // This draws more than 500mA, but looks much nicer than a dimmer effect
-  LEDRainbowEffect.brightness(150);
-  LEDRainbowWaveEffect.brightness(150);
 
   // The LED Stalker mode has a few effects. The one we like is
   // called 'BlazingTrail'. For details on other options,
