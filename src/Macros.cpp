@@ -49,7 +49,6 @@ namespace {
 } // namespacce jj
 
 
-// ToDo: possible? or needed in .ino?
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
 

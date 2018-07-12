@@ -10,6 +10,9 @@
 #pragma once
 
 #include "config.h"
+#include "Macros.h"
+#include "TapDance.h"
+
 
 #if KALEIDOSCOPE_INCLUDE_EMOJI
 # define JJ_Emoji OSL(EMOJI)
@@ -43,28 +46,28 @@ KEYMAPS(
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftGui, Key_Backspace, Key_LeftControl, Key_LeftShift,
+   Key_LeftGui, Key_Backspace, Key_LeftControl, TD(TAP_DANCE_LEFT_SHIFT),
    ShiftToLayer(FUNCTION_JJ),
 
    M(MACRO_ANY), Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_Minus,
    Key_Enter,    Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,
                  Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,
-   JJ_Emoji,     Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightGui,
+   JJ_Emoji,     Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Backslash,
+   TD(TAP_DANCE_RIGHT_SHIFT), Key_LeftAlt, Key_Spacebar, Key_RightGui,
    ShiftToLayer(FUNCTION_JJ)),
 
   [FUNCTION_JJ] =  KEYMAP_STACKED
   (___,      Key_F1,     Key_F2,      Key_F3,     Key_F4,        Key_F5, Key_LEDToggleNext,
    Key_Tab,  ___,        Key_mouseUp, ___,        Key_mouseBtnR, ___,    Key_Enter,
    Key_Home, Key_mouseL, Key_mouseDn, Key_mouseR, Key_mouseBtnL, ___,
-   Key_End,  ___,        Key_Insert,  ___,        Key_mouseBtnM, ___,    Key_Spacebar,
+   Key_End,  ___,        ___,         ___,        Key_mouseBtnM, ___,    Key_Spacebar,
    ___, Key_Delete, ___, ___,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_Eszett,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_UUmlaut,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  Key_OUmlaut,      Key_AUmlaut,
-   Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, JJ_TypeDate,     Key_Backslash,    Key_Pipe,
+   ___,                     Key_F6,                   Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_Eszett,
+   Consumer_PlaySlashPause, ___,                      Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_UUmlaut,
+                            Key_LeftArrow,            Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  Key_OUmlaut,      Key_AUmlaut,
+   ___,                     TD(TAP_DANCE_NEXT_TRACK), Consumer_VolumeDecrement, Consumer_VolumeIncrement, JJ_TypeDate,     ___,              ___,
    ___, ___, Key_Enter, ___,
    ___),
 

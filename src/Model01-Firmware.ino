@@ -7,6 +7,7 @@
 #include <Kaleidoscope-Leader.h>
 #include <Kaleidoscope-LEDToggle.h>
 #include <Kaleidoscope-Macros.h>
+#include <Kaleidoscope-TapDance.h>
 #include <Kaleidoscope-HostOS.h>
 #include <Kaleidoscope/HostOS-select.h>
 #include <Kaleidoscope-HostPowerManagement.h>
@@ -38,6 +39,7 @@
 #include "System.h"
 #include "LEDControl.h"
 #include "Macros.h"
+#include "TapDance.h"
 #include "Leader.h"
 #include "Qukeys.h"
 #include "Specials.h"
@@ -57,6 +59,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   HostOS,
   HostPowerManagement,
   Macros,
+  TapDance,
 #if KALEIDOSCOPE_INCLUDE_LEADER
   Leader,
 #endif
@@ -102,6 +105,7 @@ void setup() {
   jj::Qukeys::configure();
   jj::System::configure();
   jj::Macros::configure();
+  jj::TapDance::configure();
   jj::Leader::configure();
   jj::LEDControl::configure();
   jj::Specials::configure();
