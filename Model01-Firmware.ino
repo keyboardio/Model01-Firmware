@@ -12,7 +12,6 @@
  * as well as the Kaleidoscope plugins we use in the Model 01's firmware
  */
 
-
 // The Kaleidoscope core
 #include "Kaleidoscope.h"
 
@@ -151,7 +150,7 @@ KEYMAPS(
     Key_Enter,          Key_F, Key_G, Key_C, Key_R,  Key_L, Key_Slash,
                         Key_D, Key_H, Key_T, Key_N,  Key_S, Key_Equals,
     M(MACRO_FAT_ARROW), Key_B, Key_M, Key_W, Key_V,  Key_Z, Key_Minus,
-    OSM(RightShift), OSM(RightGui), Key_Spacebar, Key_Backspace,
+    OSM(RightGui), Key_Enter, Key_Spacebar, Key_Backspace,
     ShiftToLayer(FUNCTION)
   ),
 
@@ -174,18 +173,18 @@ KEYMAPS(
 
   [FUNCTION] =  KEYMAP_STACKED
   (
-    Key_LEDEffectNext, Key_F1,          Key_F2,           Key_F3,          Key_F4,        Key_F5,           XXX,
-    Key_Tab,           Key_mouseWarpNW, Key_mouseUp,      Key_mouseWarpNE, Key_mouseBtnR, ___,              ___,
+    Key_LEDEffectNext, Key_F1, Key_F2,          Key_F3,           Key_F4,          Key_F5,        XXX,
+    Key_Tab,           Key_mouseWarpNW, Key_mouseUp,      Key_mouseWarpNE, Key_mouseBtnR, ___, ___,
     ___,               Key_mouseL,      Key_mouseDn,      Key_mouseR,      Key_mouseBtnL, ___,
-    ___,               Key_mouseWarpSW, Key_mouseWarpEnd, Key_mouseWarpSE, Key_mouseBtnM, ___,              ___,
+    ___,               Key_mouseWarpSW, Key_mouseWarpEnd, Key_mouseWarpSE, Key_mouseBtnM, ___, ___,
     M(MACRO_MEHA), M(MACRO_MEHB), M(MACRO_MEHC), M(MACRO_MEHD),
     ___,
 
-    ___,  Key_F6,                     Key_F7,        Key_F8,                  Key_F9,                  Key_F10,       Key_F11,
-    ___,  Key_Home,                   Key_PageDown,  Key_PageUp,              Key_End,                 ___,           Key_F12,
-          Key_LeftArrow,              Key_DownArrow, Key_UpArrow,             Key_RightArrow,          ___,             Consumer_VolumeIncrement,
-    ___,  Consumer_ScanPreviousTrack, ___,           Consumer_PlaySlashPause, Consumer_ScanNextTrack,  Consumer_Mute,  Consumer_VolumeDecrement,
-    M(MACRO_HYPER), M(MACRO_CMD_CTRL), Key_Enter, Key_Delete,
+    ___,  Key_F6, Key_F7,                       Key_F8,        Key_F9,                  Key_F10,                Key_F11,
+    ___,  ___,    Key_Home,                     Key_PageDown,  Key_PageUp,              Key_End,                Key_F12,
+          ___,    Key_LeftArrow,                Key_DownArrow, Key_UpArrow,             Key_RightArrow,         Consumer_VolumeIncrement,
+    ___,  ___,    Consumer_ScanPreviousTrack,   Consumer_Mute, Consumer_PlaySlashPause, Consumer_ScanNextTrack, Consumer_VolumeDecrement,
+    M(MACRO_CMD_CTRL), M(MACRO_HYPER), Key_Enter, Key_Delete,
     ___
   )
 
@@ -651,7 +650,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   LEDOff,
 
   // These static effects turn your keyboard's LEDs a variety of colors
-  solidWhite, solidGreen, solidBlue, solidIndigo, solidViolet, solidRed, solidOrange, solidYellow,
+  solidIndigo, solidViolet, solidWhite, solidGreen, solidRed, solidOrange, solidYellow,
 
   // The stalker effect lights up the keys you've pressed recently
   StalkerEffect,
