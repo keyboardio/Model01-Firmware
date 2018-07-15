@@ -14,6 +14,12 @@
 #include "TapDance.h"
 
 
+#define JJ_XcodeQuickOpen LGUI(LSHIFT(Key_O))
+#define JJ_XcodeNavigateBack LGUI(LCTRL(Key_LeftArrow))
+#define JJ_XcodeNavigateForward LGUI(LCTRL(Key_RightArrow))
+#define JJ_XcodeSelectLine LGUI(LSHIFT(Key_E))
+#define JJ_XcodeEditAll LGUI(LCTRL(Key_E))
+
 #if KALEIDOSCOPE_INCLUDE_EMOJI
 # define JJ_Emoji OSL(EMOJI)
 #else
