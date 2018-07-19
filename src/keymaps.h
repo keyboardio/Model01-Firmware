@@ -1,47 +1,14 @@
 // -*- mode: c++ -*-
 
-/**
-  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keyboard.h
-  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_consumerctl.h
-  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_sysctl.h
-  *    https://github.com/keyboardio/Kaleidoscope/blob/master/src/key_defs_keymaps.h
-  */
-
 #pragma once
 
 #include "config.h"
+#include "layers.h"
+#include "keydefs.h"
+
 #include "Macros.h"
 #include "TapDance.h"
 
-
-#define JJ_XcodeQuickOpen LGUI(LSHIFT(Key_O))
-#define JJ_XcodeNavigateBack LGUI(LCTRL(Key_LeftArrow))
-#define JJ_XcodeNavigateForward LGUI(LCTRL(Key_RightArrow))
-#define JJ_XcodeSelectLine LGUI(LSHIFT(Key_E))
-#define JJ_XcodeEditAll LGUI(LCTRL(Key_E))
-
-#if KALEIDOSCOPE_INCLUDE_EMOJI
-# define JJ_Emoji OSL(EMOJI)
-#else
-# define JJ_Emoji ___
-#endif
-
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-# define JJ_TypeDate Key_TimekeeperDate
-#else
-# define JJ_TypeDate ___
-#endif
-
-
-enum { QWERTY,
-       FUNCTION_JJ,
-#if USE_ORIGINAL_FUNCTION
-       FUNCTION_ORIGINAL,
-#endif
-#if KALEIDOSCOPE_INCLUDE_EMOJI
-       EMOJI,
-#endif
-     };
 
 // *INDENT-OFF*
 
@@ -63,10 +30,10 @@ KEYMAPS(
    ShiftToLayer(FUNCTION_JJ)),
 
   [FUNCTION_JJ] =  KEYMAP_STACKED
-  (Key_CapsLock, Key_F1,     Key_F2,      Key_F3,     Key_F4,        Key_F5, Key_LEDToggleNext,
-   Key_Tab,      ___,        Key_mouseUp, ___,        Key_mouseBtnR, ___,    Key_Enter,
-   Key_Home,     Key_mouseL, Key_mouseDn, Key_mouseR, Key_mouseBtnL, ___,
-   Key_End,      ___,        ___,         ___,        Key_mouseBtnM, ___,    Key_Spacebar,
+  (Key_CapsLock, Key_F1,     Key_F2,          Key_F3,     Key_F4,        Key_F5, Key_LEDToggleNext,
+   Key_Tab,      ___,        Key_mouseUp,      ___,        Key_mouseBtnR, ___,    Key_Enter,
+   Key_Home,     Key_mouseL, Key_mouseDn,      Key_mouseR, Key_mouseBtnL, ___,
+   Key_End,      ___,        LockLayer(XCODE), ___,        Key_mouseBtnM, ___,    Key_Spacebar,
    ___, Key_Delete, ___, ___,
    ___,
 
@@ -77,7 +44,7 @@ KEYMAPS(
    ___, ___, Key_Enter, ___,
    ___),
 
-#if USE_ORIGINAL_FUNCTION
+#if KALEIDOSCOPE_INCLUDE_FUNCTION_ORIGINAL
   [FUNCTION_ORIGINAL] =  KEYMAP_STACKED
   (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
@@ -92,6 +59,23 @@ KEYMAPS(
    Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
    ___),
+#endif
+
+#if KALEIDOSCOPE_INCLUDE_XCODE
+  [XCODE] =  KEYMAP_STACKED
+  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDToggle,
+   Key_Backtick, Key_Q, Key_W, Key_E, JJ_XcodeFindAndReplace, Key_T, Key_Tab,
+   JJ_XcodePaste,   Key_A, Key_S, Key_D, JJ_XcodeFind, JJ_XcodeNextResult,
+   JJ_XcodeCopyOrCut, JJ_XcodeUndo, JJ_XcodeCut, JJ_XcodeCopy, JJ_XcodePaste, Key_B, UnlockLayer(XCODE),
+   Key_LeftGui, Key_Backspace, Key_LeftControl, Key_LeftShift,
+   ShiftToLayer(FUNCTION_JJ),
+
+   M(MACRO_ANY), Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_Minus,
+   Key_Enter,    Key_Y, Key_U, Key_I,     JJ_XcodeQuickOpen,      Key_P,         Key_Equals,
+                 JJ_XcodeNavigateBack, JJ_XcodeNavigateDown, JJ_XcodeNavigateUp,     JJ_XcodeNavigateForward,      Key_Semicolon, Key_Quote,
+   JJ_Emoji,     Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Backslash,
+   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightGui,
+   ShiftToLayer(FUNCTION_JJ)),
 #endif
 
 #if KALEIDOSCOPE_INCLUDE_EMOJI
