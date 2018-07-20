@@ -24,7 +24,7 @@
 #if KALEIDOSCOPE_INCLUDE_XCODE
 # define JJ_ToggleXcode LockLayer(XCODE)
 # define JJ_OneShotXcode OSL(XCODE)
-# define JJ_ActivateXcode TD(TAP_DANCE_TOGGLE_XCODE)
+# define JJ_ActivateXcode TD(TAP_DANCE_ACTIVATE_XCODE)
 # define JJ_XcodeQuickOpen LGUI(LSHIFT(Key_O))
 # define JJ_XcodeNavigateBack LGUI(LCTRL(Key_LeftArrow))
 # define JJ_XcodeNavigateForward LGUI(LCTRL(Key_RightArrow))

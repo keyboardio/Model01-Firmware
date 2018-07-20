@@ -5,12 +5,16 @@
 #include "TapDance.h"
 #include <Kaleidoscope-TapDance.h>
 #include <Kaleidoscope-OneShot.h>
+#include <Kaleidoscope-Macros.h>
 
+#include "layers.h"
 #include "keydefs.h"
 
 namespace jj {
 namespace TapDance {
 namespace {
+
+static void activateXcodeLayer(uint8_t tapCount, byte row, byte col, kaleidoscope::TapDance::ActionType tapDanceAction);
 
 }
 }
@@ -26,6 +30,30 @@ void configure(void) {
 
 namespace {
 
+void activateXcodeLayer(uint8_t tapCount, byte row, byte col, kaleidoscope::TapDance::ActionType tapDanceAction) {
+  if (tapDanceAction != kaleidoscope::TapDance::Release) {
+    return;
+  }
+  if (::Layer.isOn(XCODE)) {
+    ::Macros.type(PSTR("XCODE on"));
+    return;
+  }
+  ::Macros.type(PSTR("XCODE off"));
+
+  if (tapCount == 1) {
+    ::Macros.type(PSTR("1 tap"));
+    ::OneShot.inject(OSL(XCODE), IS_PRESSED);
+    kaleidoscope::hid::sendKeyboardReport();
+    ::OneShot.inject(OSL(XCODE), WAS_PRESSED);
+    kaleidoscope::hid::sendKeyboardReport();
+  } else if (tapCount == 2) {
+    ::Macros.type(PSTR("2 taps"));
+    ::Layer.on(XCODE);
+  } else {
+    ::Macros.type(PSTR("whaaaat?"));
+  }
+}
+
 } // namespace
 } // namespace TapDance
 } // namespacce jj
@@ -40,8 +68,8 @@ void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_cou
   case TAP_DANCE_NEXT_TRACK:
     return tapDanceActionKeys(tap_count, tap_dance_action, Consumer_ScanNextTrack, Consumer_ScanPreviousTrack);
 #if KALEIDOSCOPE_INCLUDE_XCODE
-  case TAP_DANCE_TOGGLE_XCODE:
-    return tapDanceActionKeys(tap_count, tap_dance_action, JJ_OneShotXcode, JJ_ToggleXcode);
+  case TAP_DANCE_ACTIVATE_XCODE:
+    return jj::TapDance::activateXcodeLayer(tap_count, row, col, tap_dance_action);
   case TAP_DANCE_XCODE_FIND:
     return tapDanceActionKeys(tap_count, tap_dance_action, JJ_XcodeFindInFile, JJ_XcodeFindInProject);
   case TAP_DANCE_XCODE_FIND_AND_REPLACE:
