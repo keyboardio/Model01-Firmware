@@ -131,13 +131,13 @@ enum { PRIMARY, NUMPAD, FUNCTION }; // layers
 
 /**
   * To change your keyboard's layout from QWERTY to DVORAK or COLEMAK, comment out the line
-  * 
+  *
   * #define PRIMARY_KEYMAP_QWERTY
-  * 
+  *
   * by changing it to
-  *  
+  *
   * // #define PRIMARY_KEYMAP_QWERTY
-  * 
+  *
   * Then uncomment the line corresponding to the layout you want to use.
   *
   */
