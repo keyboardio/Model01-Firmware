@@ -35,6 +35,7 @@ namespace LEDControl {
 
 void configure(void) {
   ::BootGreetingEffect.search_key = Key_LEDToggle;
+  ::BootGreetingEffect.hue = 90;
 
 #if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
   ::AlphaSquare.color = CRGB(255, 0, 0);
