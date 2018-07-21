@@ -70,10 +70,10 @@ KEYMAPS(
    Key_LeftGui, Key_Backspace, Key_LeftControl, Key_LeftShift,
    ShiftToLayer(FUNCTION_JJ),
 
-   UnlockLayer(XCODE), Key_6,                Key_7,                Key_8,              Key_9,                   Key_0,         Key_Minus,
-   Key_Enter,          Key_Y,                Key_U, Key_I,         JJ_XcodeQuickOpen,  Key_P,                   Key_Equals,
-                       JJ_XcodeNavigateBack, JJ_XcodeNavigateDown, JJ_XcodeNavigateUp, JJ_XcodeNavigateForward, Key_Semicolon, Key_Quote,
-   JJ_Emoji,           Key_N,                Key_M,                Key_Comma,          Key_Period,              Key_Slash,     Key_Backslash,
+   ___,       Key_6,                Key_7,                Key_8,              Key_9,                   Key_0,         Key_Minus,
+   Key_Enter, Key_Y,                Key_U, Key_I,         JJ_XcodeQuickOpen,  Key_P,                   Key_Equals,
+              JJ_XcodeNavigateBack, JJ_XcodeNavigateDown, JJ_XcodeNavigateUp, JJ_XcodeNavigateForward, Key_Semicolon, Key_Quote,
+   JJ_Emoji,  Key_N,                Key_M,                Key_Comma,          Key_Period,              Key_Slash,     Key_Backslash,
    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightGui,
    ShiftToLayer(FUNCTION_JJ)),
 #endif
