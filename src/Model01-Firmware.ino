@@ -109,6 +109,8 @@ void setup() {
   jj::Leader::configure();
   jj::LEDControl::configure();
   jj::Specials::configure();
+
+  OneShot.double_tap_sticky_layers = true;
 }
 
 void loop() {
