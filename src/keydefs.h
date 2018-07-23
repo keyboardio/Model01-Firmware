@@ -28,8 +28,7 @@
 # define JJ_XcodeNavigateForward LGUI(LCTRL(Key_RightArrow))
 # define JJ_XcodeNavigateUp LGUI(LCTRL(Key_UpArrow))
 # define JJ_XcodeNavigateDown LGUI(LCTRL(Key_DownArrow))
-# define JJ_XcodeSelectLine LGUI(LSHIFT(Key_E))
-# define JJ_XcodeEditAll LGUI(LCTRL(Key_E))
+# define JJ_XcodeShowRelatedItems LCTRL(Key_1)
 # define JJ_XcodeFindInFile LGUI(Key_F)
 # define JJ_XcodeFindInProject LGUI(LSHIFT(Key_F))
 # define JJ_XcodeFind TD(TAP_DANCE_XCODE_FIND)
@@ -42,6 +41,17 @@
 # define JJ_XcodeCopy LGUI(Key_C)
 # define JJ_XcodePaste LGUI(Key_V)
 # define JJ_XcodeCopyOrCut TD(TAP_DANCE_XCODE_COPY_OR_CUT)
+# define JJ_XcodeSelectLine LGUI(LSHIFT(Key_E))
+# define JJ_XcodeEditAll LGUI(LCTRL(Key_E))
+# define JJ_XcodeShowCompletion LCTRL(Key_Space)
+# define JJ_XcodeNextCompletion LCTRL(Key_Period)
+# define JJ_XcodeCommentSelection LGUI(Key_Slash)
+# define JJ_XcodeNextIssue LGUI(Key_Quote)
+# define JJ_XcodePreviousIssue LGUI(LSHIFT(Key_Quote))
+# define JJ_XcodeFixNextIssue LCTRL(LGUI(Key_Quote))
+# define JJ_XcodeFixPreviousIssue LCTRL(LGUI(LSHIFT(Key_Quote)))
+# define JJ_XcodeAddBreakpoint LGUI(Key_Backslash)
+# define JJ_XcodeActivateBreakpoints LGUI(Key_Y)
 #else
 # define JJ_Xcode ___
 #endif
