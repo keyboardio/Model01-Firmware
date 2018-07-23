@@ -37,6 +37,9 @@ void configure(void) {
   ::BootGreetingEffect.search_key = Key_LEDToggle;
   ::BootGreetingEffect.hue = 0;
 
+  ::ActiveModColorEffect.highlight_color = CRGB(0x00, 0xff, 0xff);
+  ::ActiveModColorEffect.sticky_color = CRGB(0xff, 0x00, 0xff);
+
 #if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
   ::AlphaSquare.color = CRGB(255, 0, 0);
   ::LEDRainbowEffect.brightness(150); // 0-255
