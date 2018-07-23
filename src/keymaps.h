@@ -63,19 +63,19 @@ KEYMAPS(
 
 #if KALEIDOSCOPE_INCLUDE_XCODE
   [XCODE] =  KEYMAP_STACKED
-  (___,               Key_1,        Key_2,       Key_3,        Key_4,                  Key_5,              Key_LEDToggle,
-   Key_Backtick,      Key_Q,        Key_W,       Key_E,        JJ_XcodeFindAndReplace, Key_T,              Key_Tab,
-   JJ_XcodePaste,     Key_A,        Key_S,       Key_D,        JJ_XcodeFind,           JJ_XcodeNextResult,
-   JJ_XcodeCopyOrCut, JJ_XcodeUndo, JJ_XcodeCut, JJ_XcodeCopy, JJ_XcodePaste,          Key_B,              ___,
-   Key_LeftGui, Key_Backspace, Key_LeftControl, Key_LeftShift,
-   ShiftToLayer(FUNCTION_JJ),
+  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,             XXX,                    XXX,                  ___,
+   XXX,               XXX,                      XXX,                JJ_XcodeEditAll, JJ_XcodeFindAndReplace, JJ_XcodeFixNextIssue, ___,
+   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,             JJ_XcodeFind,           JJ_XcodeNextResult,
+   JJ_XcodeCopyOrCut, JJ_XcodeUndo,             JJ_XcodeCut,        JJ_XcodeCopy,    JJ_XcodePaste,          JJ_XcodeNextIssue,    ___,
+   ___, ___, ___, ___,
+   ___,
 
-   ___,       Key_6,                Key_7,                Key_8,              Key_9,                   Key_0,         Key_Minus,
-   Key_Enter, Key_Y,                Key_U, Key_I,         JJ_XcodeQuickOpen,  Key_P,                   Key_Equals,
-              JJ_XcodeNavigateBack, JJ_XcodeNavigateDown, JJ_XcodeNavigateUp, JJ_XcodeNavigateForward, Key_Semicolon, Key_Quote,
-   JJ_Emoji,  Key_N,                Key_M,                Key_Comma,          Key_Period,              Key_Slash,     Key_Backslash,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightGui,
-   ShiftToLayer(FUNCTION_JJ)),
+   ___, XXX,                  XXX,                  XXX,                XXX,                     XXX,                      XXX,
+   ___, XXX,                  XXX,                  XXX,                JJ_XcodeQuickOpen,       XXX,                      XXX,
+        JJ_XcodeNavigateBack, JJ_XcodeNavigateDown, JJ_XcodeNavigateUp, JJ_XcodeNavigateForward, XXX,                      XXX,
+   XXX, XXX,                  XXX,                  XXX,                XXX,                     JJ_XcodeCommentSelection, XXX,
+   ___, ___, ___, ___,
+   ___),
 #endif
 
 #if KALEIDOSCOPE_INCLUDE_EMOJI
