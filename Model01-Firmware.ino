@@ -58,6 +58,7 @@
 #include "Kaleidoscope-LED-ActiveModColor.h"
 #include "Kaleidoscope-ShapeShifter.h"
 #include "Kaleidoscope-TopsyTurvy.h"
+#include <Kaleidoscope-TapDance.h>
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
@@ -128,7 +129,7 @@ enum {
   *
   */
 
-enum { QWERTY, DVORAK, NUMPAD, FUNCTION }; // layers
+enum { QWERTY, COLEMAK, DVORAK, NUMPAD, FUNCTION }; // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -136,20 +137,36 @@ enum { QWERTY, DVORAK, NUMPAD, FUNCTION }; // layers
 // *INDENT-OFF*
 
 KEYMAPS(
-
   [QWERTY] = KEYMAP_STACKED
   (
     ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_LeftBracket,
+    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, TD(0),
     Key_Tab,      Key_A, Key_S, Key_D, Key_F, Key_G,
+    Key_Escape,   Key_Z, Key_X, Key_C, Key_V, Key_B, TD(2),
+    OSM(LeftControl), OSM(LeftAlt), OSM(LeftGui), OSM(LeftShift),
+    ShiftToLayer(FUNCTION),
+
+    Key_Backslash, Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
+    TD(1),         Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
+                   Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+    TD(3),         Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+    OSM(RightGui),  Key_Enter, Key_Spacebar, Key_Backspace,
+    ShiftToLayer(FUNCTION)
+  ),
+
+  [COLEMAK] = KEYMAP_STACKED
+  (
+    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
+    Key_Backtick, Key_Q, Key_W, Key_F, Key_P, Key_G, Key_LeftBracket,
+    Key_Tab,      Key_A, Key_R, Key_S, Key_T, Key_D,
     Key_Escape,   Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Backslash,
     OSM(LeftControl), OSM(LeftAlt), OSM(LeftGui), OSM(LeftShift),
     ShiftToLayer(FUNCTION),
 
     M(MACRO_ANY),       Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-    Key_RightBracket,   Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                        Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-    M(MACRO_FAT_ARROW), Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+    Key_RightBracket,   Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
+                        Key_H, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,
+    M(MACRO_FAT_ARROW), Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
     OSM(RightGui),  Key_Enter, Key_Spacebar, Key_Backspace,
     ShiftToLayer(FUNCTION)
   ),
@@ -191,21 +208,20 @@ KEYMAPS(
 
   [FUNCTION] =  KEYMAP_STACKED
   (
-    LockLayer(DVORAK), Key_F1, Key_F2,          Key_F3,           Key_F4,          Key_F5,        XXX,
-    Key_Tab,           Key_mouseWarpNW, Key_mouseUp,      Key_mouseWarpNE, Key_mouseBtnR, ___, ___,
+    LockLayer(DVORAK), Key_F1,          Key_F2,           Key_F3,          Key_F4,        Key_F5, XXX,
+    Key_Tab,           Key_mouseWarpNW, Key_mouseUp,      Key_mouseWarpNE, Key_mouseBtnR, ___,    ___,
     ___,               Key_mouseL,      Key_mouseDn,      Key_mouseR,      Key_mouseBtnL, ___,
-    ___,               Key_mouseWarpSW, Key_mouseWarpEnd, Key_mouseWarpSE, Key_mouseBtnM, ___, ___,
+    ___,               Key_mouseWarpSW, Key_mouseWarpEnd, Key_mouseWarpSE, Key_mouseBtnM, ___,    ___,
     M(MACRO_MEHA), M(MACRO_MEHB), M(MACRO_MEHC), ___,
     ___,
 
-    ___,  Key_F6, Key_F7,                       Key_F8,        Key_F9,                  Key_F10,                Key_F11,
-    ___,  ___,    Key_Home,                     Key_PageDown,  Key_PageUp,              Key_End,                Key_F12,
-          ___,    Key_LeftArrow,                Key_DownArrow, Key_UpArrow,             Key_RightArrow,         Consumer_VolumeIncrement,
-    ___,  ___,    Consumer_ScanPreviousTrack,   Consumer_Mute, Consumer_PlaySlashPause, Consumer_ScanNextTrack, Consumer_VolumeDecrement,
+    LockLayer(COLEMAK), Key_F6,                       Key_F7,        Key_F8,                  Key_F9,                 Key_F10, Key_F11,
+    ___,                Key_Home,                     Key_PageDown,  Key_PageUp,              Key_End,                ___,     Key_F12,
+                        Key_LeftArrow,                Key_DownArrow, Key_UpArrow,             Key_RightArrow,         ___,     Consumer_VolumeIncrement,
+    M(MACRO_FAT_ARROW), Consumer_ScanPreviousTrack,   Consumer_Mute, Consumer_PlaySlashPause, Consumer_ScanNextTrack, ___,     Consumer_VolumeDecrement,
     M(MACRO_CMD_CTRL), M(MACRO_HYPER), Key_Enter, Key_Delete,
     ___
   )
-
 ) // KEYMAPS(
 
 /* Re-enable astyle's indent enforcement */
@@ -526,6 +542,36 @@ static void oneShotCmdCtrlMacro(uint8_t keyState) {
 }
 
 
+void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_count,
+                    kaleidoscope::TapDance::ActionType tap_dance_action) {
+  switch (tap_dance_index) {
+    case 0: {
+      return tapDanceActionKeys(tap_count, tap_dance_action,
+                                Key_LeftBracket,
+                                Key_LeftCurlyBracket
+      );
+    }
+    case 1: {
+      return tapDanceActionKeys(tap_count, tap_dance_action,
+                                Key_RightBracket,
+                                Key_RightCurlyBracket
+      );
+    }
+    case 2: {
+      return tapDanceActionKeys(tap_count, tap_dance_action,
+                                Key_LeftParen,
+                                LSHIFT(Key_Comma)
+      );
+    }
+    case 3: {
+      return tapDanceActionKeys(tap_count, tap_dance_action,
+                                Key_RightParen,
+                                LSHIFT(Key_Period)
+      );
+    }
+  }
+}
+
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
 
@@ -702,7 +748,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   OneShot,
   EscapeOneShot,
   ActiveModColorEffect,
-  TopsyTurvy
+  TopsyTurvy,
+  TapDance
 );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
