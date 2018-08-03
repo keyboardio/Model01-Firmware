@@ -63,6 +63,9 @@
 // Dual use keys
 #include <Kaleidoscope-DualUse.h>
 
+// More advanced dual use keys
+#include <Kaleidoscope-Qukeys.h>
+
 #include <Kaleidoscope-LED-ActiveModColor.h>
 
 #define LSCTRL(k) ((Key) { k.keyCode, k.flags | CTRL_HELD | SHIFT_HELD })
@@ -81,7 +84,11 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_SHIFT
+       MACRO_SHIFT,
+       MACRO_MEH,
+       MACRO_CTRL_ALT,
+       MACRO_CTRL_SFT,
+       MACRO_ALT_SFT
      };
 
 
@@ -138,17 +145,17 @@ enum { COLEMAK, CODING, NUMPAD }; // layers
 const Key keymaps[][ROWS][COLS] PROGMEM = {
 
    [COLEMAK] = KEYMAP_STACKED
-(___,          Key_1, Key_2, Key_3, Key_4, Key_5, LCTRL(Key_Spacebar),
+(M(MACRO_MEH),          Key_1, Key_2, Key_3, Key_4, Key_5, LCTRL(Key_Spacebar),
    Key_Backtick, Key_Q, Key_W, Key_F, Key_P, Key_G, Key_Tab,
    Key_PageUp,   Key_A, Key_R, Key_S, Key_T, Key_D,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
    OSM(LeftControl), Key_Backspace, OSM(LeftGui), OSM(LeftShift),
    ShiftToLayer(CODING),
 
-   LCTRL(Key_Spacebar),  Key_6, Key_7, Key_8, Key_9, Key_0,         Key_KeypadNumLock,
+   LCTRL(Key_Spacebar),  Key_6, Key_7, Key_8, Key_9, Key_0,         M(MACRO_CTRL_ALT),
    Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
                   Key_H, Key_N, Key_E,     Key_I,         Key_O,         MT(LeftGui, Quote),
-   LCTRL(Key_LeftShift),  Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+   M(MACRO_CTRL_SFT),  Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
    OSM(RightShift), OSM(LeftAlt), Key_Spacebar, OSM(RightControl),
    ShiftToLayer(CODING)),
 
@@ -199,7 +206,25 @@ static void versionInfoMacro(uint8_t keyState) {
   }
 }
 
+static void OneShotCtrlShift(uint8_t keyState) {
+    handleKeyswitchEvent(OSM(LeftShift), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+    handleKeyswitchEvent(OSM(LeftControl), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+}
 
+static void OneShotAltShift(uint8_t keyState) {
+    handleKeyswitchEvent(OSM(LeftShift), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+    handleKeyswitchEvent(OSM(LeftAlt), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+}
+static void OneShotCtrlAlt(uint8_t keyState) {
+    handleKeyswitchEvent(OSM(LeftControl), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+    handleKeyswitchEvent(OSM(LeftAlt), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+}
+
+static void OneShotMeh(uint8_t keyState) {
+    handleKeyswitchEvent(OSM(LeftShift), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+    handleKeyswitchEvent(OSM(LeftAlt), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+    handleKeyswitchEvent(OSM(LeftControl), UNKNOWN_KEYSWITCH_LOCATION, keyState);
+}
 
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
@@ -220,6 +245,18 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     versionInfoMacro(keyState);
     break;
 
+  case MACRO_MEH:
+    OneShotMeh(keyState);
+    break;
+  case MACRO_CTRL_ALT:
+    OneShotCtrlAlt(keyState);
+    break;
+  case MACRO_CTRL_SFT:
+    OneShotCtrlShift(keyState);
+    break;
+  case MACRO_ALT_SFT:
+    OneShotAltShift(keyState);
+    break;
   case MACRO_SHIFT:
     return MACRODOWN(Tr(Key_LeftShift), Tr(Key_LeftShift));
     break;
@@ -244,6 +281,9 @@ static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
 
 KALEIDOSCOPE_INIT_PLUGINS(
+  // Advanced dual use keys
+  Qukeys,
+
   // Dual use keys
   DualUse,
 
@@ -310,6 +350,13 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
+
+  QUKEYS(
+    kaleidoscope::Qukey(0, 0, 6, M(MACRO_ALT_SFT)), // Led => Alt + Shift
+    kaleidoscope::Qukey(0, 0, 9, M(MACRO_ALT_SFT)), // Any => Alt + Shift
+    kaleidoscope::Qukey(0, 2, 6, M(MACRO_CTRL_SFT)) // Esc => Ctr + Shift
+    //kaleidoscope::Qukey(0, 2, 9, M(MACRO_CTRL_SFT)) // Butterfly => Ctr + Shift
+  )
 
   // Next, tell Kaleidoscope which plugins you want to use.
   // The order can be important. For example, LED effects are
