@@ -160,7 +160,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ShiftToLayer(CODING)),
 
   [CODING] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDEffectNext,
+  (Key_LEDEffectNext,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           ___,
    Key_Tab,  TOPSY(1), TOPSY(2), Key_LeftCurlyBracket,     Key_RightCurlyBracket,  Key_Pipe, Key_mouseWarpNE,
    Key_Home, TOPSY(3), TOPSY(4), Key_KeypadLeftParen, Key_KeypadRightParen, Key_Backslash,
    Key_End,  TOPSY(5),  TOPSY(6),  Key_LeftBracket,        Key_RightBracket, TOPSY(Minus),  Key_mouseWarpSE,
@@ -352,9 +352,15 @@ void setup() {
   Kaleidoscope.setup();
 
   QUKEYS(
-    kaleidoscope::Qukey(0, 0, 6, M(MACRO_ALT_SFT)), // Led => Alt + Shift
-    kaleidoscope::Qukey(0, 0, 9, M(MACRO_ALT_SFT)), // Any => Alt + Shift
-    kaleidoscope::Qukey(0, 2, 6, M(MACRO_CTRL_SFT)) // Esc => Ctr + Shift
+    //kaleidoscope::Qukey(0, 0, 6, M(MACRO_ALT_SFT)), // Led => Alt + Shift
+    //kaleidoscope::Qukey(0, 0, 9, M(MACRO_ALT_SFT)), // Any => Alt + Shift
+    //kaleidoscope::Qukey(0, 2, 6, M(MACRO_CTRL_SFT)) // Esc => Ctr + Shift
+    kaleidoscope::Qukey(0, 0, 6, LALT(Key_LeftShift)), // Led => Alt + Shift
+    kaleidoscope::Qukey(0, 0, 9, LALT(Key_LeftShift)), // Any => Alt + Shift
+    kaleidoscope::Qukey(0, 2, 6, LCTRL(Key_LeftShift)), // Esc => Ctr + Shift
+    kaleidoscope::Qukey(1, 0, 6, LALT(Key_LeftShift)), // Led => Alt + Shift
+    kaleidoscope::Qukey(1, 0, 9, LALT(Key_LeftShift)), // Any => Alt + Shift
+    kaleidoscope::Qukey(1, 2, 6, LCTRL(Key_LeftShift)) // Esc => Ctr + Shift
     //kaleidoscope::Qukey(0, 2, 9, M(MACRO_CTRL_SFT)) // Butterfly => Ctr + Shift
   )
 
