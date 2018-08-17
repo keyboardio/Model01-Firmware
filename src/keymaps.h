@@ -33,7 +33,7 @@ KEYMAPS(
   (Key_CapsLock, Key_F1,     Key_F2,      Key_F3,     Key_F4,        Key_F5, Key_LEDToggleNext,
    Key_Tab,      ___,        Key_mouseUp, ___,        Key_mouseBtnR, ___,    Key_Enter,
    Key_Home,     Key_mouseL, Key_mouseDn, Key_mouseR, Key_mouseBtnL, ___,
-   Key_End,      ___,        ___,         ___,        Key_mouseBtnM, ___,    Key_Spacebar,
+   Key_End,      ___,        ___,         ___,        ___,           ___,    Key_Spacebar,
    ___, Key_Delete, ___, ___,
    ___,
 
@@ -63,10 +63,10 @@ KEYMAPS(
 
 #if KALEIDOSCOPE_INCLUDE_XCODE
   [XCODE] =  KEYMAP_STACKED
-  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,             XXX,                    XXX,                  ___,
-   XXX,               XXX,                      XXX,                JJ_XcodeEditAll, JJ_XcodeFindAndReplace, JJ_XcodeFixNextIssue, ___,
-   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,             JJ_XcodeFind,           JJ_XcodeNextResult,
-   JJ_XcodeCopyOrCut, JJ_XcodeUndo,             JJ_XcodeCut,        JJ_XcodeCopy,    JJ_XcodePaste,          JJ_XcodeNextIssue,    ___,
+  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,             XXX,                             XXX,                  ___,
+   XXX,               XXX,                      XXX,                JJ_XcodeEditAll, JJ_XcodeFindAndReplaceInProject, JJ_XcodeFixNextIssue, ___,
+   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,             JJ_XcodeFindInProject,           JJ_XcodeNextResult,
+   JJ_XcodeCopyOrCut, JJ_XcodeUndo,             JJ_XcodeCut,        JJ_XcodeCopy,    JJ_XcodePaste,                   JJ_XcodeNextIssue,    ___,
    ___, ___, ___, ___,
    ___,
 
