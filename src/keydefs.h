@@ -14,7 +14,8 @@
 #include "Macros.h"
 #include "TapDance.h"
 
-# define JJ_Compose Key_NonUsBackslashAndPipe
+#define JJ_Compose Key_NonUsBackslashAndPipe
+
 
 #if KALEIDOSCOPE_INCLUDE_EMOJI
 # define JJ_Emoji OSL(EMOJI)

@@ -72,9 +72,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   HeatmapEffect,
 #endif
   jj::LEDControl::solidRed,
-  jj::LEDControl::solidLowWhite,
+  jj::LEDControl::solidBrightRed,
   jj::LEDControl::solidIndigo,
   LEDBreatheEffect,
+  jj::LEDControl::solidPaleWhite,
   LEDDigitalRainEffect,
 #if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
   LEDRainbowEffect,
