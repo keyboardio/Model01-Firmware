@@ -60,9 +60,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   HostPowerManagement,
   Macros,
   TapDance,
-#if KALEIDOSCOPE_INCLUDE_LEADER
   Leader,
-#endif
   BootGreetingEffect,
   LEDControl,
   LEDToggle,

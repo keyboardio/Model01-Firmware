@@ -11,8 +11,6 @@ namespace jj {
 namespace Macros {
 
 void configure(void);
-void selectInputSourceUS(void);
-void selectInputSourceUnicode(void);
 
 }
 }

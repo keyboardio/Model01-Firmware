@@ -22,7 +22,7 @@ void configure(void) {
 
 }
 
-void versionInfoMacro(uint8_t keyState) {
+static void versionInfoMacro(uint8_t keyState) {
   if (!keyToggledOn(keyState)) {
     return;
   }
@@ -30,7 +30,7 @@ void versionInfoMacro(uint8_t keyState) {
   ::Macros.type(PSTR(BUILD_INFORMATION));
 }
 
-void anyKeyMacro(uint8_t keyState) {
+static void anyKeyMacro(uint8_t keyState) {
   static Key lastKey;
   if (keyToggledOn(keyState)) {
     lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
