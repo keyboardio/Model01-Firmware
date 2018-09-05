@@ -43,10 +43,10 @@ cd $HOME/Arduino
 ## Download hardware platform, including library source code 
 
 ```sh
-mkdir -p hardware/keyboardio
+mkdir -p hardware
 
 ## then clone the hardware definitions to make them available to the arduino environment
-git clone --recursive https://github.com/keyboardio/Arduino-Boards.git hardware/keyboardio/avr
+git clone --recursive https://github.com/keyboardio/Kaleidoscope-Bundle-Keyboardio.git hardware/keyboardio
 ````
 
 
