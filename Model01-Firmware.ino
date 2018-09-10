@@ -144,6 +144,7 @@ enum { PRIMARY, NUMPAD, FUNCTION }; // layers
 
 #define PRIMARY_KEYMAP_QWERTY
 // #define PRIMARY_KEYMAP_COLEMAK
+// #define PRIMARY_KEYMAP_COLEMAK_DH
 // #define PRIMARY_KEYMAP_DVORAK
 // #define PRIMARY_KEYMAP_CUSTOM
 
@@ -157,6 +158,8 @@ enum { PRIMARY, NUMPAD, FUNCTION }; // layers
 KEYMAPS(
 
 #if defined (PRIMARY_KEYMAP_QWERTY) 
+  #define PRIMARY_KEYMAP_NAME "QWERTY"
+
   [PRIMARY] = KEYMAP_STACKED
   (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
@@ -173,6 +176,7 @@ KEYMAPS(
    ShiftToLayer(FUNCTION)),
 
 #elif defined (PRIMARY_KEYMAP_DVORAK)
+  #define PRIMARY_KEYMAP_NAME "Dvorak"
 
   [PRIMARY] = KEYMAP_STACKED
   (___,          Key_1,         Key_2,     Key_3,      Key_4, Key_5, Key_LEDEffectNext,
@@ -190,6 +194,7 @@ KEYMAPS(
    ShiftToLayer(FUNCTION)),
 
 #elif defined (PRIMARY_KEYMAP_COLEMAK) 
+  #define PRIMARY_KEYMAP_NAME "Colemak"
 
   [PRIMARY] = KEYMAP_STACKED
   (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
@@ -206,7 +211,27 @@ KEYMAPS(
    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
    ShiftToLayer(FUNCTION)),
 
+#elif defined (PRIMARY_KEYMAP_COLEMAK_DH)
+  #define PRIMARY_KEYMAP_NAME "ColemakDH"
+
+  [PRIMARY] = KEYMAP_STACKED
+  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
+   Key_Backtick, Key_Q, Key_W, Key_F, Key_P, Key_B, Key_Tab,
+   Key_PageUp,   Key_A, Key_R, Key_S, Key_T, Key_G,
+   Key_PageDown, Key_Z, Key_X, Key_C, Key_D, Key_V, Key_Escape,
+   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
+   ShiftToLayer(FUNCTION),
+
+   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
+   Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
+                  Key_M, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,
+   Key_RightAlt,  Key_K, Key_H, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
+   ShiftToLayer(FUNCTION)),
+
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
+  #define PRIMARY_KEYMAP_NAME "custom"
+
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
   (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
@@ -272,7 +297,7 @@ KEYMAPS(
 
 static void versionInfoMacro(uint8_t keyState) {
   if (keyToggledOn(keyState)) {
-    Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
+    Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope layout(" PRIMARY_KEYMAP_NAME ") "));
     Macros.type(PSTR(BUILD_INFORMATION));
   }
 }
