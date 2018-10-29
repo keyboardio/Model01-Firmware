@@ -291,11 +291,14 @@ static void versionInfoMacro(uint8_t keyState) {
 
 static void anyKeyMacro(uint8_t keyState) {
   static Key lastKey;
-  if (keyToggledOn(keyState))
+  bool toggledOn = false;
+  if (keyToggledOn(keyState)) {
     lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
+    toggledOn = true;
+  }
 
   if (keyIsPressed(keyState))
-    kaleidoscope::hid::pressKey(lastKey);
+    kaleidoscope::hid::pressKey(lastKey, toggledOn);
 }
 
 
