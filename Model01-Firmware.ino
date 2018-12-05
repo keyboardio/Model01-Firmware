@@ -487,7 +487,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
  * Kaleidoscope and any plugins.
  */
 void setup() {
-  // First, call Kaleidoscope's internal setup function
+  // First, initialize the virtual serial port
+  Serial.begin(9600);
+
+  // Then call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
   // While we hope to improve this in the future, the NumPad plugin
