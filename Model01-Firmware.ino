@@ -412,17 +412,21 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // interface through which the keymap in EEPROM can be edited.
   Focus,
 
-  // FocusSettingsCommand adds a few Focus commands, intended to aid in changing some settings of the keyboard, such as the default layer (via the `settings.defaultLayer` command)
+  // FocusSettingsCommand adds a few Focus commands, intended to aid in
+  // changing some settings of the keyboard, such as the default layer (via the
+  // `settings.defaultLayer` command)
   FocusSettingsCommand,
 
   // FocusEEPROMCommand adds a set of Focus commands, which are very helpful in
   // both debugging, and in backing up one's EEPROM contents.
   FocusEEPROMCommand,
 
-  // The boot greeting effect pulses the LED button for 10 seconds after the keyboard is first connected
+  // The boot greeting effect pulses the LED button for 10 seconds after the
+  // keyboard is first connected
   BootGreetingEffect,
 
-  // The hardware test mode, which can be invoked by tapping Prog, LED and the left Fn button at the same time.
+  // The hardware test mode, which can be invoked by tapping Prog, LED and the
+  // left Fn button at the same time.
   TestMode,
 
   // LEDControl provides support for other LED modes
