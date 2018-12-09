@@ -108,9 +108,15 @@ enum { MACRO_VERSION_INFO,
   *   using ___ to let keypresses fall through to the previously active layer
   *   using XXX to mark a keyswitch as 'blocked' on this layer
   *   using ShiftToLayer() and LockLayer() keys to change the active keymap.
-  *   the special nature of the PROG key
   *   keeping NUM and FN consistent and accessible on all layers
   *
+  * The PROG key is special, since it is how you indicate to the board that you
+  * want to flash the firmware. However, it can be remapped to a regular key.
+  * When the keyboard boots, it first looks to see whether the PROG key is held
+  * down; if it is, it simply awaits further flashing instructions. If it is
+  * not, it continues loading the rest of the firmware and the keyboard
+  * functions normally, with whatever binding you have set to PROG. More detail
+  * here: https://community.keyboard.io/t/how-the-prog-key-gets-you-into-the-bootloader/506/8
   *
   * The "keymaps" data structure is a list of the keymaps compiled into the firmware.
   * The order of keymaps in the list is important, as the ShiftToLayer(#) and LockLayer(#)
@@ -412,17 +418,21 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // interface through which the keymap in EEPROM can be edited.
   Focus,
 
-  // FocusSettingsCommand adds a few Focus commands, intended to aid in changing some settings of the keyboard, such as the default layer (via the `settings.defaultLayer` command)
+  // FocusSettingsCommand adds a few Focus commands, intended to aid in
+  // changing some settings of the keyboard, such as the default layer (via the
+  // `settings.defaultLayer` command)
   FocusSettingsCommand,
 
   // FocusEEPROMCommand adds a set of Focus commands, which are very helpful in
   // both debugging, and in backing up one's EEPROM contents.
   FocusEEPROMCommand,
 
-  // The boot greeting effect pulses the LED button for 10 seconds after the keyboard is first connected
+  // The boot greeting effect pulses the LED button for 10 seconds after the
+  // keyboard is first connected
   BootGreetingEffect,
 
-  // The hardware test mode, which can be invoked by tapping Prog, LED and the left Fn button at the same time.
+  // The hardware test mode, which can be invoked by tapping Prog, LED and the
+  // left Fn button at the same time.
   TestMode,
 
   // LEDControl provides support for other LED modes
