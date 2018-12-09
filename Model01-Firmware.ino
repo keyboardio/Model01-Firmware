@@ -108,9 +108,15 @@ enum { MACRO_VERSION_INFO,
   *   using ___ to let keypresses fall through to the previously active layer
   *   using XXX to mark a keyswitch as 'blocked' on this layer
   *   using ShiftToLayer() and LockLayer() keys to change the active keymap.
-  *   the special nature of the PROG key
   *   keeping NUM and FN consistent and accessible on all layers
   *
+  * The PROG key is special, since it is how you indicate to the board that you
+  * want to flash the firmware. However, it can be remapped to a regular key.
+  * When the keyboard boots, it first looks to see whether the PROG key is held
+  * down; if it is, it simply awaits further flashing instructions. If it is
+  * not, it continues loading the rest of the firmware and the keyboard
+  * functions normally, with whatever binding you have set to PROG. More detail
+  * here: https://community.keyboard.io/t/how-the-prog-key-gets-you-into-the-bootloader/506/8
   *
   * The "keymaps" data structure is a list of the keymaps compiled into the firmware.
   * The order of keymaps in the list is important, as the ShiftToLayer(#) and LockLayer(#)
