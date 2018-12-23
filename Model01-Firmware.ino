@@ -12,6 +12,13 @@
  * as well as the Kaleidoscope plugins we use in the Model 01's firmware
  */
 
+/*
+ * This firmware can be compiled with the "CHRYSALIS_MEGAPACK" flag enabled, in
+ * which case it will include a few additional plugins that can be configured
+ * via Chrysalis.
+ *
+ * This mode of compilation will be referred to as "Mega mode".
+ */
 
 // The Kaleidoscope core
 #include "Kaleidoscope.h"
@@ -32,8 +39,18 @@
 // Support for controlling the keyboard's LEDs
 #include "Kaleidoscope-LEDControl.h"
 
+// Support for palette-based LED themes (only used in MEGA mode)
+#include "Kaleidoscope-LED-Palette-Theme.h"
+
+// Support for per-layer color maps (only used in MEGA mode)
+#include "Kaleidoscope-Colormap.h"
+
 // Support for "Numpad" mode, which is mostly just the Numpad specific LED mode
 #include "Kaleidoscope-NumPad.h"
+
+// Support for highlighting active modifier and layer keys (only used in MEGA
+// mode)
+#include "Kaleidoscope-LED-ActiveModColor.h"
 
 // Support for the "Boot greeting" effect, which pulses the 'LED' button for 10s
 // when the keyboard is connected to a computer (or that computer is powered on)
@@ -65,6 +82,9 @@
 
 // Support for magic combos (key chords that trigger an action)
 #include "Kaleidoscope-MagicCombo.h"
+
+// Support for one-shot modifiers and layer keys (only used in MEGA mode)
+#include "Kaleidoscope-OneShot.h"
 
 // Support for USB quirks, like changing the key state report protocol
 #include "Kaleidoscope-USB-Quirks.h"
@@ -438,8 +458,21 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // LEDControl provides support for other LED modes
   LEDControl,
 
+#if CHRYSALIS_MEGA
+  // We support highlighting active modifiers and layer keys
+  ActiveModColorEffect,
+#endif
+
   // We start with the LED effect that turns off all the LEDs.
   LEDOff,
+
+#if CHRYSALIS_MEGA
+  // We support themes with palettes
+  LEDPaletteTheme,
+
+  // We support per-layer colormaps
+  ColormapEffect,
+#endif
 
   // The rainbow effect changes the color of all of the keyboard's keys at the same time
   // running through all the colors of the rainbow.
@@ -469,6 +502,11 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // The numpad plugin is responsible for lighting up the 'numpad' mode
   // with a custom LED effect
   NumPad,
+
+#if CHRYSALIS_MEGA
+  // The OneShot plugin adds support for one-shot modifiers and layer keys
+  OneShot,
+#endif
 
   // The macros plugin adds support for macros
   Macros,
@@ -527,6 +565,11 @@ void setup() {
   // one wants to use these layers, just set the default layer to one in EEPROM,
   // by using the `settings.defaultLayer` Focus command.
   EEPROMKeymap.setup(5, EEPROMKeymap.Mode::EXTEND);
+
+  // For the per-layer colormap effect, we need to tell the plugin how many
+  // layers we want to support colormaps for. We have three built-in layers, and
+  // give extra editable ones.
+  ColormapEffect.max_layers(3 + 5);
 }
 
 /** loop is the second of the standard Arduino sketch functions.
