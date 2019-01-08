@@ -9,7 +9,6 @@
 #include <Kaleidoscope-Macros.h>
 #include <Kaleidoscope-TapDance.h>
 #include <Kaleidoscope-HostOS.h>
-#include <Kaleidoscope/HostOS-select.h>
 #include <Kaleidoscope-HostPowerManagement.h>
 #include <Kaleidoscope-Escape-OneShot.h>
 #include <Kaleidoscope-MouseKeys.h>
@@ -26,7 +25,6 @@
 #include <Kaleidoscope-LEDEffect-DigitalRain.h>
 #include <Kaleidoscope-LEDEffect-Rainbow.h>
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
-#include <LED-Off.h>
 #include <Kaleidoscope-Model01-TestMode.h>
 
 #if KALEIDOSCOPE_INCLUDE_EMOJI

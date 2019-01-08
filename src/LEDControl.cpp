@@ -14,7 +14,6 @@
 #include <Kaleidoscope-LEDEffect-DigitalRain.h>
 #include <Kaleidoscope-LEDEffect-Rainbow.h>
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
-#include <LED-Off.h>
 
 #if KALEIDOSCOPE_INCLUDE_HEATMAP
 # include <Kaleidoscope-Heatmap.h>
