@@ -23,22 +23,22 @@ void configure(void) {
 }
 
 static void versionInfoMacro(uint8_t keyState) {
-  if (!keyToggledOn(keyState)) {
-    return;
+  if (keyToggledOn(keyState)) {
+    ::Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
+    ::Macros.type(PSTR(BUILD_INFORMATION));
   }
-  ::Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
-  ::Macros.type(PSTR(BUILD_INFORMATION));
 }
 
 static void anyKeyMacro(uint8_t keyState) {
   static Key lastKey;
+  bool toggledOn = false;
   if (keyToggledOn(keyState)) {
     lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
+    toggledOn = true;
   }
 
-  if (keyIsPressed(keyState)) {
-    kaleidoscope::hid::pressKey(lastKey);
-  }
+  if (keyIsPressed(keyState))
+    kaleidoscope::hid::pressKey(lastKey, toggledOn);
 }
 
 namespace {
