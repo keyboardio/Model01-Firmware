@@ -5,12 +5,6 @@
 #include "Specials.h"
 #include <Kaleidoscope-HostOS.h>
 #include <Kaleidoscope-Macros.h>
-#if KALEIDOSCOPE_INCLUDE_EMOJI
-# include <Kaleidoscope-Emoji.h>
-#endif
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-# include <Kaleidoscope-Timekeeper.h>
-#endif
 
 
 namespace jj {

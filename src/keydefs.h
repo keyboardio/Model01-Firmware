@@ -15,12 +15,6 @@
 #include "TapDance.h"
 
 
-#if KALEIDOSCOPE_INCLUDE_EMOJI
-# define JJ_Emoji OSL(EMOJI)
-#else
-# define JJ_Emoji ___
-#endif
-
 #if KALEIDOSCOPE_INCLUDE_XCODE
 # define JJ_Xcode OSL(XCODE)
 # define JJ_XcodeQuickOpen LGUI(LSHIFT(Key_O))
@@ -54,11 +48,5 @@
 # define JJ_XcodeActivateBreakpoints LGUI(Key_Y)
 #else
 # define JJ_Xcode ___
-#endif
-
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-# define JJ_TypeDate Key_TimekeeperDate
-#else
-# define JJ_TypeDate ___
 #endif
 

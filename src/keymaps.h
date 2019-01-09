@@ -41,7 +41,7 @@ KEYMAPS(
    ___,                     Key_F6,                   Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_Eszett,
    Consumer_PlaySlashPause, ___,                      Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_UUmlaut,
                             Key_LeftArrow,            Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  Key_OUmlaut,      Key_AUmlaut,
-   ___,                     TD(TAP_DANCE_NEXT_TRACK), Consumer_VolumeDecrement, Consumer_VolumeIncrement, JJ_TypeDate,     ___,              ___,
+   ___,                     TD(TAP_DANCE_NEXT_TRACK), Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             ___,              ___,
    ___, ___, Key_Enter, ___,
    ___),
 

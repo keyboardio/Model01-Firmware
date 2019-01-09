@@ -15,10 +15,6 @@
 #include <Kaleidoscope-LEDEffect-Rainbow.h>
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
 
-#if KALEIDOSCOPE_INCLUDE_HEATMAP
-# include <Kaleidoscope-Heatmap.h>
-#endif
-
 
 namespace jj {
 namespace LEDControl {

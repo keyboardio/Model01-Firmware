@@ -3,9 +3,7 @@
 #include "config.h"
 
 #include <Kaleidoscope.h>
-#include <Kaleidoscope-Qukeys.h>
 #include <Kaleidoscope-Leader.h>
-#include <Kaleidoscope-LEDToggle.h>
 #include <Kaleidoscope-Macros.h>
 #include <Kaleidoscope-TapDance.h>
 #include <Kaleidoscope-HostOS.h>
@@ -27,19 +25,11 @@
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <Kaleidoscope-Model01-TestMode.h>
 
-#if KALEIDOSCOPE_INCLUDE_EMOJI
-# include <Kaleidoscope-Emoji.h>
-#endif
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-# include <Kaleidoscope-Timekeeper.h>
-#endif
-
 #include "System.h"
 #include "LEDControl.h"
 #include "Macros.h"
 #include "TapDance.h"
 #include "Leader.h"
-#include "Qukeys.h"
 #include "Specials.h"
 
 #include "keymaps.h"
@@ -47,9 +37,6 @@
 KALEIDOSCOPE_INIT_PLUGINS(
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
   TestMode,
-#endif
-#if KALEIDOSCOPE_INCLUDE_QUKEYS
-  Qukeys,
 #endif
   OneShot,
   EscapeOneShot,
@@ -64,9 +51,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   LEDToggle,
   LEDOff,
   ActiveModColorEffect,
-#if KALEIDOSCOPE_INCLUDE_HEATMAP
-  HeatmapEffect,
-#endif
   jj::LEDControl::solidRed,
   jj::LEDControl::solidBrightRed,
   jj::LEDControl::solidIndigo,
@@ -85,21 +69,12 @@ KALEIDOSCOPE_INIT_PLUGINS(
   jj::LEDControl::solidBlue,
   jj::LEDControl::solidViolet,
 #endif
-#if KALEIDOSCOPE_INCLUDE_EMOJI
-  Emoji,
-#endif
-#if KALEIDOSCOPE_INCLUDE_TIMEKEEPER
-  Timekeeper,
-#endif
   German
 );
 
 void setup() {
-  Serial.begin(9600);
-
   Kaleidoscope.setup();
 
-  jj::Qukeys::configure();
   jj::System::configure();
   jj::Macros::configure();
   jj::TapDance::configure();
