@@ -6,6 +6,7 @@
 #include <Kaleidoscope-Leader.h>
 #include <Kaleidoscope-Macros.h>
 #include <Kaleidoscope-TapDance.h>
+#include <Kaleidoscope-OneShot.h>
 #include <Kaleidoscope-HostOS.h>
 #include <Kaleidoscope-HostPowerManagement.h>
 #include <Kaleidoscope-Escape-OneShot.h>
@@ -31,6 +32,7 @@
 #include "TapDance.h"
 #include "Leader.h"
 #include "Specials.h"
+#include "OneShot.h"
 
 #include "keymaps.h"
 
@@ -81,8 +83,7 @@ void setup() {
   jj::Leader::configure();
   jj::LEDControl::configure();
   jj::Specials::configure();
-
-  OneShot.double_tap_sticky_layers = true;
+  jj::OneShot::configure();
 }
 
 void loop() {
