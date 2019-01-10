@@ -79,23 +79,6 @@ KEYMAPS(
    ___),
 #endif
 
-#if KALEIDOSCOPE_INCLUDE_EMOJI
-  [EMOJI] =  KEYMAP_STACKED
-  (Key_EmojiCricket, Key_EmojiUnicornFace,   Key_EmojiEyes,  Key_EmojiSparkles,    ___,                ___,               ___,
-   ___,              Key_EmojiBalloon,       Key_EmojiWave,  Key_EmojiFlushed,     Key_EmojiRocket,    Key_EmojiMetal,    ___,
-   ___,              Key_EmojiWarning,       Key_EmojiBlush, Key_EmojiThumbsdown,  Key_EmojiSunflower, Key_EmojiGrimaced,
-   ___,              Key_EmojiExplodingHead, Key_EmojiPeach, Key_EmojiCrazy,       Key_EmojiVulcan,    Key_EmojiBoom,     ___,
-   ___, ___, ___, ___,
-   ___,
-
-   Key_EmojiUpsideDown, ___,                  ___,               ___,                  ___,                       Key_EmojiWhiteCheckMark, Key_EmojiCrossMark,
-   ___,                 Key_EmojiDisbelief,   Key_EmojiThumbsup, Key_EmojiThinking,    Key_EmojiManDancing,       Key_EmojiParty,          ___,
-                        Key_EmojiMischievous, Key_EmojiJoyful,   Key_EmojiFlirty,      Key_EmojiConfident,        Key_EmojiHole,           ___,
-   Key_EmojiBlush,      Key_EmojiNerd,        Key_EmojiAnnoyed,  Key_EmojiWink,        Key_EmojiHourglassFlowing, Key_EmojiConstruction,   ___,
-   ___, ___, ___, ___,
-   ___),
-#endif
-
 	) // KEYMAPS(
 
 // *INDENT-ON*

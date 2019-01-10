@@ -81,9 +81,9 @@ void setup() {
   jj::Macros::configure();
   jj::TapDance::configure();
   jj::Leader::configure();
+  jj::OneShot::configure();
   jj::LEDControl::configure();
   jj::Specials::configure();
-  jj::OneShot::configure();
 }
 
 void loop() {
