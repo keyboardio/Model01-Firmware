@@ -355,9 +355,9 @@ static kaleidoscope::plugin::LEDSolidColor solidViolet(130, 0, 120);
 void toggleLedsOnSuspendResume(kaleidoscope::plugin::HostPowerManagement::Event event) {
   switch (event) {
   case kaleidoscope::plugin::HostPowerManagement::Suspend:
-    LEDControl.paused = true;
     LEDControl.set_all_leds_to({0, 0, 0});
     LEDControl.syncLeds();
+    LEDControl.paused = true;
     break;
   case kaleidoscope::plugin::HostPowerManagement::Resume:
     LEDControl.paused = false;
