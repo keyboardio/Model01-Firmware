@@ -19,9 +19,6 @@ namespace {
 namespace jj {
 namespace Leader {
 
-static void printCurrentDate(uint8_t seq_index) {
-  ::Macros.play(MACRO(Tr(LGUI(LALT(LSHIFT(Key_D))))));
-}
 static void launchXcode(uint8_t seq_index) {
   ::Macros.play(MACRO(Tr(LGUI(Key_F13))));
 }
@@ -45,6 +42,9 @@ static void compose(uint8_t seq_index) {
 }
 static void emoji(uint8_t seq_index) {
   ::Macros.play(MACRO(Tr(LALT(LSHIFT(Key_M)))));
+}
+static void printCurrentDate(uint8_t seq_index) {
+  ::Macros.play(MACRO(Tr(LGUI(LALT(LSHIFT(Key_D))))));
 }
 
 static const kaleidoscope::Leader::dictionary_t leader_dictionary[] PROGMEM = LEADER_DICT(
