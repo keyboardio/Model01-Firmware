@@ -50,6 +50,23 @@ endif
 
 
 BOARD_HARDWARE_PATH ?= $(SKETCHBOOK_DIR)/hardware
-KALEIDOSCOPE_PLUGIN_MAKEFILE_DIR ?= keyboardio/avr/build-tools/makefiles/
+KALEIDOSCOPE_PLUGIN_MAKEFILE_DIR ?= keyboardio/build-tools/makefiles/
+
+# If Kaleidoscope's Arduino libraries cannot be found, e.g. because 
+# they reside outside of SKETCHBOOK_DIR, we fall back to assuming that 
+# the hardware directory can be determined in relation to the position of 
+# this Makefile.
+ifeq ("$(wildcard $(BOARD_HARDWARE_PATH)/keyboardio/build-tools/makefiles/rules.mk)","")
+   # Determine the path of this Makefile
+   MKFILE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+   BOARD_HARDWARE_PATH = $(MKFILE_DIR)/../../../..
+endif
+
+ifeq ("$(wildcard $(BOARD_HARDWARE_PATH)/keyboardio/build-tools/makefiles/rules.mk)","")
+$(info ***************************************************************************)
+$(info Unable to autodetect a proper BOARD_HARDWARE_PATH. Please define it manually.)
+$(info ***************************************************************************)
+$(info )
+endif
 
 include $(BOARD_HARDWARE_PATH)/$(KALEIDOSCOPE_PLUGIN_MAKEFILE_DIR)/rules.mk
