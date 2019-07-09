@@ -57,6 +57,9 @@
 // Support for an LED mode that prints the keys you press in letters 4px high
 #include "Kaleidoscope-LED-AlphaSquare.h"
 
+// Support for shared palettes for other plugins, like Colormap below
+#include "Kaleidoscope-LED-Palette-Theme.h"
+
 // Support for an LED mode that lets one configure per-layer color maps
 #include "Kaleidoscope-Colormap.h"
 
@@ -455,6 +458,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The stalker effect lights up the keys you've pressed recently
   StalkerEffect,
+
+  // The LED Palette Theme plugin provides a shared palette for other plugins,
+  // like Colormap below
+  LEDPaletteTheme,
 
   // The Colormap effect makes it possible to set up per-layer colormaps
   ColormapEffect,
