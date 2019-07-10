@@ -47,7 +47,7 @@ static void printCurrentDate(uint8_t seq_index) {
   ::Macros.play(MACRO(Tr(LGUI(LALT(LSHIFT(Key_D))))));
 }
 
-static const kaleidoscope::Leader::dictionary_t leader_dictionary[] PROGMEM = LEADER_DICT(
+static const kaleidoscope::plugin::Leader::dictionary_t leader_dictionary[] PROGMEM = LEADER_DICT(
 {LEADER_SEQ(LEAD(MAIN), Key_C), compose},
 {LEADER_SEQ(LEAD(MAIN), Key_E), emoji},
 {LEADER_SEQ(LEAD(MAIN), Key_D), printCurrentDate},
