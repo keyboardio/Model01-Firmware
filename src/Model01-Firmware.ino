@@ -24,7 +24,7 @@
 #include <Kaleidoscope-LEDEffect-DigitalRain.h>
 #include <Kaleidoscope-LEDEffect-Rainbow.h>
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
-#include <Kaleidoscope-Model01-TestMode.h>
+#include <Kaleidoscope-HardwareTestMode.h>
 
 #include "System.h"
 #include "LEDControl.h"
@@ -38,7 +38,7 @@
 
 KALEIDOSCOPE_INIT_PLUGINS(
 #if KALEIDOSCOPE_INCLUDE_TEST_MODE
-  TestMode,
+  HardwareTestMode,
 #endif
   OneShot,
   EscapeOneShot,
