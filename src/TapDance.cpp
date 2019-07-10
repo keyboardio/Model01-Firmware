@@ -31,7 +31,7 @@ namespace {
 } // namespacce jj
 
 
-void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_count, kaleidoscope::TapDance::ActionType tap_dance_action) {
+void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count, kaleidoscope::plugin::TapDance::ActionType tap_dance_action) {
   switch (tap_dance_index) {
   case TAP_DANCE_LEFT_SHIFT:
     return tapDanceActionKeys(tap_count, tap_dance_action, Key_LeftShift, Key_CapsLock);
