@@ -58,8 +58,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   jj::LEDControl::solidIndigo,
   LEDBreatheEffect,
   jj::LEDControl::solidPaleWhite,
-#if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
   LEDDigitalRainEffect,
+#if KALEIDOSCOPE_INCLUDE_MORE_LED_EFFECTS
   LEDRainbowEffect,
   LEDRainbowWaveEffect,
   LEDChaseEffect,
