@@ -31,7 +31,7 @@ KEYMAPS(
    ShiftToLayer(FUNCTION_JJ)),
 
   [FUNCTION_JJ] =  KEYMAP_STACKED
-  (Key_CapsLock, Key_F1,     Key_F2,      Key_F3,     Key_F4,        Key_F5, Key_LEDToggleNext,
+  (Key_CapsLock, Key_F1,     Key_F2,      Key_F3,     Key_F4,        Key_F5, Key_LEDEffectNext,
    Key_Tab,      ___,        Key_mouseUp, ___,        Key_mouseBtnR, ___,    Key_Enter,
    Key_Home,     Key_mouseL, Key_mouseDn, Key_mouseR, Key_mouseBtnL, ___,
    Key_End,      ___,        ___,         ___,        ___,           ___,    Key_Spacebar,

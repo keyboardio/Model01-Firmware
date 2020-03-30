@@ -14,7 +14,6 @@
 #include <Kaleidoscope-OneShot.h>
 #include <Kaleidoscope-LangPack-German.h>
 #include <Kaleidoscope-LEDControl.h>
-#include <Kaleidoscope-LEDToggle.h>
 #include <Kaleidoscope-LED-ActiveModColor.h>
 #include <Kaleidoscope-LED-AlphaSquare.h>
 #include <Kaleidoscope-LED-Stalker.h>
@@ -50,7 +49,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   Leader,
   BootGreetingEffect,
   LEDControl,
-  LEDToggle,
   LEDOff,
   ActiveModColorEffect,
   jj::LEDControl::solidBrightRed,

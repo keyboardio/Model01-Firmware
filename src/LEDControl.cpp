@@ -4,7 +4,6 @@
 
 #include "LEDControl.h"
 #include <Kaleidoscope-LEDControl.h>
-#include <Kaleidoscope-LEDToggle.h>
 #include <Kaleidoscope-LED-ActiveModColor.h>
 #include <Kaleidoscope-LED-AlphaSquare.h>
 #include <Kaleidoscope-LED-Stalker.h>
