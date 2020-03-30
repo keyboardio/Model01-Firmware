@@ -3,6 +3,7 @@
 #include "config.h"
 
 #include "Macros.h"
+#include <Kaleidoscope.h>
 #include <Kaleidoscope-Macros.h>
 
 
@@ -33,7 +34,7 @@ static void anyKeyMacro(uint8_t keyState) {
   static Key lastKey;
   bool toggledOn = false;
   if (keyToggledOn(keyState)) {
-    lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
+    lastKey.setKeyCode(Key_A.getKeyCode() + (uint8_t)(millis() % 36));
     toggledOn = true;
   }
 
