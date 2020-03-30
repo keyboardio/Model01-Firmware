@@ -38,8 +38,9 @@ static void anyKeyMacro(uint8_t keyState) {
   }
 
   if (keyIsPressed(keyState))
-    kaleidoscope::hid::pressKey(lastKey, toggledOn);
+    Kaleidoscope.hid().keyboard().pressKey(lastKey, toggledOn);
 }
+
 
 namespace {
 
