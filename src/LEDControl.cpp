@@ -44,15 +44,12 @@ void configure(void) {
   ::LEDOff.activate();
 }
 
-void pauseLEDs(void) {
-  ::LEDControl.paused = true;
-  ::LEDControl.set_all_leds_to({0, 0, 0});
-  ::LEDControl.syncLeds();
+void disable(void) {
+  ::LEDControl.disable();
 }
 
-void unpauseLEDs(void) {
-  ::LEDControl.paused = false;
-  ::LEDControl.refreshAll();
+void enable(void) {
+  ::LEDControl.enable();
 }
 
 namespace {

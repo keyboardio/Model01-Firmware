@@ -40,10 +40,10 @@ namespace {
 void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::Event event) {
   switch (event) {
   case kaleidoscope::plugin::HostPowerManagement::Suspend:
-    jj::LEDControl::pauseLEDs();
+    jj::LEDControl::disable();
     break;
   case kaleidoscope::plugin::HostPowerManagement::Resume:
-    jj::LEDControl::unpauseLEDs();
+    jj::LEDControl::enable();
     break;
   case kaleidoscope::plugin::HostPowerManagement::Sleep:
     break;

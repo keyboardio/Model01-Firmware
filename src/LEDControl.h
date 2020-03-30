@@ -19,8 +19,8 @@ static kaleidoscope::plugin::LEDSolidColor solidPaleRed(70, 0, 0);
 static kaleidoscope::plugin::LEDSolidColor solidBrightRed(200, 0, 0);
 
 void configure(void);
-void pauseLEDs(void);
-void unpauseLEDs(void);
+void disable(void);
+void enable(void);
 
 }
 }
