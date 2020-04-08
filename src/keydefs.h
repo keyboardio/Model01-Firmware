@@ -34,6 +34,8 @@
 # define JJ_XcodePaste LGUI(Key_V)
 # define JJ_XcodeCopySymbolName LCTRL(LSHIFT(LGUI(Key_C)))
 # define JJ_XcodeCopyQualifiedSymbolName LCTRL(LALT(LSHIFT(LGUI(Key_C))))
+# define JJ_XcodeShowSpelling LGUI(LSHIFT(Key_Semicolon))
+# define JJ_XcodeCheckSpelling LGUI(Key_Semicolon)
 # define JJ_XcodeCopyOrCut TD(TAP_DANCE_XCODE_COPY_OR_CUT)
 
 // View Menu
@@ -44,6 +46,7 @@
 # define JJ_XcodeActivateConsole LSHIFT(LGUI(Key_C))
 # define JJ_XcodeToggleDebugArea LSHIFT(LGUI(Key_Y))
 # define JJ_XcodeShowLibrary LSHIFT(LGUI(Key_L))
+# define JJ_XcodeToggleInspectors LALT(LGUI(Key_0))
 
 // Find Menu
 # define JJ_XcodeFindInWorkspace LSHIFT(LGUI(Key_F))
@@ -58,6 +61,18 @@
 # define JJ_XcodeFindPreviousInFile LSHIFT(LGUI(Key_G))
 # define JJ_XcodeFind TD(TAP_DANCE_XCODE_FIND)
 # define JJ_XcodeFindAndReplace TD(TAP_DANCE_XCODE_FIND_AND_REPLACE)
+
+
+// Navigate Menu
+# define JJ_XcodeRevealInProjectNavigator LSHIFT(LGUI(Key_J))
+# define JJ_XcodeRevealInDebugNavigator LSHIFT(LGUI(Key_D))
+# define JJ_XcodeOpenInNextEditor LALT(LGUI(Key_Comma))
+# define JJ_XcodeOpenIn LSHIFT(LALT(LGUI(Key_Comma)))
+# define JJ_XcodeMoveFocusToNextArea LALT(LGUI(Key_Backtick))
+# define JJ_XcodeMoveFocusToPreviousArea LSHIFT(LALT(LGUI(Key_Backtick)))
+# define JJ_XcodeMoveFocusToNextEditor LCTRL(Key_Backtick)
+# define JJ_XcodeMoveFocusToPreviousEditor LSHIFT(LCTRL(Key_Backtick))
+# define JJ_XcodeMoveFocusToEditor LGUI(Key_Backtick)
 
 // Old
 # define JJ_XcodeNavigateBack LGUI(LCTRL(Key_LeftArrow))
