@@ -27,8 +27,14 @@
 # define JJ_XcodeCloseOtherEditors LCTRL(LALT(LSHIFT(LGUI(Key_W))))
 
 // Edit Menu
+# define JJ_XcodeUndo LGUI(Key_Z)
+# define JJ_XcodeRedo LSHIFT(LGUI(Key_Z))
+# define JJ_XcodeCut LGUI(Key_X)
+# define JJ_XcodeCopy LGUI(Key_C)
+# define JJ_XcodePaste LGUI(Key_V)
 # define JJ_XcodeCopySymbolName LCTRL(LSHIFT(LGUI(Key_C)))
 # define JJ_XcodeCopyQualifiedSymbolName LCTRL(LALT(LSHIFT(LGUI(Key_C))))
+# define JJ_XcodeCopyOrCut TD(TAP_DANCE_XCODE_COPY_OR_CUT)
 
 // View Menu
 # define JJ_XcodeFocusEditor LCTRL(LSHIFT(LGUI(Key_Return)))
@@ -40,28 +46,25 @@
 # define JJ_XcodeShowLibrary LSHIFT(LGUI(Key_L))
 
 // Find Menu
+# define JJ_XcodeFindInWorkspace LSHIFT(LGUI(Key_F))
+# define JJ_XcodeFindAndReplaceInWorkspace LALT(LSHIFT(LGUI(Key_F)))
+# define JJ_XcodeFindNextInWorkspace LCTRL(LGUI(Key_G))
+# define JJ_XcodeFindPreviousInWorkspace LCTRL(LSHIFT(LGUI(Key_G)))
+# define JJ_XcodeFindSelectedSymbolInWorkspace LCTRL(LSHIFT(LGUI(Key_F)))
+# define JJ_XcodeFindCallHierarchy LCTRL(LSHIFT(LGUI(Key_H)))
+# define JJ_XcodeFindInFile LGUI(Key_F)
+# define JJ_XcodeFindAndReplaceInFile LGUI(LALT(Key_F))
+# define JJ_XcodeFindNextInFile LGUI(Key_G)
+# define JJ_XcodeFindPreviousInFile LSHIFT(LGUI(Key_G))
+# define JJ_XcodeFind TD(TAP_DANCE_XCODE_FIND)
+# define JJ_XcodeFindAndReplace TD(TAP_DANCE_XCODE_FIND_AND_REPLACE)
 
-
-
-
-# define JJ_XcodeQuickOpen LGUI(LSHIFT(Key_O))
+// Old
 # define JJ_XcodeNavigateBack LGUI(LCTRL(Key_LeftArrow))
 # define JJ_XcodeNavigateForward LGUI(LCTRL(Key_RightArrow))
 # define JJ_XcodeNavigateUp LGUI(LCTRL(Key_UpArrow))
 # define JJ_XcodeNavigateDown LGUI(LCTRL(Key_DownArrow))
-# define JJ_XcodeShowRelatedItems LCTRL(Key_1)
-# define JJ_XcodeFindInFile LGUI(Key_F)
-# define JJ_XcodeFindInProject LGUI(LSHIFT(Key_F))
-# define JJ_XcodeFind TD(TAP_DANCE_XCODE_FIND)
-# define JJ_XcodeFindAndReplaceInFile LGUI(LALT(Key_F))
-# define JJ_XcodeFindAndReplaceInProject LGUI(LALT(LSHIFT(Key_F)))
-# define JJ_XcodeFindAndReplace TD(TAP_DANCE_XCODE_FIND_AND_REPLACE)
-# define JJ_XcodeNextResult LGUI(Key_G)
-# define JJ_XcodeUndo LGUI(Key_Z)
-# define JJ_XcodeCut LGUI(Key_X)
-# define JJ_XcodeCopy LGUI(Key_C)
-# define JJ_XcodePaste LGUI(Key_V)
-# define JJ_XcodeCopyOrCut TD(TAP_DANCE_XCODE_COPY_OR_CUT)
+
 # define JJ_XcodeSelectLine LGUI(LSHIFT(Key_E))
 # define JJ_XcodeEditAll LGUI(LCTRL(Key_E))
 # define JJ_XcodeShowCompletion LCTRL(Key_Space)
