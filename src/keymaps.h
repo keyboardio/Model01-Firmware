@@ -64,15 +64,15 @@ KEYMAPS(
 
 #if KALEIDOSCOPE_INCLUDE_XCODE
   [XCODE] =  KEYMAP_STACKED
-  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,             XXX,                             XXX,                  ___,
-   XXX,               XXX,                      XXX,                JJ_XcodeEditAll, JJ_XcodeFindAndReplaceInProject, JJ_XcodeFixNextIssue, ___,
-   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,             JJ_XcodeFindInProject,           JJ_XcodeNextResult,
-   JJ_XcodeCopyOrCut, JJ_XcodeUndo,             JJ_XcodeCut,        JJ_XcodeCopy,    JJ_XcodePaste,                   JJ_XcodeNextIssue,    ___,
+  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,             XXX,                               XXX,                    ___,
+   XXX,               XXX,                      XXX,                JJ_XcodeEditAll, JJ_XcodeFindAndReplaceInWorkspace, JJ_XcodeFixNextIssue,   ___,
+   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,             JJ_XcodeFindInWorkspace,           JJ_XcodeFindNextInFile,
+   JJ_XcodeCopyOrCut, JJ_XcodeUndo,             JJ_XcodeCut,        JJ_XcodeCopy,    JJ_XcodePaste,                     JJ_XcodeNextIssue,      ___,
    ___, ___, ___, ___,
    ___,
 
    ___, XXX,                  XXX,                  XXX,                XXX,                     XXX,                      XXX,
-   ___, XXX,                  XXX,                  XXX,                JJ_XcodeQuickOpen,       XXX,                      XXX,
+   ___, XXX,                  XXX,                  XXX,                JJ_XcodeOpenQuickly,     XXX,                      XXX,
         JJ_XcodeNavigateBack, JJ_XcodeNavigateDown, JJ_XcodeNavigateUp, JJ_XcodeNavigateForward, XXX,                      XXX,
    XXX, XXX,                  XXX,                  XXX,                XXX,                     JJ_XcodeCommentSelection, XXX,
    ___, ___, ___, ___,
