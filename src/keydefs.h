@@ -16,7 +16,34 @@
 
 
 #if KALEIDOSCOPE_INCLUDE_XCODE
+// Xcode Layer
 # define JJ_Xcode OSL(XCODE)
+
+// File Menu
+# define JJ_XcodeNewEditor LCTRL(LGUI(Key_T))
+# define JJ_XcodeNewEditorBelow LCTRL(LALT(LGUI(Key_T)))
+# define JJ_XcodeOpenQuickly LSHIFT(LGUI(Key_O))
+# define JJ_XcodeCloseEditor LCTRL(LALT(LGUI(Key_W)))
+# define JJ_XcodeCloseOtherEditors LCTRL(LALT(LSHIFT(LGUI(Key_W))))
+
+// Edit Menu
+# define JJ_XcodeCopySymbolName LCTRL(LSHIFT(LGUI(Key_C)))
+# define JJ_XcodeCopyQualifiedSymbolName LCTRL(LALT(LSHIFT(LGUI(Key_C))))
+
+// View Menu
+# define JJ_XcodeFocusEditor LCTRL(LSHIFT(LGUI(Key_Return)))
+# define JJ_XcodeShowRelatedItems LCTRL(Key_1)
+# define JJ_XcodeToggleCodeReview LALT(LSHIFT(LGUI(Key_Return)))
+# define JJ_XcodeResetAssistantSelection LALT(LSHIFT(LGUI(Key_Z)))
+# define JJ_XcodeActivateConsole LSHIFT(LGUI(Key_C))
+# define JJ_XcodeToggleDebugArea LSHIFT(LGUI(Key_Y))
+# define JJ_XcodeShowLibrary LSHIFT(LGUI(Key_L))
+
+// Find Menu
+
+
+
+
 # define JJ_XcodeQuickOpen LGUI(LSHIFT(Key_O))
 # define JJ_XcodeNavigateBack LGUI(LCTRL(Key_LeftArrow))
 # define JJ_XcodeNavigateForward LGUI(LCTRL(Key_RightArrow))
