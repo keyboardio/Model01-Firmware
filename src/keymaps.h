@@ -64,10 +64,10 @@ KEYMAPS(
 
 #if KALEIDOSCOPE_INCLUDE_XCODE
   [XCODE] =  KEYMAP_STACKED
-  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,             XXX,                               XXX,                    ___,
-   XXX,               XXX,                      XXX,                JJ_XcodeEditAll, JJ_XcodeFindAndReplaceInWorkspace, JJ_XcodeFixNextIssue,   ___,
-   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,             JJ_XcodeFindInWorkspace,           JJ_XcodeFindNextInFile,
-   JJ_XcodeCopyOrCut, JJ_XcodeUndo,             JJ_XcodeCut,        JJ_XcodeCopy,    JJ_XcodePaste,                     JJ_XcodeNextIssue,      ___,
+  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,             XXX,                               XXX,                         ___,
+   XXX,               XXX,                      XXX,                JJ_XcodeEditAll, JJ_XcodeFindAndReplaceInWorkspace, XXX,                         ___,
+   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,             JJ_XcodeFindInWorkspace,           JJ_XcodeFindNextInWorkspace,
+   JJ_XcodeCopyOrCut, XXX,                      XXX,                XXX,             XXX,                               XXX,                         ___,
    ___, ___, ___, ___,
    ___,
 
