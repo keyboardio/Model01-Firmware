@@ -64,17 +64,17 @@ KEYMAPS(
 
 #if KALEIDOSCOPE_INCLUDE_XCODE
   [XCODE] =  KEYMAP_STACKED
-  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,             XXX,                               XXX,                         ___,
-   XXX,               XXX,                      XXX,                JJ_XcodeEditAll, JJ_XcodeFindAndReplaceInWorkspace, XXX,                         ___,
-   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,             JJ_XcodeFindInWorkspace,           JJ_XcodeFindNextInWorkspace,
-   JJ_XcodeCopyOrCut, XXX,                      XXX,                XXX,             XXX,                               XXX,                         ___,
+  (___,               JJ_XcodeShowRelatedItems, XXX,                XXX,                    XXX,                               XXX,                         ___,
+   XXX,               XXX,                      XXX,                JJ_XcodeEditAllInScope, JJ_XcodeFindAndReplaceInWorkspace, XXX,                         ___,
+   JJ_XcodePaste,     XXX,                      JJ_XcodeSelectLine, XXX,                    JJ_XcodeFindInWorkspace,           JJ_XcodeFindNextInWorkspace,
+   JJ_XcodeCopyOrCut, XXX,                      XXX,                XXX,                    XXX,                               XXX,                         ___,
    ___, ___, ___, ___,
    ___,
 
-   ___, XXX,                  XXX,                  XXX,                XXX,                     XXX,                      XXX,
-   ___, XXX,                  XXX,                  XXX,                JJ_XcodeOpenQuickly,     XXX,                      XXX,
-        JJ_XcodeNavigateBack, JJ_XcodeNavigateDown, JJ_XcodeNavigateUp, JJ_XcodeNavigateForward, XXX,                      XXX,
-   XXX, XXX,                  XXX,                  XXX,                XXX,                     JJ_XcodeCommentSelection, XXX,
+   ___, XXX,            XXX,                               XXX,                           XXX,                 XXX,                      XXX,
+   ___, XXX,            XXX,                               XXX,                           JJ_XcodeOpenQuickly, XXX,                      XXX,
+        JJ_XcodeGoBack, JJ_XcodeJumpToPreviousCounterpart, JJ_XcodeJumpToNextCounterpart, JJ_XcodeGoForward,   XXX,                      XXX,
+   XXX, XXX,            XXX,                               XXX,                           XXX,                 JJ_XcodeCommentSelection, XXX,
    ___, ___, ___, ___,
    ___),
 #endif

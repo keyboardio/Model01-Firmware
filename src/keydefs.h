@@ -122,19 +122,18 @@
 // Transformation Menu
 # define JJ_XcodeLowercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_L)))) // custom key binding
 # define JJ_XcodeUppercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_U)))) // custom key binding
-# define JJ_XcodeCapitalizeWord LCTRL(LSHIFT(LGUI(Key_L))) // custom key binding
+# define JJ_XcodeCapitalizeWord LCTRL(LSHIFT(LGUI(Key_U))) // custom key binding
 
 // Mark & Yank
 # define JJ_XcodeDeleteToMark LCTRL(Key_W)
 # define JJ_XcodeSetMark LCTRL(LSHIFT(Key_2))
 # define JJ_XcodeYank LCTRL(Key_Y)
+# define JJ_XcodeSelectToMark M(MACRO_XCODE_SELECT_TO_MARK)
+# define JJ_XcodeSwapWithMark M(MACRO_XCODE_SWAP_WITH_MARK)
 
+// Selection
+# define JJ_XcodeSelectLine LCTRL(LSHIFT(LGUI(Key_L))) // custom key binding
 
-// Old
-
-# define JJ_XcodeSelectLine LGUI(LSHIFT(Key_E))
-# define JJ_XcodeShowCompletion LCTRL(Key_Space)
-# define JJ_XcodeNextCompletion LCTRL(Key_Period)
 #else
 # define JJ_Xcode ___
 #endif

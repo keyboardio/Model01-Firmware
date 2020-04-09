@@ -42,6 +42,18 @@ static void anyKeyMacro(uint8_t keyState) {
     Kaleidoscope.hid().keyboard().pressKey(lastKey, toggledOn);
 }
 
+static void xcodeSelectToMark(uint8_t keyState) {
+  if (keyToggledOn(keyState)) {
+    ::Macros.play(MACRO(Tr(LCTRL(Key_X)), Tr(LCTRL(Key_M))));
+  }
+}
+
+static void xcodeSwapWithMark(uint8_t keyState) {
+  if (keyToggledOn(keyState)) {
+    ::Macros.play(MACRO(Tr(LCTRL(Key_X)), Tr(LCTRL(Key_X))));
+  }
+}
+
 
 namespace {
 
@@ -60,6 +72,14 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_ANY:
     jj::Macros::anyKeyMacro(keyState);
+    break;
+
+  case MACRO_XCODE_SELECT_TO_MARK:
+    jj::Macros::xcodeSelectToMark(keyState);
+    break;
+
+  case MACRO_XCODE_SWAP_WITH_MARK:
+    jj::Macros::xcodeSwapWithMark(keyState);
     break;
 
   }
