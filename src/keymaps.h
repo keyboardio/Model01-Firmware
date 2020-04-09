@@ -70,7 +70,7 @@ KEYMAPS(
    JJ_XcodePull,                XXX,                      XXX,                    JJ_XcodeActivateConsole,         XXX,                                   JJ_XcodeNewEditorBelow,      JJ_XcodeLowercaseWord,
    ___, ___, ___, ___,
    ___,
- 
+
    ___,                 JJ_XcodeRevealInProjectNavigator, JJ_XcodeRevealInDebugNavigator,            XXX,                               XXX,                           JJ_XcodeShowLibrary,      XXX,
    JJ_XcodeAssistant,   JJ_XcodePauseContinue,            JJ_XcodeContinueToCurrentLine,             XXX,                               JJ_XcodeOpenQuickly,           JJ_XcodeShowSpelling,     JJ_XcodeMoveLineUp,
                         JJ_XcodeGoBack,                   JJ_XcodeJumpToNextCounterpartInNextEditor, JJ_XcodeJumpToNextCounterpart,     JJ_XcodeGoForward,             JJ_XcodeCheckSpelling,    JJ_XcodeMoveLineDown,
