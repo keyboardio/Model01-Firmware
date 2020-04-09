@@ -105,15 +105,36 @@
 # define JJ_XcodeMoveLineDown LALT(LGUI(Key_RightBracket))
 # define JJ_XcodeCommentSelection LGUI(Key_Slash)
 
+// Product Menu
+# define JJ_XcodeClean LSHIFT(LGUI(Key_K))
+# define JJ_XcodeCleanBuildFolder LALT(LSHIFT(LGUI(Key_K)))
+
+// Debug Menu
+# define JJ_XcodePauseContinue LCTRL(LGUI(Key_Y))
+# define JJ_XcodeContinueToCurrentLine LCTRL(LGUI(Key_C))
+# define JJ_XcodeActivateBreakpoints LGUI(Key_Y)
+# define JJ_XcodeAddBreakpointAtCurrentLine LGUI(Key_Backslash)
+
+// Source Control Menu
+# define JJ_XcodeCommit LALT(LGUI(Key_C))
+# define JJ_XcodePull LCTRL(LGUI(Key_X))
+
+// Transformation Menu
+# define JJ_XcodeLowercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_L)))) // custom key binding
+# define JJ_XcodeUppercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_U)))) // custom key binding
+# define JJ_XcodeCapitalizeWord LCTRL(LSHIFT(LGUI(Key_L))) // custom key binding
+
+// Mark & Yank
+# define JJ_XcodeDeleteToMark LCTRL(Key_W)
+# define JJ_XcodeSetMark LCTRL(LSHIFT(Key_2))
+# define JJ_XcodeYank LCTRL(Key_Y)
+
+
 // Old
 
 # define JJ_XcodeSelectLine LGUI(LSHIFT(Key_E))
 # define JJ_XcodeShowCompletion LCTRL(Key_Space)
 # define JJ_XcodeNextCompletion LCTRL(Key_Period)
-# define JJ_XcodeFixNextIssue LCTRL(LGUI(Key_Quote))
-# define JJ_XcodeFixPreviousIssue LCTRL(LGUI(LSHIFT(Key_Quote)))
-# define JJ_XcodeAddBreakpoint LGUI(Key_Backslash)
-# define JJ_XcodeActivateBreakpoints LGUI(Key_Y)
 #else
 # define JJ_Xcode ___
 #endif
