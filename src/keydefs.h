@@ -62,7 +62,6 @@
 # define JJ_XcodeFind TD(TAP_DANCE_XCODE_FIND)
 # define JJ_XcodeFindAndReplace TD(TAP_DANCE_XCODE_FIND_AND_REPLACE)
 
-
 // Navigate Menu
 # define JJ_XcodeRevealInProjectNavigator LSHIFT(LGUI(Key_J))
 # define JJ_XcodeRevealInDebugNavigator LSHIFT(LGUI(Key_D))
