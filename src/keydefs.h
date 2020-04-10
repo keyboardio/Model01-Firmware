@@ -39,9 +39,9 @@
 # define JJ_XcodeCopyOrCut TD(TAP_DANCE_XCODE_COPY_OR_CUT)
 
 // View Menu
-# define JJ_XcodeFocusEditor LCTRL(LSHIFT(LGUI(Key_Return))) // BUTTERFLY
+# define JJ_XcodeFocusEditor LCTRL(LSHIFT(LGUI(Key_Enter))) // BUTTERFLY
 # define JJ_XcodeShowRelatedItems LCTRL(Key_1) // 1
-# define JJ_XcodeToggleCodeReview LALT(LSHIFT(LGUI(Key_Return)))
+# define JJ_XcodeToggleCodeReview LALT(LSHIFT(LGUI(Key_Enter)))
 # define JJ_XcodeResetAssistantSelection LALT(LSHIFT(LGUI(Key_Z)))
 # define JJ_XcodeActivateConsole LSHIFT(LGUI(Key_C)) // C
 # define JJ_XcodeToggleDebugArea LSHIFT(LGUI(Key_Y))
@@ -53,8 +53,8 @@
 # define JJ_XcodeFindAndReplaceInWorkspace LALT(LSHIFT(LGUI(Key_F))) // R
 # define JJ_XcodeFindNextInWorkspace LCTRL(LGUI(Key_G)) // G
 # define JJ_XcodeFindPreviousInWorkspace LCTRL(LSHIFT(LGUI(Key_G))) // SHIFT G
-# define JJ_XcodeFindSelectedSymbolInWorkspace LCTRL(LSHIFT(LGUI(Key_F)))
-# define JJ_XcodeFindCallHierarchy LCTRL(LSHIFT(LGUI(Key_H)))
+# define JJ_XcodeFindSelectedSymbolInWorkspace LCTRL(LSHIFT(LGUI(Key_F))) // !
+# define JJ_XcodeFindCallHierarchy LCTRL(LSHIFT(LGUI(Key_H))) // !
 # define JJ_XcodeFindInFile LGUI(Key_F)
 # define JJ_XcodeFindAndReplaceInFile LGUI(LALT(Key_F))
 # define JJ_XcodeFindNextInFile LGUI(Key_G)
@@ -63,12 +63,12 @@
 # define JJ_XcodeFindAndReplace TD(TAP_DANCE_XCODE_FIND_AND_REPLACE)
 
 // Navigate Menu
-# define JJ_XcodeRevealInProjectNavigator LSHIFT(LGUI(Key_J))
-# define JJ_XcodeRevealInDebugNavigator LSHIFT(LGUI(Key_D))
+# define JJ_XcodeRevealInProjectNavigator LSHIFT(LGUI(Key_J)) // !
+# define JJ_XcodeRevealInDebugNavigator LSHIFT(LGUI(Key_D)) // !
 # define JJ_XcodeOpenInNextEditor LALT(LGUI(Key_Comma))
 # define JJ_XcodeOpenIn LSHIFT(LALT(LGUI(Key_Comma)))
-# define JJ_XcodeMoveFocusToNextArea LALT(LGUI(Key_Backtick)) // `
-# define JJ_XcodeMoveFocusToPreviousArea LSHIFT(LALT(LGUI(Key_Backtick))) // ALT `
+# define JJ_XcodeMoveFocusToNextArea LALT(LGUI(Key_Backtick)) // LED
+# define JJ_XcodeMoveFocusToPreviousArea LSHIFT(LALT(LGUI(Key_Backtick))) // ALT LED
 # define JJ_XcodeMoveFocusToNextEditor LCTRL(Key_Backtick) // TAB
 # define JJ_XcodeMoveFocusToPreviousEditor LSHIFT(LCTRL(Key_Backtick)) // SHIFT TAB
 # define JJ_XcodeMoveFocusToEditor LGUI(Key_Backtick)
@@ -92,7 +92,7 @@
 # define JJ_XcodeJumpToPreviousChange LCTRL(LSHIFT(Key_Backslash)) // SHIFT '\'
 
 // Editor Menu
-# define JJ_XcodeAssistant LCTRL(LALT(LGUI(Key_Return))) // RETURN
+# define JJ_XcodeAssistant LCTRL(LALT(LGUI(Key_Enter))) // RETURN
 # define JJ_XcodeShowCodeActions LSHIFT(LGUI(Key_A)) // A
 # define JJ_XcodeEditAllInScope LCTRL(LGUI(Key_E)) // E
 # define JJ_XcodeRefactorRename LCTRL(LALT(LSHIFT(LGUI(Key_R)))) // N (custom)
@@ -100,8 +100,8 @@
 # define JJ_XcodeRefactorExtractToVariable LCTRL(LALT(LSHIFT(LGUI(Key_V)))) // V (custom)
 # define JJ_XcodeFixAllIssues LCTRL(LALT(LGUI(Key_F)))
 # define JJ_XcodeShowAllIssues LCTRL(LGUI(Key_M))
-# define JJ_XcodeMoveLineUp LALT(LGUI(Key_LeftBracket))
-# define JJ_XcodeMoveLineDown LALT(LGUI(Key_RightBracket))
+# define JJ_XcodeMoveLineUp LALT(LGUI(Key_LeftBracket)) //   !!!
+# define JJ_XcodeMoveLineDown LALT(LGUI(Key_RightBracket)) //   !!!
 # define JJ_XcodeCommentSelection LGUI(Key_Slash)
 
 // Product Menu
@@ -119,9 +119,9 @@
 # define JJ_XcodePull LCTRL(LGUI(Key_X)) // PGDN
 
 // Transformation Menu
-# define JJ_XcodeLowercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_L)))) // ' (custom)
-# define JJ_XcodeUppercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_U)))) // NUM (custom)
-# define JJ_XcodeCapitalizeWord LCTRL(LSHIFT(LGUI(Key_U))) // = (custom)
+# define JJ_XcodeLowercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_L)))) // ' (custom)  !!!
+# define JJ_XcodeUppercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_U)))) // NUM (custom)  !!!
+# define JJ_XcodeCapitalizeWord LCTRL(LSHIFT(LGUI(Key_U))) // = (custom)  !!!
 
 // Mark & Yank
 # define JJ_XcodeDeleteToMark LCTRL(Key_W)
