@@ -24,7 +24,7 @@
 # define JJ_XcodeNewEditorBelow LCTRL(LALT(LGUI(Key_T))) // B
 # define JJ_XcodeOpenQuickly LSHIFT(LGUI(Key_O)) // O
 # define JJ_XcodeCloseEditor LCTRL(LALT(LGUI(Key_W))) // W
-# define JJ_XcodeCloseOtherEditors LCTRL(LALT(LSHIFT(LGUI(Key_W)))) // SHIFT W
+# define JJ_XcodeCloseOtherEditors LCTRL(LALT(LSHIFT(LGUI(Key_W)))) // Q
 
 // Edit Menu
 # define JJ_XcodeUndo LGUI(Key_Z)
@@ -100,9 +100,9 @@
 # define JJ_XcodeRefactorExtractToVariable LCTRL(LALT(LSHIFT(LGUI(Key_V)))) // V (custom)
 # define JJ_XcodeFixAllIssues LCTRL(LALT(LGUI(Key_F)))
 # define JJ_XcodeShowAllIssues LCTRL(LGUI(Key_M))
-# define JJ_XcodeMoveLineUp LALT(LGUI(Key_LeftBracket)) //   !!!
-# define JJ_XcodeMoveLineDown LALT(LGUI(Key_RightBracket)) //   !!!
-# define JJ_XcodeCommentSelection LGUI(Key_Slash)
+# define JJ_XcodeMoveLineUp LALT(LGUI(Key_LeftBracket)) // ,
+# define JJ_XcodeMoveLineDown LALT(LGUI(Key_RightBracket)) // .
+# define JJ_XcodeCommentSelection LGUI(Key_Slash) // /
 
 // Product Menu
 # define JJ_XcodeClean LSHIFT(LGUI(Key_K))

@@ -63,19 +63,19 @@ KEYMAPS(
 #endif
 
 #if KALEIDOSCOPE_INCLUDE_XCODE
-   // unused: PROG, `, Q, Z, X, ESC, 8, 9, I, <, >
+   // unused: PROG, `, Z, X, ESC, 8, 9, I
   [XCODE] =  KEYMAP_STACKED
-  (XXX,            JJ_XcodeShowRelatedItems, JJ_XcodeCopySymbolName, JJ_XcodeCopyQualifiedSymbolName, JJ_XcodeFindCallHierarchy,         JJ_XcodeFindSelectedSymbolInWorkspace, JJ_XcodeMoveFocusToNextArea,
-   XXX,            XXX,                      JJ_XcodeCloseEditor,    JJ_XcodeEditAllInScope,          JJ_XcodeFindAndReplaceInWorkspace, JJ_XcodeNewEditor,                     JJ_XcodeMoveFocusToNextEditor,
-   JJ_XcodeCommit, JJ_XcodeShowCodeActions,  JJ_XcodeSelectLine,     JJ_XcodeJumpToDefinition,        JJ_XcodeFindInWorkspace,           JJ_XcodeFindNextInWorkspace,
-   JJ_XcodePull,   XXX,                      XXX,                    JJ_XcodeActivateConsole,         JJ_XcodeRefactorExtractToVariable, JJ_XcodeNewEditorBelow,                XXX,
+  (XXX,            JJ_XcodeShowRelatedItems,  JJ_XcodeCopySymbolName, JJ_XcodeCopyQualifiedSymbolName, JJ_XcodeFindCallHierarchy,         JJ_XcodeFindSelectedSymbolInWorkspace, JJ_XcodeMoveFocusToNextArea,
+   XXX,            JJ_XcodeCloseOtherEditors, JJ_XcodeCloseEditor,    JJ_XcodeEditAllInScope,          JJ_XcodeFindAndReplaceInWorkspace, JJ_XcodeNewEditor,                     JJ_XcodeMoveFocusToNextEditor,
+   JJ_XcodeCommit, JJ_XcodeShowCodeActions,   JJ_XcodeSelectLine,     JJ_XcodeJumpToDefinition,        JJ_XcodeFindInWorkspace,           JJ_XcodeFindNextInWorkspace,
+   JJ_XcodePull,   XXX,                       XXX,                    JJ_XcodeActivateConsole,         JJ_XcodeRefactorExtractToVariable, JJ_XcodeNewEditorBelow,                XXX,
    ___, ___, ___, ___,
    ___,
 
-   ___,                 JJ_XcodeRevealInProjectNavigator, JJ_XcodeRevealInDebugNavigator,            XXX,                           XXX,                 JJ_XcodeShowLibrary,      JJ_XcodeUppercaseWord,
-   JJ_XcodeAssistant,   JJ_XcodePauseContinue,            JJ_XcodeContinueToCurrentLine,             XXX,                           JJ_XcodeOpenQuickly, JJ_XcodeShowSpelling,     JJ_XcodeCapitalizeWord,
-                        JJ_XcodeGoBack,                   JJ_XcodeJumpToNextCounterpartInNextEditor, JJ_XcodeJumpToNextCounterpart, JJ_XcodeGoForward,   JJ_XcodeCheckSpelling,    JJ_XcodeLowercaseWord,
-   JJ_XcodeFocusEditor, JJ_XcodeRefactorRename,           JJ_XcodeRefactorExtractToMethod,           XXX,                           XXX,                 JJ_XcodeCommentSelection, JJ_XcodeJumpToNextChange,
+   ___,                 JJ_XcodeRevealInProjectNavigator, JJ_XcodeRevealInDebugNavigator,            XXX,                           XXX,                  JJ_XcodeShowLibrary,      JJ_XcodeUppercaseWord,
+   JJ_XcodeAssistant,   JJ_XcodePauseContinue,            JJ_XcodeContinueToCurrentLine,             XXX,                           JJ_XcodeOpenQuickly,  JJ_XcodeShowSpelling,     JJ_XcodeCapitalizeWord,
+                        JJ_XcodeGoBack,                   JJ_XcodeJumpToNextCounterpartInNextEditor, JJ_XcodeJumpToNextCounterpart, JJ_XcodeGoForward,    JJ_XcodeCheckSpelling,    JJ_XcodeLowercaseWord,
+   JJ_XcodeFocusEditor, JJ_XcodeRefactorRename,           JJ_XcodeRefactorExtractToMethod,           JJ_XcodeMoveLineUp,            JJ_XcodeMoveLineDown, JJ_XcodeCommentSelection, JJ_XcodeJumpToNextChange,
    ___, ___, ___, ___,
    ___),
 #endif
