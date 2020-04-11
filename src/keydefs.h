@@ -32,8 +32,8 @@
 # define JJ_XcodeCut LGUI(Key_X)
 # define JJ_XcodeCopy LGUI(Key_C)
 # define JJ_XcodePaste LGUI(Key_V)
-# define JJ_XcodeCopySymbolName LCTRL(LSHIFT(LGUI(Key_C)))
-# define JJ_XcodeCopyQualifiedSymbolName LCTRL(LALT(LSHIFT(LGUI(Key_C))))
+# define JJ_XcodeCopySymbolName LCTRL(LSHIFT(LGUI(Key_C))) // 2
+# define JJ_XcodeCopyQualifiedSymbolName LCTRL(LALT(LSHIFT(LGUI(Key_C)))) // 3
 # define JJ_XcodeShowSpelling LGUI(LSHIFT(Key_Semicolon)) // P
 # define JJ_XcodeCheckSpelling LGUI(Key_Semicolon) // ;
 # define JJ_XcodeCopyOrCut TD(TAP_DANCE_XCODE_COPY_OR_CUT)
@@ -53,8 +53,8 @@
 # define JJ_XcodeFindAndReplaceInWorkspace LALT(LSHIFT(LGUI(Key_F))) // R
 # define JJ_XcodeFindNextInWorkspace LCTRL(LGUI(Key_G)) // G
 # define JJ_XcodeFindPreviousInWorkspace LCTRL(LSHIFT(LGUI(Key_G))) // SHIFT G
-# define JJ_XcodeFindSelectedSymbolInWorkspace LCTRL(LSHIFT(LGUI(Key_F))) // !
-# define JJ_XcodeFindCallHierarchy LCTRL(LSHIFT(LGUI(Key_H))) // !
+# define JJ_XcodeFindSelectedSymbolInWorkspace LCTRL(LSHIFT(LGUI(Key_F))) // 5
+# define JJ_XcodeFindCallHierarchy LCTRL(LSHIFT(LGUI(Key_H))) // 4
 # define JJ_XcodeFindInFile LGUI(Key_F)
 # define JJ_XcodeFindAndReplaceInFile LGUI(LALT(Key_F))
 # define JJ_XcodeFindNextInFile LGUI(Key_G)
@@ -63,8 +63,8 @@
 # define JJ_XcodeFindAndReplace TD(TAP_DANCE_XCODE_FIND_AND_REPLACE)
 
 // Navigate Menu
-# define JJ_XcodeRevealInProjectNavigator LSHIFT(LGUI(Key_J)) // !
-# define JJ_XcodeRevealInDebugNavigator LSHIFT(LGUI(Key_D)) // !
+# define JJ_XcodeRevealInProjectNavigator LSHIFT(LGUI(Key_J)) // 6
+# define JJ_XcodeRevealInDebugNavigator LSHIFT(LGUI(Key_D)) // 7
 # define JJ_XcodeOpenInNextEditor LALT(LGUI(Key_Comma))
 # define JJ_XcodeOpenIn LSHIFT(LALT(LGUI(Key_Comma)))
 # define JJ_XcodeMoveFocusToNextArea LALT(LGUI(Key_Backtick)) // LED
@@ -119,9 +119,9 @@
 # define JJ_XcodePull LCTRL(LGUI(Key_X)) // PGDN
 
 // Transformation Menu
-# define JJ_XcodeLowercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_L)))) // ' (custom)  !!!
-# define JJ_XcodeUppercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_U)))) // NUM (custom)  !!!
-# define JJ_XcodeCapitalizeWord LCTRL(LSHIFT(LGUI(Key_U))) // = (custom)  !!!
+# define JJ_XcodeLowercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_L)))) // ' (custom)
+# define JJ_XcodeUppercaseWord LCTRL(LALT(LSHIFT(LGUI(Key_U)))) // NUM (custom)
+# define JJ_XcodeCapitalizeWord LCTRL(LSHIFT(LGUI(Key_U))) // = (custom)
 
 // Mark & Yank
 # define JJ_XcodeDeleteToMark LCTRL(Key_W)
