@@ -16,7 +16,7 @@
 KEYMAPS(
 
   [QWERTY] = KEYMAP_STACKED
-  (Key_CapsLock, Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDToggle,
+  (Key_CapsLock, Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDToggleOnOff,
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
@@ -31,7 +31,7 @@ KEYMAPS(
    ShiftToLayer(FUNCTION_JJ)),
 
   [FUNCTION_JJ] =  KEYMAP_STACKED
-  (Key_CapsLock, Key_F1,     Key_F2,      Key_F3,     Key_F4,        Key_F5, Key_LEDEffectNext,
+  (Key_CapsLock, Key_F1,     Key_F2,      Key_F3,     Key_F4,        Key_F5, Key_LEDToggleNext,
    Key_Tab,      ___,        Key_mouseUp, ___,        Key_mouseBtnR, ___,    Key_Enter,
    Key_Home,     Key_mouseL, Key_mouseDn, Key_mouseR, Key_mouseBtnL, ___,
    Key_End,      ___,        ___,         ___,        ___,           ___,    Key_Spacebar,
