@@ -185,9 +185,9 @@ enum { PRIMARY, NUMPAD, FUNCTION }; // layers
   */
 
 //#define PRIMARY_KEYMAP_QWERTY
-#define PRIMARY_KEYMAP_COLEMAK
+//#define PRIMARY_KEYMAP_COLEMAK
 // #define PRIMARY_KEYMAP_DVORAK
-//#define PRIMARY_KEYMAP_CUSTOM
+#define PRIMARY_KEYMAP_CUSTOM
 
 
 
@@ -251,15 +251,14 @@ KEYMAPS(
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
    [PRIMARY] = KEYMAP_STACKED
-//(M(MACRO_MEH),          Key_1, Key_2, Key_3, Key_4, Key_5, LCTRL(Key_Spacebar),
-(_,          Key_1, Key_2, Key_3, Key_4, Key_5, LCTRL(Key_Spacebar),
+(M(MACRO_MEH),          Key_1, Key_2, Key_3, Key_4, Key_5, LCTRL(Key_Spacebar),
    Key_Backtick, Key_Q, Key_W, Key_F, Key_P, Key_G, Key_Tab,
    Key_PageUp,   Key_A, Key_R, Key_S, Key_T, Key_D,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
    OSM(LeftControl), Key_Backspace, OSM(LeftGui), OSM(LeftShift),
    ShiftToLayer(FUNCTION),
 
-   LCTRL(Key_Spacebar),  Key_6, Key_7, Key_8, Key_9, Key_0,         _, //M(MACRO_CTRL_ALT),
+   LCTRL(Key_Spacebar),  Key_6, Key_7, Key_8, Key_9, Key_0,         M(MACRO_CTRL_ALT),
    Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
                   Key_H, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,//MT(LeftGui, Quote),
    M(MACRO_CTRL_SFT),  Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
@@ -289,12 +288,9 @@ KEYMAPS(
 
   [FUNCTION] =  KEYMAP_STACKED
   (Key_LEDEffectNext,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           ___,
-//   Key_Tab,  TOPSY(1), TOPSY(2), Key_LeftCurlyBracket,     Key_RightCurlyBracket,  Key_Pipe, Key_mouseWarpNE,
-//   Key_Home, TOPSY(3), TOPSY(4), Key_KeypadLeftParen, Key_KeypadRightParen, Key_Backslash,
-//   Key_End,  TOPSY(5),  TOPSY(6),  Key_LeftBracket,        Key_RightBracket, TOPSY(Minus),  Key_mouseWarpSE,
-   Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
-   Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
-   Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
+   Key_Tab,  TOPSY(1), TOPSY(2), Key_LeftCurlyBracket,     Key_RightCurlyBracket,  Key_Pipe, Key_mouseWarpNE,
+   Key_Home, TOPSY(3), TOPSY(4), Key_KeypadLeftParen, Key_KeypadRightParen, Key_Backslash,
+   Key_End,  TOPSY(5),  TOPSY(6),  Key_LeftBracket,        Key_RightBracket, TOPSY(Minus),  Key_mouseWarpSE,
    ___, Key_Delete, ___, ___,
    ___,
 
