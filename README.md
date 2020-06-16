@@ -14,7 +14,11 @@ _The default firmware for the Keyboardio Model 01_
 
 Setup the Arduino IDE on your system. Make sure you install at least version 1.8.11, since older version may not support all required features.
 
-You can find Instructions for setting up the Arduino IDE and adding support for Kaleidoscope [on the Kaleidoscope wiki](https://github.com/keyboardio/Kaleidoscope/wiki/Install-Arduino)
+Out of the box, Arduino does not include support for Kaleidoscope keyboards. To be able to build and install new firmware on your keyboard, you will need to teach Arduino about Kaleidoscope.
+
+You can find instructions for setting up the Arduino IDE and adding support for Kaleidoscope [on the Kaleidoscope wiki](https://github.com/keyboardio/Kaleidoscope/wiki/Install-Arduino)
+
+Once that's done, you're ready to download the Model 01's firmware source code.
 
 ## Download the Model 01 Firmware
 
@@ -38,6 +42,8 @@ When the builder tells you to hit Enter to continue, hold down "Prog" in the top
 ### Option 2: From the Arduino IDE
 
 Open the sketch you wish to flash (for example, `Model01-Firmware.ino`).
+
+Make sure that you've picked the Model 01 from the Boards list in the tools menu.
 
 Click the Upload button or press `Ctrl-U`.
 
