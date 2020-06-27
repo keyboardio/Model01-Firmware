@@ -52,7 +52,7 @@ Hold down the "Prog" key in the top left corner of your keyboard, until the comp
 
 # Start to customize the firmware
 
-You can customize your keyboard's key layout and LED effects by modifying the `Model01-Firmware.ino` file in the same directory as this README. Model01-Firmware.ino is a computer program written in 'Arduino C'. You can find documentation about Arduino C at https://arduino.cc.
+You can customize your keyboard's behaviour by modifying the `Model01-Firmware.ino` file in the same directory as this README. Model01-Firmware.ino is a computer program written in 'Arduino C'. You can find documentation about Arduino C at https://arduino.cc. The keyboard layout is defined in the include file `keymaps.h`, which consists mainly of C preprocessor macros.
 
 You can also find Kaleidoscope-specific documentation [on our wiki](https://github.com/keyboardio/Kaleidoscope/wiki).
 
